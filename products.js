@@ -8,7 +8,7 @@ const products = [
 
   // ===================== BUZOS =====================
 
- {
+{
   id: 18,
   name: "Boxy Tree Rígido",
   category: "ropa",
@@ -89,6 +89,7 @@ const products = [
   sizes: ["S", "M", "L"],
   status: "stock",
   drop: "WINTER DROP",
+  tag: "¡NEW!",
   whatsapp: WHATSAPP_NUMBER
 },
 
@@ -107,6 +108,7 @@ const products = [
   sizes: ["S", "M", "L"],
   status: "stock",
   drop: "WINTER DROP",
+  tag: "¡NEW!",
   whatsapp: WHATSAPP_NUMBER
 },
 
@@ -124,65 +126,9 @@ const products = [
   sizes: ["S", "M", "L"],
   status: "stock",
   drop: "WINTER DROP",
+  tag: "¡NEW!",
   whatsapp: WHATSAPP_NUMBER
 },
-
-  // ===================== REMERAS =====================
-
-  {
-    id: 1,
-    name: "Remera OFF-WHITE Oversize Blanca",
-    category: "ropa",
-    subcategory: "remeras",
-    price: 1900,
-    image: "img/remeraoff.webp",
-    images: [
-      "img/remeraoff.webp",
-      "img/remeraoff2.webp",
-      "img/remeraoff3.webp",
-      "img/tagoffwhite.webp"
-    ],
-    sizes: ["M"],
-    status: "stock",
-    whatsapp: WHATSAPP_NUMBER
-  },
-
-  {
-    id: 2,
-    name: "Remera PALM ANGELS Negra",
-    category: "ropa",
-    subcategory: "remeras",
-    price: 1900,
-    image: "img/remerapalm0.webp",
-    images: [
-      "img/remerapalm0.webp",
-      
-      "img/remerapalm2.webp",
-      "img/remerapalm3.webp",
-      "img/tagpalm.webp"
-    ],
-    sizes: ["M"],
-    status: "stock",
-    whatsapp: WHATSAPP_NUMBER
-  },
-
-  {
-    id: 3,
-    name: "Remera Hermés Blanca",
-    category: "ropa",
-    subcategory: "remeras",
-    price: 1900,
-    image: "img/remerahermes0.webp",
-    images: [
-      "img/remerahermes0.webp",
-      "img/remerahermes2.webp",
-      "img/remerahermes3.webp"
-    ],
-    sizes: ["M", "L"],
-    status: "stock",
-    whatsapp: WHATSAPP_NUMBER
-  },
-
 
 
   // ===================== CALZADOS =====================
