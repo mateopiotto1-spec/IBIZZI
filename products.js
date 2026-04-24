@@ -139,7 +139,6 @@ const products = [
       "img/remeraoff.webp",
       "img/remeraoff2.webp",
       "img/remeraoff3.webp",
-     
       "img/tagoffwhite.webp"
     ],
     sizes: ["M"],
@@ -156,7 +155,7 @@ const products = [
     image: "img/remerapalm0.webp",
     images: [
       "img/remerapalm0.webp",
-      "img/remerapalm1.webp",
+      
       "img/remerapalm2.webp",
       "img/remerapalm3.webp",
       "img/tagpalm.webp"
