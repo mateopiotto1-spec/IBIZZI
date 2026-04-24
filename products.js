@@ -139,7 +139,7 @@ const products = [
       "img/remeraoff.webp",
       "img/remeraoff2.webp",
       "img/remeraoff3.webp",
-      "img/remeraoff4.webp",
+     
       "img/tagoffwhite.webp"
     ],
     sizes: ["M"],
