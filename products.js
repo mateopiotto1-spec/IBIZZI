@@ -8,123 +8,124 @@ const products = [
 
   // ===================== BUZOS =====================
 
-  {
-    id: 18,
-    name: "Boxy Tree Rígido",
-    category: "ropa",
-    subcategory: "buzos",
-    price: 3100,
-    image: "img/tree1.webp",
-    images: [
-      "img/treemodelo1.webp",
-      "img/modelotree2.webp",
-      "img/tree1.webp",
-      "img/mangatree.webp",
-      "img/tree3.webp"
-    ],
-    sizes: ["S", "M", "L"],
-    status: "stock",
-    drop: "PRE WINTER DROP",
-    tag: "¡NEW!",
-    description: "Buzo boxy fit rígido en tono tree, estética premium.",
-    whatsapp: WHATSAPP_NUMBER
-  },
+ {
+  id: 18,
+  name: "Boxy Tree Rígido",
+  category: "ropa",
+  subcategory: "buzos",
+  price: 3100,
+  image: "img/tree1.webp",
+  images: [
+    "img/treemodelo1.webp",
+    "img/modelotree2.webp",
+    "img/tree1.webp",
+    "img/mangatree.webp",
+    "img/tree3.webp"
+  ],
+  sizes: ["S", "M", "L"],
+  status: "stock",
+  drop: "WINTER DROP",
+  tag: "¡NEW!",
+  description: "Buzo boxy fit rígido en tono tree, estética premium.",
+  whatsapp: WHATSAPP_NUMBER
+},
 
-  {
-    id: 17,
-    name: "Boxy Camuflado Fit Rígido",
-    category: "ropa",
-    subcategory: "buzos",
-    price: 2890,
-    image: "img/camuflado.webp",
-    images: [
-      "img/camufladomodelo1.webp",
-      "img/camufladomodelo2.webp",
-      "img/camufladocapucha.webp",
-      "img/camufadomanga.webp",
-      "img/camuflado.webp"
-    ],
-    sizes: ["S", "M", "L"],
-    status: "stock",
-    drop: "PRE WINTER DROP",
-    tag: "¡NEW!",
-    description: "Buzo boxy fit rígido, estilo streetwear premium.",
-    whatsapp: WHATSAPP_NUMBER
-  },
+{
+  id: 17,
+  name: "Boxy Camuflado Fit Rígido",
+  category: "ropa",
+  subcategory: "buzos",
+  price: 2890,
+  image: "img/camuflado.webp",
+  images: [
+    "img/camufladomodelo1.webp",
+    "img/camufladomodelo2.webp",
+    "img/camufladocapucha.webp",
+    "img/camufadomanga.webp",
+    "img/camuflado.webp"
+  ],
+  sizes: ["S", "M", "L"],
+  status: "stock",
+  drop: "WINTER DROP",
+  tag: "¡NEW!",
+  description: "Buzo boxy fit rígido, estilo streetwear premium.",
+  whatsapp: WHATSAPP_NUMBER
+},
 
-  {
-    id: 16,
-    name: "Angels of Hell Frizado",
-    category: "ropa",
-    subcategory: "buzos",
-    price: 2490,
-    oldPrice: 2690,
-    image: "img/angels1.webp",
-    images: [
-      "img/angelsmodel2.webp",
-      "img/angelsmodel3.webp",
-      "img/angelespalda.webp",
-      "img/angels1.webp",
-      "img/angels3.webp"
-    ],
-    sizes: ["S", "M", "L"],
-    status: "stock",
-    drop: "PRE WINTER DROP",
-    tag: "¡NEW!",
-    description: "Buzo frizado abrigado con diseño exclusivo Angels of Hell.",
-    whatsapp: WHATSAPP_NUMBER
-  },
+{
+  id: 16,
+  name: "Angels of Hell Frizado",
+  category: "ropa",
+  subcategory: "buzos",
+  price: 2490,
+  oldPrice: 2690,
+  image: "img/angels1.webp",
+  images: [
+    "img/angelsmodel2.webp",
+    "img/angelsmodel3.webp",
+    "img/angelespalda.webp",
+    "img/angels1.webp",
+    "img/angels3.webp"
+  ],
+  sizes: ["S", "M", "L"],
+  status: "stock",
+  drop: "WINTER DROP",
+  tag: "¡NEW!",
+  description: "Buzo frizado abrigado con diseño exclusivo Angels of Hell.",
+  whatsapp: WHATSAPP_NUMBER
+},
 
-  {
-    id: 13,
-    name: "Hoodie BRZCO Frizado",
-    category: "ropa",
-    subcategory: "buzos",
-    price: 2390,
-    image: "img/brzcohueso1.webp",
-    images: [
-      "img/brzcomodelo1.webp",
-      "img/brzcohueso1.webp"
-    ],
-    sizes: ["S", "M", "L"],
-    status: "stock",
-    whatsapp: WHATSAPP_NUMBER
-  },
+{
+  id: 13,
+  name: "Hoodie BRZCO Frizado",
+  category: "ropa",
+  subcategory: "buzos",
+  price: 2390,
+  image: "img/brzcohueso1.webp",
+  images: [
+    "img/brzcomodelo1.webp",
+    "img/brzcohueso1.webp"
+  ],
+  sizes: ["S", "M", "L"],
+  status: "stock",
+  drop: "WINTER DROP",
+  whatsapp: WHATSAPP_NUMBER
+},
 
-  {
-    id: 14,
-    name: "Hoodie BRZCO Negro",
-    category: "ropa",
-    subcategory: "buzos",
-    price: 2390,
-    image: "img/brzconegro1.webp",
-    images: [
-      "img/brzcomodelo2.webp",
-      "img/brzconegro1.webp",
-      "img/brzconegro2.webp"
-    ],
-    sizes: ["S", "M", "L"],
-    status: "stock",
-    whatsapp: WHATSAPP_NUMBER
-  },
+{
+  id: 14,
+  name: "Hoodie BRZCO Negro",
+  category: "ropa",
+  subcategory: "buzos",
+  price: 2390,
+  image: "img/brzconegro1.webp",
+  images: [
+    "img/brzcomodelo2.webp",
+    "img/brzconegro1.webp",
+    "img/brzconegro2.webp"
+  ],
+  sizes: ["S", "M", "L"],
+  status: "stock",
+  drop: "WINTER DROP",
+  whatsapp: WHATSAPP_NUMBER
+},
 
-  {
-    id: 15,
-    name: "Hoodie BRZCO Gris",
-    category: "ropa",
-    subcategory: "buzos",
-    price: 2390,
-    image: "img/brzcogris1.webp",
-    images: [
-      "img/brzcogris1.webp",
-      "img/brzcogris2.webp"
-    ],
-    sizes: ["S", "M", "L"],
-    status: "stock",
-    whatsapp: WHATSAPP_NUMBER
-  },
-
-
+{
+  id: 15,
+  name: "Hoodie BRZCO Gris",
+  category: "ropa",
+  subcategory: "buzos",
+  price: 2390,
+  image: "img/brzcogris1.webp",
+  images: [
+    "img/brzcogris1.webp",
+    "img/brzcogris2.webp"
+  ],
+  sizes: ["S", "M", "L"],
+  status: "stock",
+  drop: "WINTER DROP",
+  whatsapp: WHATSAPP_NUMBER
+},
 
   // ===================== REMERAS =====================
 
