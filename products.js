@@ -218,7 +218,7 @@ const products = [
     image: "img/nikeceleste.webp",
     images: ["img/nikeceleste.webp"],
     sizes: ["39", "40", "41", "42", "43"],
-    status: "stock",
+    status: "conusltar",
     whatsapp: WHATSAPP_NUMBER
   }
 
