@@ -1,436 +1,556 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tienda de ropa, calzados, gorras . Moda streetwear y mas, premiun." />
+  <title>IBIZZI STORE — Uruguay</title>
 
-  <title>Zapatillas deportivas en Uruguay | Nike, Adidas, Running y Championes | BuenAndar.uy</title>
+  <!-- Fuente principal: se usa Helvetica Now Display (sistema) + fallback -->
+  <!-- Para usar Helvetica Now Display Light, colocá el archivo de fuente en la misma carpeta -->
+  <!-- y descomentá la línea de abajo: -->
+  <!-- <link rel="stylesheet" href="helvetica-now.css" /> -->
 
-  <meta name="description" content="Comprá zapatillas deportivas y championes en Uruguay. Zapatillas para running, caminar y uso diario. Nike, Adidas Adizero, Nike Alphafly, New Balance, On Cloud. Stock y encargue.">
+  <!-- Fallback via Google Fonts (Cormorant para el hero) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet" />
 
-  <meta name="keywords" content="zapatillas deportivas Uruguay, championes Uruguay, zapatillas running Uruguay, zapatillas para caminar, zapatillas deportivas Nike Uruguay, Adidas Adizero Uruguay, Nike Alphafly Uruguay, New Balance Uruguay, On Cloud Uruguay">
-
-  <meta name="author" content="BuenAndar.uy">
-  <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#c8f000">
-
-  <link rel="canonical" href="https://buenandar.uy">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Zapatillas deportivas en Uruguay | BuenAndar.uy">
-  <meta property="og:description" content="Nike, Adidas, New Balance y más. Zapatillas para running, caminar y uso diario. Stock y encargue.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://buenandar.uy">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1200">
-
-  <meta property="og:site_name" content="BuenAndar.uy">
-
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- ══════════════════════════════════════════════════════════
+  <!-- ============================================================
+       BARRA SUPERIOR DE ANUNCIO
+       ============================================================ -->
+  <div class="announcement-bar">
+    <span>ENVÍOS GRATIS A TODO EL PAÍS</span>
+    <span class="separator">·</span>
+    <span>Comprá por WhatsApp</span>
+    <span class="separator">·</span>
+    <span>¡YAAA DISPONIBLE NUEVO DROP! </span>
+  </div>
+
+  <!-- ============================================================
        HEADER
-  ══════════════════════════════════════════════════════════ -->
-  <header id="header">
-    <div class="container">
-      <div class="header-inner">
+       ============================================================ -->
+  <header class="header">
+    <div class="header-inner">
 
-        <!-- Logo -->
-        <a href="#" class="logo">
-          BuenAndar<span>.uy</span>
-        </a>
+      <!-- Logo -->
+      <a href="#" class="logo" data-nav="inicio">
+        IBIZZI
+        <span>Store</span>
+      </a>
 
-        <!-- Nav desktop -->
-        <nav class="nav">
-          <a href="#products">Productos</a>
-          <a href="#encargues">Stock y Encargue</a>
-          <a href="#instagram">Instagram</a>
-          <a href="#contacto">Contacto</a>
-        </nav>
+      <!-- Acciones -->
+      <div class="header-actions">
+        <!-- Botón búsqueda -->
+        <button class="header-search-btn" id="searchToggle" aria-label="Buscar">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
 
-        <!-- Acciones -->
-        <div class="header-actions">
-          <button class="cart-btn" id="cartBtn" aria-label="Abrir carrito">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/>
-            </svg>
-            <span class="cart-badge" id="cartBadge">0</span>
-          </button>
-
-          <!-- Hamburger -->
-          <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+        <!-- Botón menú hamburguesa -->
+        <button class="menu-btn" id="menuBtn" aria-label="Menú">
+          <div class="menu-btn-inner">
             <span></span>
             <span></span>
             <span></span>
-          </button>
-        </div>
-
+          </div>
+        </button>
       </div>
+
     </div>
   </header>
 
-  <!-- Mobile Nav -->
-  <nav class="mobile-nav" id="mobileNav">
-    <a href="#products">Productos</a>
-    <a href="#encargues">Stock y Encargue</a>
-    <a href="#instagram">Instagram</a>
-    <a href="#contacto">Contacto</a>
+  <!-- ============================================================
+       BARRA DE BÚSQUEDA
+       ============================================================ -->
+  <div class="search-bar-wrapper" id="searchWrapper">
+    <div class="search-bar-inner">
+      <input
+        type="text"
+        class="search-input"
+        id="searchInput"
+        placeholder="¿Qué estás buscando?"
+        autocomplete="off"
+        spellcheck="false"
+      />
+      <span class="search-clear" id="searchClear">Limpiar</span>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MENÚ DE NAVEGACIÓN (DRAWER)
+       ============================================================ -->
+  <nav class="nav-overlay" id="navOverlay" role="navigation">
+    <div class="nav-backdrop" id="navBackdrop"></div>
+    <div class="nav-drawer">
+      <ul class="nav-links">
+        <li><a href="#" data-nav="inicio">Inicio</a></li>
+        <li><a href="#" data-nav="tienda">Tienda</a></li>
+
+        <li class="nav-item-with-submenu">
+          <button class="nav-submenu-toggle" id="ropaSubmenuToggle" type="button" aria-expanded="false">
+            <span>Ropa</span>
+            <span class="submenu-icon">+</span>
+          </button>
+
+          <ul class="nav-submenu" id="ropaSubmenu">
+            <li><a href="#" data-category="ropa" data-subcategory="remeras">Remeras</a></li>
+           
+            <li><a href="#" data-category="ropa" data-subcategory="buzos">Buzos</a></li>
+          </ul>
+        </li>
+
+        <li><a href="#" data-nav="calzados">Calzados</a></li>
+        <li><a href="#" data-nav="gorras">Gorras</a></li>
+        <li><a href="#" data-nav="accesorios">Accesorios</a></li>
+
+        <li><a href="#" data-nav="nosotros">Nosotros</a></li>
+        <li><a href="#" data-nav="contacto">Contacto</a></li>
+      </ul>
+      <div class="nav-footer">
+        <p>Seguinos en redes</p>
+        <p>@IBIZZI.OFFICIAL</p>
+      </div>
+    </div>
   </nav>
 
+  <!-- ============================================================
+       CONTENIDO PRINCIPAL — PÁGINAS
+       ============================================================ -->
+  <main>
 
-  <!-- ══════════════════════════════════════════════════════════
-       HERO / CARRUSEL
-  ══════════════════════════════════════════════════════════ -->
-  <h1 style="position:absolute; left:-9999px;">
-Zapatillas deportivas y championes en Uruguay | Running, Nike, Adidas, New Balance
+    <!-- ========================
+         PÁGINA: INICIO (HERO)
+         ======================== -->
+    <section class="page-section" id="page-inicio">
+
+      <!-- Hero -->
+      <div class="hero">
+        <div class="hero-content">
+          <p class="hero-label">Colección actual</p>
+          <h1 class="hero-title">
+  Bienvenido  <em>a Ibizzi</em><br>
+  Vestí mejor.<br>
+  <em>Comprá fácil.</em>
 </h1>
-  <section id="hero">
-    <div class="carousel">
-      <div class="carousel-track" id="carouselTrack"></div>
-
-      <!-- Flechas — clases corregidas para coincidir con CSS (.prev / .next) -->
-      <button class="carousel-arrow prev" id="carouselPrev" aria-label="Anterior">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="15 18 9 12 15 6"/>
-        </svg>
-      </button>
-      <button class="carousel-arrow next" id="carouselNext" aria-label="Siguiente">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="9 18 15 12 9 6"/>
-        </svg>
-      </button>
-
-      <!-- Dots -->
-      <div class="carousel-dots" id="carouselDots"></div>
-    </div>
-
-    <!-- Tagline debajo del carrusel -->
-    <div class="hero-tagline">
-      <span>Importamos los últimos modelos a la moda</span>
-    </div>
-  </section>
-
-
-  <!-- ══════════════════════════════════════════════════════════
-       BOTÓN VER TIENDA COMPLETA
-  ══════════════════════════════════════════════════════════ -->
-  <div class="ver-tienda-wrap">
-    <a href="#products" class="btn-ver-tienda">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/>
-      </svg>
-      Ver tienda completa
-    </a>
-  </div>
-
-
-  <!-- ══════════════════════════════════════════════════════════
-       BENEFICIOS
-       FIX: id cambiado de "beneficios" a "benefits" para coincidir con CSS.
-       FIX: .benefit-text strong → .benefit-title / span → .benefit-desc
-       FIX: íconos con color explícito blanco para verse sobre fondo negro.
-  ══════════════════════════════════════════════════════════ -->
-  <section id="benefits">
-    <div class="container">
-      <div class="benefits-grid">
-
-        <div class="benefit-item">
-          <div class="benefit-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c8f000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
-            </svg>
-          </div>
-          <div class="benefit-title">Envíos a todo Uruguay</div>
-          <div class="benefit-desc">Entrega rápida y segura</div>
-        </div>
-
-        <div class="benefit-item">
-          <div class="benefit-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c8f000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
-            </svg>
-          </div>
-          <div class="benefit-title">Stock y encargue</div>
-          <div class="benefit-desc">Modelos en stock + pedidos especiales</div>
-        </div>
-
-        <div class="benefit-item">
-          <div class="benefit-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c8f000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
-            </svg>
-          </div>
-          <div class="benefit-title">Descuento por cantidad</div>
-          <div class="benefit-desc">10% OFF x2 pares · 15% OFF x3 o más</div>
-        </div>
-
-        <div class="benefit-item">
-          <div class="benefit-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c8f000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
-            </svg>
-          </div>
-          <div class="benefit-title">Atención personalizada</div>
-          <div class="benefit-desc">Respondemos por WhatsApp al instante</div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ══════════════════════════════════════════════════════════
-       PRODUCTOS
-  ══════════════════════════════════════════════════════════ -->
-  <section id="products">
-    <div class="container">
-      <div class="section-header">
-        <div>
-          <h2 class="section-title">Tienda<br>completa</h2>
-          <p class="section-sub">Modelos exclusivos · Stock y encargue · Envíos a todo el país</p>
-        </div>
-      </div>
-      <!-- Las secciones por marca se generan automáticamente desde script.js -->
-      <div id="brandCarousels"></div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════════════════════
-       MODAL PRODUCTO
-  ══════════════════════════════════════════════════════════ -->
-  <div class="modal-overlay" id="modalOverlay">
-    <div class="modal-box">
-
-      <!-- Galería -->
-      <div class="modal-gallery">
-        <div class="modal-main-wrap">
-          <img id="modalMainImg" src="" alt="Producto" class="modal-main-img">
-        </div>
-        <div class="modal-thumbs" id="modalThumbs"></div>
-      </div>
-
-      <!-- Info -->
-      <div class="modal-info">
-        <button class="modal-close" id="modalClose" aria-label="Cerrar">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-          </svg>
-        </button>
-
-        <div class="modal-brand" id="modalBrand"></div>
-        <h2 class="modal-name" id="modalName"></h2>
-        <div class="modal-price" id="modalPrice"></div>
-        <div class="modal-stock-tag" id="modalStock"></div>
-
-        <p class="modal-desc" id="modalDesc"></p>
-        <div class="modal-features" id="modalFeatures"></div>
-
-        <div class="modal-sizes-label">Seleccioná tu talle</div>
-        <div class="modal-sizes" id="modalSizes"></div>
-
-        <div class="modal-actions">
-          <button class="btn-add-cart" id="modalAddCart">Sumar al carrito</button>
-          <button class="btn-whatsapp" id="modalWhatsApp">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-              <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.557 4.116 1.532 5.849L.073 23.325a.75.75 0 00.916.916l5.476-1.459A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.886 0-3.65-.504-5.166-1.385l-.368-.215-3.809 1.015 1.015-3.809-.215-.368A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
-            </svg>
-            Comprar por WhatsApp
+          <p class="hero-subtitle">
+            Prendas y accesorios pensados para quienes eligen con criterio
+             y Calidad.
+          </p>
+          <button class="hero-cta" id="heroCta">
+            Ver colección
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </button>
         </div>
+
+       <div class="hero-images">
+  <img
+    class="hero-img-main"
+    src="img/inicio2.webp"
+    alt="Colección principal"
+  />
+  <span class="hero-img-badge">Nueva colección</span>
+</div>
       </div>
 
-    </div>
-  </div>
-
-
-  <!-- ══════════════════════════════════════════════════════════
-       CARRITO DRAWER
-  ══════════════════════════════════════════════════════════ -->
-  <div class="cart-overlay" id="cartOverlay"></div>
-  <aside class="cart-drawer" id="cartDrawer">
-
-    <div class="cart-drawer-header">
-      <span class="cart-drawer-title">Tu carrito</span>
-      <button class="cart-close-btn" id="cartClose" aria-label="Cerrar carrito">✕</button>
-    </div>
-
-    <div class="cart-items" id="cartItems"></div>
-
-    <div class="cart-footer">
-      <div class="cart-discount-banner" id="cartDiscountBanner"></div>
-      <div class="cart-totals">
-        <div class="cart-row">
-          <span>Subtotal</span>
-          <span id="cartSubtotal">$0</span>
-        </div>
-        <div class="cart-row discount">
-          <span>Descuento</span>
-          <span id="cartDiscount">$0</span>
-        </div>
-        <div class="cart-row total">
-          <span>Total</span>
-          <span id="cartTotal">$0</span>
+      <!-- Sección de confianza -->
+      <div class="trust-section">
+        <div class="trust-grid">
+          <div class="trust-item">
+            <div class="trust-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="trust-text">
+              <h4>ENVÍOS GRATIS A TODO EL PAÍS</h4>
+              <p>Coordinamos retiro según tu ubicación.</p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon">
+              <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="trust-text">
+              <h4>Atención personalizada</h4>
+              <p>Te asesoramos por WhatsApp antes de tu compra.</p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon">
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <div class="trust-text">
+              <h4>Próximamente nuevos drops</h4>
+              <p>Seguinos para no perderte los próximos lanzamientos.</p>
+            </div>
+          </div>
         </div>
       </div>
-      <button class="btn-whatsapp" id="cartCheckoutBtn">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.557 4.116 1.532 5.849L.073 23.325a.75.75 0 00.916.916l5.476-1.459A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.886 0-3.65-.504-5.166-1.385l-.368-.215-3.809 1.015 1.015-3.809-.215-.368A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+ <section class="home-drop">
+  <div class="drop-container">
+
+    <div class="drop-image">
+      <img src="img/dropinicio1.webp" alt="Pre Winter Drop" />
+    </div>
+
+    <div class="drop-content">
+      <p class="drop-label">Nuevo drop</p>
+      <h2 class="drop-title">PRE WINTER DROP</h2>
+      <p class="drop-text">
+        Nuevas piezas seleccionadas para la temporada.
+        Diseños frizados, cortes modernos y abrigados.
+      </p>
+
+      <button class="hero-cta drop-cta" onclick="navigateTo('tienda'); resetFilters(); renderProducts();">
+        Ver Drop en Tienda
+        <svg viewBox="0 0 24 24">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
         </svg>
-        Finalizar por WhatsApp
       </button>
     </div>
 
-  </aside>
-
-
-  <!-- ══════════════════════════════════════════════════════════
-       STOCK Y ENCARGUE
-  ══════════════════════════════════════════════════════════ -->
-<section id="encargues">
-  <div class="container">
-    <div class="encargues-inner">
-      <div class="encargues-text">
-        <h2 class="section-title">Stock<br>y encargue</h2>
-
-        <p>
-          En BuenAndar.uy trabajamos con productos en stock y también por encargue.
-          Si el modelo o talle que buscás no está disponible, podemos conseguirlo especialmente para vos.
-        </p>
-
-        <p>
-          Una vez cerrado el pedido, tu compra llega en un plazo de hasta
-          <strong>10 días hábiles garantizados</strong>.
-          Para confirmar un producto por encargue se abona una
-          <strong>seña del 50% del valor</strong>, y el resto se paga cuando el producto llega.
-        </p>
-
-        <p>
-          Trabajamos de esta forma por compromiso y seguridad para ambas partes,
-          asegurando que el pedido quede reservado y gestionado correctamente.
-        </p>
-
-      <a href="https://wa.me/59894990760?text=Hola%2C%20quiero%20consultar%20por%20stock%20y%20encargue." target="_blank" class="btn-lime">
-          Consultar disponibilidad
-        </a>
-      </div>
-
-      <img
-        src="img/sectionstock.png"
-        alt="Zapatillas running"
-        class="encargues-img"
-        loading="lazy"
-      >
-    </div>
   </div>
 </section>
 
+      <!-- CTA hacia tienda desde inicio -->
+      <div style="text-align:center; padding: 4rem 1.5rem; border-top: 1px solid #e8e8e8;">
+        <p style="font-size:0.65rem; letter-spacing:0.25em; text-transform:uppercase; color:#aaa; margin-bottom:1.5rem;">Catálogo completo</p>
+        <h2 style="font-size: clamp(1.8rem, 4vw, 3rem); font-weight:300; margin-bottom:2rem;">Explorá toda la tienda</h2>
+        <button class="hero-cta" onclick="navigateTo('tienda')">
+          Ir a la tienda
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </div>
+      <section class="home-categories">
+  <div class="container">
+    
+    <div class="categories-grid">
 
-  <!-- ══════════════════════════════════════════════════════════
-       INSTAGRAM
-  ══════════════════════════════════════════════════════════ -->
-  <section id="instagram">
-    <div class="container">
-      <div class="ig-inner">
-        <h2 class="section-title">Seguinos en Instagram!</h2>
-        <div class="ig-handle">@buenandar.uy</div>
-<p class="section-sub ig-special" style="margin-bottom: 28px;">
-  No te pierdas de <span>SORTEOS</span> , <span>OFERTAS</span> y novedades exclusivas
-</p>
-        <a href="https://instagram.com/buenandar.uy" target="_blank" rel="noopener" class="ig-btn">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-          </svg>
-          Ver Instagram ¡YA!
+      <!-- ROPA -->
+    <!-- REMERAS -->
+<div class="category-card" onclick="
+  navigateTo('tienda');
+  filterCategory.value='ropa';
+  state.filters.category='ropa';
+  updateSubcategoryOptions();
+  filterSubcat.value='remeras';
+  state.filters.subcategory='remeras';
+  renderProducts();
+">
+  <img src="img/inicio.webp" alt="Remeras" />
+  <div class="category-overlay">
+    <h3>REMERAS</h3>
+  </div>
+</div>
+
+<!-- BUZOS -->
+<div class="category-card" onclick="
+  navigateTo('tienda');
+  filterCategory.value='ropa';
+  state.filters.category='ropa';
+  updateSubcategoryOptions();
+  filterSubcat.value='buzos';
+  state.filters.subcategory='buzos';
+  renderProducts();
+">
+  <img src="img/buzoshero.webp" alt="Buzos" />
+  <div class="category-overlay">
+    <h3>BUZOS</h3>
+  </div>
+</div>
+
+<!-- CALZADOS -->
+<div class="category-card" onclick="
+  navigateTo('tienda');
+  filterCategory.value='calzados';
+  state.filters.category='calzados';
+  updateSubcategoryOptions();
+  renderProducts();
+">
+  <img src="img/zapashero.webp" alt="Calzados" />
+  <div class="category-overlay">
+    <h3>CALZADOS</h3>
+  </div>
+</div>
+
+<!-- GORRAS -->
+<div class="category-card" onclick="
+  navigateTo('tienda');
+  filterCategory.value='gorras';
+  state.filters.category='gorras';
+  updateSubcategoryOptions();
+  renderProducts();
+">
+  <img src="img/capshero.webp" alt="Gorras" />
+  <div class="category-overlay">
+    <h3>GORRAS</h3>
+  </div>
+</div>
+
+      
+
+    </div>
+
+  </div>
+</section>
+    </section>
+
+    <!-- ========================
+         PÁGINA: TIENDA (CATÁLOGO)
+         ======================== -->
+    <section class="page-section" id="page-tienda">
+      <div class="shop-section">
+
+        <!-- Header de sección -->
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Tienda</h2>
+            <p class="section-count" id="productCount">0 productos</p>
+          </div>
+        </div>
+
+        <!-- Filtros -->
+        <div class="filters-bar">
+          <button class="filters-toggle" id="filtersToggle">
+            <svg viewBox="0 0 24 24"><line x1="4" y1="6" x2="16" y2="6"/><line x1="8" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="16" y2="18"/></svg>
+            Filtros
+          </button>
+
+          <div class="filters-panel" id="filtersPanel">
+            <div class="filters-groups">
+
+              <div class="filter-group">
+                <label>Categoría</label>
+                <select id="filterCategory">
+                  <option value="">Todas</option>
+                  <option value="ropa">Ropa</option>
+                  <option value="calzados">Calzados</option>
+                  <option value="gorras">Gorras</option>
+                  <option value="accesorios">Accesorios</option>
+                </select>
+              </div>
+
+              <div class="filter-group">
+                <label>Subcategoría</label>
+                <select id="filterSubcat">
+                  <option value="">Todas</option>
+                  <option value="remeras">Remeras</option>
+                  <option value="buzos">Buzos / Hoodies</option>
+                  <option value="sweaters">Sweaters</option>
+                </select>
+              </div>
+
+              <div class="filter-group">
+                <label>Talle</label>
+                <select id="filterSize">
+                  <option value="">Todos</option>
+                  <option value="S">S</option>
+                  <option value="M">M</option>
+                  <option value="L">L</option>
+                  <option value="XL">XL</option>
+                  <option value="38">38</option>
+                  <option value="39">39</option>
+                  <option value="40">40</option>
+                  <option value="41">41</option>
+                  <option value="42">42</option>
+                  <option value="43">43</option>
+                  <option value="44">44</option>
+                  <option value="Talle único">Talle único</option>
+                </select>
+              </div>
+
+              <div class="filter-group">
+                <label>Estado</label>
+                <select id="filterStatus">
+                  <option value="">Todos</option>
+                  <option value="stock">En stock</option>
+
+                  <option value="agotado">Agotado</option>
+                </select>
+              </div>
+
+            </div>
+            <button class="filters-reset" id="filtersReset">Limpiar filtros</button>
+          </div>
+        </div>
+
+        <!-- Grilla de productos -->
+        <div class="products-grid" id="productsGrid">
+          <!-- Los productos se inyectan aquí con JavaScript -->
+        </div>
+
+      </div>
+    </section>
+
+
+
+    <!-- ========================
+         PÁGINA: NOSOTROS
+         ======================== -->
+    <section class="page-section" id="page-nosotros">
+  <div class="about-section">
+    
+    <div>
+      <p class="about-label">Nosotros</p>
+      <h2 class="about-title">Vestir <br>bien.</h2>
+
+      <p class="about-text">
+        IBIZZI se basa en la selección, la calidad y el compromiso con cada cliente.<br><br>
+
+        Cada prenda responde a un criterio.
+        Cada decisión tiene un porqué.<br><br>
+
+        Priorizamos la claridad, la responsabilidad y la coherencia en cada paso.<br><br>
+
+        IBIZZI no busca volumen.
+        Priorizamos seleccion.<br><br>
+
+        <strong>Cómo funciona</strong><br>
+        Trabajamos con drops limitados y piezas por encargo.
+        Esto nos permite mantener el control sobre la calidad y ofrecer una experiencia más cuidada.
+      </p>
+    </div>
+
+    <div class="about-image">
+      <img
+        src="img/nosotros.webp"
+        alt="IBIZZI"
+      />
+    </div>
+
+  </div>
+</section>
+
+    <!-- ========================
+         PÁGINA: CONTACTO
+         ======================== -->
+    <section class="page-section" id="page-contacto">
+      <div class="contact-section">
+        <p style="font-size:0.6rem; letter-spacing:0.25em; text-transform:uppercase; color:#aaa; margin-bottom:1rem;">Estamos para ayudarte</p>
+        <h2 class="contact-title">Hablemos</h2>
+        <p class="contact-text">
+          ¿Tenés alguna consulta sobre productos, talles o envíos?<br>
+          Escribinos por WhatsApp y te respondemos a la brevedad.
+        </p>
+        <a
+          href="https://wa.me/59894990760?text=Hola%2C%20quisiera%20hacer%20una%20consulta"
+          target="_blank"
+          class="btn-contact-wa"
+        >
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Escribinos por WhatsApp
         </a>
       </div>
-    </div>
-  </section>
+    </section>
 
+  </main>
 
-  <!-- ══════════════════════════════════════════════════════════
-       CONTACTO
-  ══════════════════════════════════════════════════════════ -->
-  <section id="contacto">
-    <div class="container">
-      <div class="contacto-inner">
-        <h2 class="section-title">¿Tenés<br>dudas?</h2>
-        <p>Escribinos por WhatsApp o Instagram. Te respondemos al instante y te ayudamos a elegir el modelo perfecto para vos.</p>
-        <div class="contacto-btns">
-          <a href="https://wa.me/59894990760?text=Hola%2C%20quiero%20consultar%20sobre%20zapatillas." target="_blank" class="btn-whatsapp" style="width: auto;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-              <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.557 4.116 1.532 5.849L.073 23.325a.75.75 0 00.916.916l5.476-1.459A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.886 0-3.65-.504-5.166-1.385l-.368-.215-3.809 1.015 1.015-3.809-.215-.368A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
-            </svg>
-            WhatsApp
-          </a>
-          <a href="https://instagram.com/buenandar.uy" target="_blank" rel="noopener" class="btn-primary">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-            </svg>
-            Instagram
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ══════════════════════════════════════════════════════════
+  <!-- ============================================================
        FOOTER
-  ══════════════════════════════════════════════════════════ -->
-  <footer id="footer">
-    <div class="container">
-      <div class="footer-inner">
-        <span class="footer-logo">BuenAndar<span>.uy</span></span>
-        <nav class="footer-links">
-          <a href="#products">Productos</a>
-          <a href="#encargues">Encargues</a>
-          <a href="#instagram">Instagram</a>
-          <a href="#contacto">Contacto</a>
-          <a href="https://wa.me/59894990760" target="_blank">WhatsApp</a>
-        </nav>
+       ============================================================ -->
+  <footer class="footer">
+  <div class="footer-inner">
+
+    <!-- MARCA -->
+    <div class="footer-brand">
+      <div class="logo">
+        IBIZZI
+        <span>Store</span>
       </div>
-      <div class="footer-bottom">
-        <span class="footer-copy">© 2026 BuenAndar.uy · Todos los derechos reservados</span>
-        <div class="footer-pills">
-          <span class="footer-pill">Envíos UY</span>
-          <span class="footer-pill">Stock & Encargue</span>
-          <span class="footer-pill">Productos de ata calidad</span>
-        </div>
+      <p></p>
+    </div>
+
+    <!-- TIENDA -->
+    <div class="footer-col">
+      <h4>Tienda</h4>
+      <ul>
+        <li><a href="#" data-nav="tienda">Todos los productos</a></li>
+        <li><a href="#" data-nav="ropa">Ropa</a></li>
+        <li><a href="#" data-nav="calzados">Calzados</a></li>
+        <li><a href="#" data-nav="gorras">Gorras</a></li>
+        <li><a href="#" data-nav="accesorios">Accesorios</a></li>
+      </ul>
+    </div>
+
+    <!-- INFO -->
+    <div class="footer-col">
+      <h4>Info</h4>
+      <ul>
+        <li><a href="#" data-nav="nosotros">Nosotros</a></li>
+        <li><a href="#" data-nav="contacto">Contacto</a></li>
+        <li><a href="https://wa.me/59894990760" target="_blank">WhatsApp</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- CTA + INSTAGRAM (PRO) -->
+  <div class="footer-social-section">
+
+    <p class="footer-cta">
+      Seguinos en Instagram para no perderte los próximos drops, envios gratis a todo Uruguay 
+    </p>
+
+    <a href="https://www.instagram.com/ibizzi.official" target="_blank" class="footer-ig">
+      <svg viewBox="0 0 24 24">
+        <path d="M7.75 2C4.574 2 2 4.574 2 7.75v8.5C2 19.426 4.574 22 7.75 22h8.5C19.426 22 22 19.426 22 16.25v-8.5C22 4.574 19.426 2 16.25 2h-8.5zm0 2h8.5C18.216 4 20 5.784 20 7.75v8.5c0 1.966-1.784 3.75-3.75 3.75h-8.5C5.784 20 4 18.216 4 16.25v-8.5C4 5.784 5.784 4 7.75 4zm8.75 1.5a.75.75 0 100 1.5.75.75 0 000-1.5zM12 7a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6z"/>
+      </svg>
+      <span>@ibizzi.official</span>
+    </a>
+
+    <!-- NIVEL STREETWEAR -->
+    <div class="footer-follow">
+      <p>SEGUINOS</p>
+      <h2>@IBIZZI.OFFICIAL</h2>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="footer-bottom">
+    <p>© 2026 IBIZZI Store.</p>
+    <p>Hecho con cuidado · Uruguay</p>
+  </div>
+</footer>
+
+  <!-- ============================================================
+       MODAL DE DETALLE DE PRODUCTO
+       ============================================================ -->
+  <div class="product-modal-overlay" id="productModal">
+    <div class="product-modal-backdrop" id="modalBackdrop"></div>
+    <div class="product-modal">
+      <button class="modal-close" id="modalClose" aria-label="Cerrar">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div class="modal-inner" id="modalContent">
+        <!-- El contenido del modal se inyecta con JavaScript -->
       </div>
     </div>
-  </footer>
+  </div>
 
-
-  <!-- ══════════════════════════════════════════════════════════
-       TOAST
-  ══════════════════════════════════════════════════════════ -->
-  <div class="toast" id="toast"></div>
-
-
-  <!-- ══════════════════════════════════════════════════════════
+  <!-- ============================================================
+       SCROLL TO TOP
+       ============================================================ -->
+  <button class="scroll-top" id="scrollTop" aria-label="Volver arriba">
+    <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+<a 
+  href="https://wa.me/59894990760?text=Hola%20estaba%20navegando%20en%20la%20pagina%20IBIZZI%20y%20estaria%20interesado%20en..."
+  class="whatsapp-float"
+  target="_blank"
+>
+  <svg viewBox="0 0 32 32">
+    <path d="M16 .396C7.164.396 0 7.56 0 16.396c0 2.885.754 5.594 2.07 7.94L.396 32l7.85-1.64a15.94 15.94 0 007.754 1.986c8.836 0 16-7.164 16-16S24.836.396 16 .396zm0 29.36c-2.5 0-4.88-.664-6.95-1.92l-.5-.296-4.66.973.99-4.54-.325-.51a13.3 13.3 0 01-2.05-7.07c0-7.364 5.99-13.35 13.36-13.35 3.57 0 6.93 1.39 9.45 3.91a13.3 13.3 0 013.9 9.44c0 7.36-5.99 13.35-13.35 13.35zm7.36-9.96c-.4-.2-2.35-1.16-2.72-1.29-.37-.14-.64-.2-.9.2-.27.4-1.04 1.29-1.27 1.56-.23.27-.46.3-.86.1-.4-.2-1.7-.63-3.24-2.01-1.2-1.07-2.01-2.4-2.24-2.8-.23-.4-.02-.62.18-.82.18-.18.4-.46.6-.69.2-.23.27-.4.4-.66.13-.27.07-.5-.03-.7-.1-.2-.9-2.17-1.23-2.98-.32-.77-.64-.67-.9-.68-.23-.01-.5-.01-.76-.01-.27 0-.7.1-1.07.5-.37.4-1.4 1.36-1.4 3.31s1.44 3.84 1.64 4.1c.2.27 2.83 4.33 6.85 6.08.96.41 1.7.66 2.28.85.96.3 1.83.26 2.52.16.77-.11 2.35-.96 2.68-1.89.33-.93.33-1.73.23-1.89-.1-.16-.37-.26-.77-.46z"/>
+  </svg>
+</a>
+  <!-- ============================================================
        SCRIPTS
-  ══════════════════════════════════════════════════════════ -->
+       ============================================================ -->
   <script src="products.js"></script>
   <script src="script.js"></script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Store",
-  "name": "BuenAndar.uy",
-  "url": "https://buenandar.uy",
-  "description": "Tienda de zapatillas deportivas y championes en Uruguay. Running, Nike, Adidas, New Balance, On Cloud.",
-  "address": {
-    "@type": "PostalAddress",
-    "addressCountry": "UY"
-  },
-  "sameAs": [
-    "https://instagram.com/buenandar.uy"
-  ]
-}
-</script>
+
 </body>
 </html>
