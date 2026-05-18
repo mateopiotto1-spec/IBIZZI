@@ -59,9 +59,10 @@ const categoryLabel = (cat, subcat) => {
     gorras: 'Gorras',
     accesorios: 'Accesorios',
     remeras: 'Remeras',
+    "remeras-manga-larga": "Remeras manga larga",
     buzos: 'Buzos',
-    
   };
+
   let out = labels[cat] || cat;
   if (subcat) out += ' — ' + (labels[subcat] || subcat);
   return out;
@@ -281,27 +282,6 @@ function filterProducts() {
    RENDERIZAR PRODUCTOS
    ============================================================ */
 function renderProducts() {
-    // 👇 MENSAJE ESPECIAL GORRAS
-  if (state.filters.category === 'gorras') {
-  productsGrid.innerHTML = `
-    <div class="no-results">
-      <h2 style="font-size: 1.8rem; margin-bottom: 10px;">PRÓXIMAMENTE</h2>
-      
-      <p style="font-size: 1rem; color: #666; margin-bottom: 20px;">
-        Proximamente gorras exclusivas,<br>
-        pocas unidades de cada modelo,<br><br>
-        estate atento para no perdertelas y ser el primero.
-      </p>
-
-      <a href="https://instagram.com/ibizzi.official" target="_blank" class="hero-cta">
-        Seguinos en Instagram!
-      </a>
-
-    </div>
-  `;
-  productCount.textContent = `Próximamente`;
-  return;
-}
   const filtered = filterProducts();
   productCount.textContent = `${filtered.length} producto${filtered.length !== 1 ? 's' : ''}`;
 
@@ -429,7 +409,12 @@ const statusBadge = {
 
 const priceHTML = isProximamente
   ? ``
-  : `<p class="modal-price">${formatPrice(p.price)}</p>`;
+  : p.oldPrice
+    ? `<p class="modal-price">
+        <span style="text-decoration: line-through; opacity: 0.6; font-weight: 300;">${formatPrice(p.oldPrice)}</span>
+        <span style="margin-left: 8px;">${formatPrice(p.price)}</span>
+      </p>`
+    : `<p class="modal-price">${formatPrice(p.price)}</p>`;
 
   const sizesHTML = p.sizes.map((s) =>
     `<button class="modal-size-btn" data-size="${s}">${s}</button>`

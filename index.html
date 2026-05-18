@@ -24,7 +24,7 @@
        BARRA SUPERIOR DE ANUNCIO
        ============================================================ -->
   <div class="announcement-bar">
-    <span>ENVÍOS GRATIS A TODO EL PAÍS</span>
+    <span>ENVÍOS GRATIS A TODO EL PAÍS EN PEDIDOS >3500 </span>
     <span class="separator">·</span>
     <span>Comprá por WhatsApp</span>
     <span class="separator">·</span>
@@ -98,7 +98,7 @@
 
           <ul class="nav-submenu" id="ropaSubmenu">
             <li><a href="#" data-category="ropa" data-subcategory="remeras">Remeras</a></li>
-           
+             <li><a href="#" data-category="ropa" data-subcategory="remeras-manga-larga">Remeras manga larga</a></li>
             <li><a href="#" data-category="ropa" data-subcategory="buzos">Buzos</a></li>
           </ul>
         </li>
@@ -126,6 +126,17 @@
          PÁGINA: INICIO (HERO)
          ======================== -->
     <section class="page-section" id="page-inicio">
+
+      <!-- Banner promo -->
+      <div class="promo-banner">
+        <div class="promo-banner__text">
+          <span class="promo-banner__badge">25% OFF</span>
+          <span class="promo-banner__message">Aprovechá el descuento en los mejores buzos del Winter Drop</span>
+        </div>
+        <button class="promo-banner__cta" onclick="navigateTo('tienda'); filterCategory.value='ropa'; state.filters.category='ropa'; updateSubcategoryOptions(); filterSubcat.value='buzos'; state.filters.subcategory='buzos'; renderProducts();">
+          Ver buzos →
+        </button>
+      </div>
 
       <!-- Hero -->
       <div class="hero">
@@ -304,6 +315,17 @@
     <section class="page-section" id="page-tienda">
       <div class="shop-section">
 
+        <!-- Banner promo -->
+        <div class="promo-banner">
+          <div class="promo-banner__text">
+            <span class="promo-banner__badge">25% OFF</span>
+            <span class="promo-banner__message">Aprovechá el descuento esta semana en los mejores buzos del Winter Drop</span>
+          </div>
+          <button class="promo-banner__cta" onclick="filterCategory.value='ropa'; state.filters.category='ropa'; updateSubcategoryOptions(); filterSubcat.value='buzos'; state.filters.subcategory='buzos'; renderProducts();">
+            Ver buzos →
+          </button>
+        </div>
+
         <!-- Header de sección -->
         <div class="section-header">
           <div>
@@ -335,12 +357,13 @@
 
               <div class="filter-group">
                 <label>Subcategoría</label>
-                <select id="filterSubcat">
-                  <option value="">Todas</option>
-                  <option value="remeras">Remeras</option>
-                  <option value="buzos">Buzos / Hoodies</option>
-                  <option value="sweaters">Sweaters</option>
-                </select>
+              <select id="filterSubcat">
+  <option value="">Todas</option>
+  <option value="remeras">Remeras</option>
+  <option value="remeras-manga-larga">Remeras manga larga</option>
+  <option value="buzos">Buzos / Hoodies</option>
+  <option value="sweaters">Sweaters</option>
+</select>
               </div>
 
               <div class="filter-group">
