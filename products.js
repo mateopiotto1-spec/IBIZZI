@@ -13,8 +13,7 @@ const products = [
   name: "Boxy Tree Rígido",
   category: "ropa",
   subcategory: "buzos",
-  price: 2325,
-  oldPrice: 3100,
+  price: 3100,
   image: "img/tree1.webp",
   images: [
     "img/treemodelo1.webp",
@@ -26,7 +25,7 @@ const products = [
   sizes: ["S", "M", "L"],
   status: "stock",
   drop: "WINTER DROP",
-  tag: "25% OFF",
+  tag: "AGOTADO",
   description: "Buzo boxy fit rígido en tono tree, estética premium.",
   whatsapp: WHATSAPP_NUMBER
 },
@@ -36,8 +35,7 @@ const products = [
   name: "Boxy Camuflado Fit Rígido",
   category: "ropa",
   subcategory: "buzos",
-  price: 2170,
-  oldPrice: 2890,
+  price: 2890,
   image: "img/camuflado.webp",
   images: [
     "img/camufladomodelo1.webp",
@@ -49,7 +47,7 @@ const products = [
   sizes: ["S", "M", ""],
   status: "stock",
   drop: "WINTER DROP",
-  tag: "25% OFF",
+  tag: "AGOTADO",
   description: "Buzo boxy fit rígido, estilo streetwear premium.",
   whatsapp: WHATSAPP_NUMBER
 },
@@ -112,7 +110,7 @@ const products = [
   sizes: ["S", "M", "L"],
   status: "stock",
   drop: "WINTER DROP",
-  tag: "25% OFF",
+  tag: "AGOTADO",
   whatsapp: WHATSAPP_NUMBER
 },
 
@@ -213,24 +211,7 @@ const products = [
   whatsapp: WHATSAPP_NUMBER
 },
 
-{
-  id: 21,
-  name: "Remera Blanca Manga Larga",
-  category: "ropa",
-  subcategory: "remeras-manga-larga",
-  price: 1190,
-  image: "img/remerablanca1.webp",
-  images: [
-    "img/remerablanca1.webp",
-    "img/remerablanca2.webp"
-  ],
-  sizes: ["S", "M", "L"],
-  status: "stock",
-  drop: "WINTER DROP",
-  tag: "¡NEW!",
-  description: "Remera manga larga blanca con diseño frontal, estilo clean streetwear.",
-  whatsapp: WHATSAPP_NUMBER
-},
+
   // ===================== CALZADOS =====================
 
   {
