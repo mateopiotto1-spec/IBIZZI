@@ -975,17 +975,46 @@ ul {
   transition: transform var(--transition-slow);
 }
 
-/* Badges */
-.product-badge {
+/* Badges container */
+.product-badges {
   position: absolute;
-  top: var(--spacing-sm);
-  left: var(--spacing-sm);
-  font-size: 0.55rem;
-  letter-spacing: 0.18em;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0.7rem;
+  z-index: 2;
+  pointer-events: none;
+  gap: 4px;
+}
+
+.product-badges__left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  min-width: 0;
+}
+
+.product-badges__right {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.product-badge {
+  display: inline-block;
+  font-size: 0.52rem;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   font-weight: 400;
-  padding: 0.35rem 0.7rem;
-  z-index: 2;
+  padding: 0.3rem 0.6rem;
+  white-space: nowrap;
+  line-height: 1.2;
 }
 
 .badge-stock {
@@ -993,8 +1022,8 @@ ul {
 }
 
 .badge-agotado {
-  background: var(--gray-200);
-  color: var(--gray-500);
+  background: var(--black);
+  color: var(--white);
 }
 
 .badge-proximamente {
@@ -1869,21 +1898,16 @@ ul {
    BADGE DROP EN PRODUCTOS
    ============================================================ */
 .badge-drop {
-  top: 0.8rem;
-  left: 0.8rem;
-  background: rgba(255, 255, 255, 0.94);
-  color: var(--black);
-  border: 1px solid rgba(0,0,0,0.08);
-  font-size: 0.52rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  font-weight: 400;
-  padding: 0.45rem 0.7rem;
-  z-index: 3;
+  background: #111;
+  color: #fff;
 }
+
 .badge-tag {
-  right: 10px;
-  left: auto;
+  background: #111;
+  color: #fff;
+}
+
+.badge-tag--discount {
   background: #c0392b;
   color: #fff;
 }
@@ -1981,22 +2005,4 @@ ul {
   font-size: 22px;
   font-weight: 600;
   letter-spacing: 1px;
-}
-.badge-drop {
-  background: #111;   /* negro */
-  color: #fff;        /* blanco */
-}
-/* Desktop (default) */
-.badge-drop {
-  background: #111;
-  color: #fff;
-}
-
-/* Celular */
-@media (max-width: 768px) {
-  .badge-drop {
-    background: #fff;
-    color: #111;
-    border: 1px solid #ddd; /* opcional pero recomendado */
-  }
 }

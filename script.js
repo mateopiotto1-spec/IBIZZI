@@ -334,9 +334,12 @@ function createProductCard(p) {
     priceHTML = `<p class="product-price">${formatPrice(p.price)}</p>`;
   }
 
+  const tagClass = p.tag === '25% OFF'
+    ? 'product-badge badge-tag badge-tag--discount'
+    : 'product-badge badge-tag';
   const tagBadge = p.tag
-  ? `<span class="product-badge badge-tag">${p.tag}</span>`
-  : '';
+    ? `<span class="${tagClass}">${p.tag}</span>`
+    : '';
   const sizesHTML = p.sizes.length
     ? `<div class="product-sizes-preview">
         ${p.sizes.slice(0, 5).map(s => `<span class="size-chip">${s}</span>`).join('')}
@@ -351,11 +354,10 @@ function createProductCard(p) {
   return `
     <article class="product-card" data-id="${p.id}" role="button" tabindex="0">
       <div class="product-img ${isAgotado ? 'agotado' : ''}">
-       <div class="product-badges">
-  ${badge}
-  ${dropBadge}
-  ${tagBadge}
-</div>
+        <div class="product-badges">
+          <div class="product-badges__left">${badge}${dropBadge}</div>
+          <div class="product-badges__right">${tagBadge}</div>
+        </div>
         <img src="${p.image}" alt="${p.name}" loading="lazy" />
       </div>
       <div class="product-info">
