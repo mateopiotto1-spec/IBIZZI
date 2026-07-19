@@ -1,34 +1,35 @@
 /* ============================================================
-   IBIZZI · create-preference (Netlify Function)
+   IBIZZI · create-preference (Cloudflare Pages Function)
    Crea una preferencia de pago en Mercado Pago (Checkout Pro) y
    devuelve el link al que hay que redirigir al cliente.
    El access token NUNCA se expone al frontend: vive solo acá,
-   leído de la variable de entorno MP_ACCESS_TOKEN.
+   leído de la variable de entorno MP_ACCESS_TOKEN (configurada
+   en el panel de Cloudflare Pages > Settings > Environment variables).
    ============================================================ */
 
-exports.handler = async (event) => {
-  if (event.httpMethod !== 'POST') {
-    return { statusCode: 405, body: JSON.stringify({ error: 'Method Not Allowed' }) };
-  }
+export async function onRequestPost(context) {
+  const { request, env } = context;
+  const json = (body, status = 200) =>
+    new Response(JSON.stringify(body), { status, headers: { 'Content-Type': 'application/json' } });
 
-  const token = process.env.MP_ACCESS_TOKEN;
+  const token = env.MP_ACCESS_TOKEN;
   if (!token) {
-    return { statusCode: 500, body: JSON.stringify({ error: 'MP_ACCESS_TOKEN no configurado en el servidor' }) };
+    return json({ error: 'MP_ACCESS_TOKEN no configurado en el servidor' }, 500);
   }
 
   let orderData;
   try {
-    orderData = JSON.parse(event.body);
+    orderData = await request.json();
   } catch {
-    return { statusCode: 400, body: JSON.stringify({ error: 'JSON inválido' }) };
+    return json({ error: 'JSON inválido' }, 400);
   }
 
   const { customer, total, orderNumber } = orderData || {};
   if (!total || !orderNumber) {
-    return { statusCode: 400, body: JSON.stringify({ error: 'Faltan datos del pedido (total u orderNumber)' }) };
+    return json({ error: 'Faltan datos del pedido (total u orderNumber)' }, 400);
   }
 
-  const base = process.env.URL || `https://${event.headers.host}`;
+  const base = new URL(request.url).origin;
 
   const preference = {
     items: [{
@@ -63,15 +64,11 @@ exports.handler = async (event) => {
     const data = await mpRes.json();
 
     if (!mpRes.ok) {
-      return { statusCode: 502, body: JSON.stringify({ error: 'Mercado Pago rechazó la preferencia', detail: data }) };
+      return json({ error: 'Mercado Pago rechazó la preferencia', detail: data }, 502);
     }
 
-    return {
-      statusCode: 200,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ initPoint: data.sandbox_init_point || data.init_point })
-    };
+    return json({ initPoint: data.sandbox_init_point || data.init_point });
   } catch (err) {
-    return { statusCode: 500, body: JSON.stringify({ error: err.message }) };
+    return json({ error: err.message }, 500);
   }
-};
+}

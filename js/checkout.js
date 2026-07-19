@@ -2,8 +2,8 @@
    IBIZZI · checkout.js
    Validaciones + resumen + pago con Mercado Pago (Checkout Pro).
    Transferencia/efectivo se confirman directo; "mp" crea una
-   preferencia vía netlify/functions/create-preference.js y
-   redirige al cliente a pagar en Mercado Pago.
+   preferencia vía functions/api/create-preference.js (Cloudflare
+   Pages Function) y redirige al cliente a pagar en Mercado Pago.
    ============================================================ */
 
 import { qs, qsa, formatPrice, storage, bus, getDiscount, clearDiscount, getQueryParam } from './utils.js';
@@ -173,13 +173,13 @@ function validateForm() {
 const PENDING_KEY = 'ibizzi_pending_order';
 
 /**
- * Pide al backend (netlify/functions/create-preference.js) que cree la
- * preferencia de pago en Mercado Pago y devuelva el link de Checkout Pro
- * al que hay que redirigir al cliente. El access token vive solo en el
- * backend — nunca se expone acá.
+ * Pide al backend (functions/api/create-preference.js, Cloudflare Pages
+ * Function) que cree la preferencia de pago en Mercado Pago y devuelva el
+ * link de Checkout Pro al que hay que redirigir al cliente. El access
+ * token vive solo en el backend — nunca se expone acá.
  */
 async function requestMPPreference(orderData) {
-  const res = await fetch('/.netlify/functions/create-preference', {
+  const res = await fetch('/api/create-preference', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(orderData)
