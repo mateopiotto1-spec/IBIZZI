@@ -1,0 +1,470 @@
+[
+  {
+    "id": 1,
+    "slug": "buzo-brzco-gris",
+    "sku": "IBZ-BUZ-001",
+    "name": "Buzo BRZCO Gris",
+    "brand": "BRZCO",
+    "category": "Indumentaria",
+    "subcategory": "Buzos",
+    "shortDescription": "Buzo oversize en gris, algodón peinado.",
+    "longDescription": "Buzo BRZCO de corte oversize confeccionado en algodón peinado afelpado. Cuello redondo, puños y cintura elastizados. También disponible en tono oscuro.",
+    "price": 2190,
+    "oldPrice": null,
+    "discount": 0,
+    "currency": "UYU",
+    "stock": 6,
+    "status": "available",
+    "sizes": ["S", "M", "L"],
+    "colors": [
+      { "name": "Gris", "hex": "#8A8A8A" }
+    ],
+    "images": [
+      "assets/placeholders/product-01-1.svg",
+      "assets/placeholders/product-01-2.svg",
+      "assets/placeholders/product-01-3.svg"
+    ],
+    "video": null,
+    "featured": true,
+    "new": true,
+    "bestSeller": false,
+    "sold": 0,
+    "tags": ["buzo", "brzco", "gris", "oversize"],
+    "specifications": [
+      { "label": "Material", "value": "100% algodón peinado" },
+      { "label": "Corte", "value": "Oversize" },
+      { "label": "Cuidados", "value": "Lavar a máquina, agua fría" }
+    ],
+    "complementaryProducts": [5, 6],
+    "recommendedProducts": [3, 2],
+    "reviews": []
+  },
+  {
+    "id": 2,
+    "slug": "buzo-angeles-off-white",
+    "sku": "IBZ-BUZ-002",
+    "name": "Buzo Ángeles Off White",
+    "brand": "Ángeles",
+    "category": "Indumentaria",
+    "subcategory": "Buzos",
+    "shortDescription": "Buzo en tono off white, algodón afelpado.",
+    "longDescription": "Buzo Ángeles en tono off white, algodón afelpado de buen calce. Cuello redondo, puños y cintura elastizados.",
+    "price": 2280,
+    "oldPrice": null,
+    "discount": 0,
+    "currency": "UYU",
+    "stock": 3,
+    "status": "available",
+    "sizes": ["S", "M", "L"],
+    "colors": [
+      { "name": "Off White", "hex": "#EDE6DA" }
+    ],
+    "images": [
+      "assets/placeholders/product-02-1.svg",
+      "assets/placeholders/product-02-2.svg"
+    ],
+    "video": null,
+    "featured": true,
+    "new": true,
+    "bestSeller": false,
+    "sold": 0,
+    "tags": ["buzo", "angeles", "off white"],
+    "specifications": [
+      { "label": "Material", "value": "Algodón afelpado" },
+      { "label": "Corte", "value": "Regular fit" },
+      { "label": "Cuidados", "value": "Lavar a máquina, agua fría" }
+    ],
+    "complementaryProducts": [5, 6],
+    "recommendedProducts": [1, 3],
+    "reviews": []
+  },
+  {
+    "id": 3,
+    "slug": "buzo-brzco-oscuro",
+    "sku": "IBZ-BUZ-003",
+    "name": "Buzo BRZCO Oscuro",
+    "brand": "BRZCO",
+    "category": "Indumentaria",
+    "subcategory": "Buzos",
+    "shortDescription": "Buzo oversize en tono oscuro, mismo modelo que el gris.",
+    "longDescription": "El mismo buzo BRZCO en versión oscura: mismo corte oversize y mismo algodón peinado afelpado que el gris — elegí el tono que más te represente.",
+    "price": 2190,
+    "oldPrice": null,
+    "discount": 0,
+    "currency": "UYU",
+    "stock": 6,
+    "status": "available",
+    "sizes": ["S", "M", "L"],
+    "colors": [
+      { "name": "Oscuro", "hex": "#1F1F1F" }
+    ],
+    "images": [
+      "assets/placeholders/product-03-1.svg",
+      "assets/placeholders/product-03-2.svg"
+    ],
+    "video": null,
+    "featured": false,
+    "new": true,
+    "bestSeller": false,
+    "sold": 0,
+    "tags": ["buzo", "brzco", "oscuro", "oversize"],
+    "specifications": [
+      { "label": "Material", "value": "100% algodón peinado" },
+      { "label": "Corte", "value": "Oversize" },
+      { "label": "Cuidados", "value": "Lavar a máquina, agua fría" }
+    ],
+    "complementaryProducts": [5, 6],
+    "recommendedProducts": [1, 2],
+    "reviews": []
+  },
+  {
+    "id": 4,
+    "slug": "reloj-clasico-carbon",
+    "sku": "IBZ-RLJ-004",
+    "name": "Reloj Clásico Carbón",
+    "brand": "Ibizzi Horology",
+    "category": "Relojes",
+    "subcategory": "Clásicos",
+    "shortDescription": "Caja acero cepillado, esfera minimal, malla cuero.",
+    "longDescription": "Reloj de esfera de 40 mm con caja de acero cepillado color carbón. Movimiento de cuarzo japonés, agujas afiladas y marcadores mínimos. Malla en cuero italiano.",
+    "price": 6490,
+    "oldPrice": 7490,
+    "discount": 13,
+    "currency": "UYU",
+    "stock": 4,
+    "status": "available",
+    "sizes": ["Único"],
+    "colors": [
+      { "name": "Carbón / Cuero negro", "hex": "#1A1A1A" },
+      { "name": "Plata / Cuero marrón", "hex": "#7A5030" }
+    ],
+    "images": [
+      "assets/placeholders/product-04-1.svg",
+      "assets/placeholders/product-04-2.svg"
+    ],
+    "video": null,
+    "featured": true,
+    "new": false,
+    "bestSeller": true,
+    "sold": 63,
+    "tags": ["reloj", "acero", "cuero", "minimal"],
+    "specifications": [
+      { "label": "Caja", "value": "40 mm acero cepillado" },
+      { "label": "Movimiento", "value": "Cuarzo japonés" },
+      { "label": "Resistencia", "value": "3 ATM" },
+      { "label": "Garantía", "value": "1 año" }
+    ],
+    "complementaryProducts": [1, 3, 6],
+    "recommendedProducts": [5, 6, 8],
+    "reviews": [
+      { "author": "Sebastián R.", "rating": 5, "comment": "Se ve mucho mejor que en las fotos.", "date": "2026-03-18" }
+    ]
+  },
+  {
+    "id": 5,
+    "slug": "cinturon-cuero-italiano",
+    "sku": "IBZ-ACC-005",
+    "name": "Cinturón Cuero Italiano",
+    "brand": "Ibizzi Accessories",
+    "category": "Accesorios",
+    "subcategory": "Cinturones",
+    "shortDescription": "Cuero curtido vegetal, hebilla mate discreta.",
+    "longDescription": "Cinturón de cuero italiano curtido vegetal, con hebilla de metal mate. Ancho clásico de 35 mm. Envejece con carácter.",
+    "price": 1690,
+    "oldPrice": null,
+    "discount": 0,
+    "currency": "UYU",
+    "stock": 20,
+    "status": "available",
+    "sizes": ["90", "95", "100", "105"],
+    "colors": [
+      { "name": "Negro", "hex": "#101010" },
+      { "name": "Whisky", "hex": "#8B5A2B" }
+    ],
+    "images": [
+      "assets/placeholders/product-05-1.svg",
+      "assets/placeholders/product-05-2.svg"
+    ],
+    "video": null,
+    "featured": false,
+    "new": true,
+    "bestSeller": false,
+    "sold": 27,
+    "tags": ["cinturon", "cuero", "esencial"],
+    "specifications": [
+      { "label": "Material", "value": "Cuero italiano curtido vegetal" },
+      { "label": "Ancho", "value": "35 mm" },
+      { "label": "Origen", "value": "Italia" }
+    ],
+    "complementaryProducts": [1, 3, 4],
+    "recommendedProducts": [4, 6, 7],
+    "reviews": []
+  },
+  {
+    "id": 6,
+    "slug": "lentes-sol-metal",
+    "sku": "IBZ-ACC-006",
+    "name": "Lentes de Sol Metal",
+    "brand": "Ibizzi Accessories",
+    "category": "Accesorios",
+    "subcategory": "Lentes",
+    "shortDescription": "Estructura metálica delgada, cristales UV400.",
+    "longDescription": "Armazón fino de metal color gunmetal con puente cepillado. Cristales polarizados UV400. Livianos, presencia justa.",
+    "price": 2290,
+    "oldPrice": 2790,
+    "discount": 18,
+    "currency": "UYU",
+    "stock": 9,
+    "status": "available",
+    "sizes": ["Único"],
+    "colors": [
+      { "name": "Gunmetal", "hex": "#2B2E33" },
+      { "name": "Oro rosé", "hex": "#B76E79" }
+    ],
+    "images": [
+      "assets/placeholders/product-06-1.svg",
+      "assets/placeholders/product-06-2.svg"
+    ],
+    "video": null,
+    "featured": true,
+    "new": false,
+    "bestSeller": false,
+    "sold": 51,
+    "tags": ["lentes", "sol", "UV400", "polarizado"],
+    "specifications": [
+      { "label": "Armazón", "value": "Metal ligero" },
+      { "label": "Cristales", "value": "Polarizados UV400" }
+    ],
+    "complementaryProducts": [1, 4, 5],
+    "recommendedProducts": [4, 5, 8],
+    "reviews": []
+  },
+  {
+    "id": 7,
+    "slug": "nike-mind-retro-negro",
+    "sku": "IBZ-ZPT-007",
+    "name": "Nike Mind Retro Negro",
+    "brand": "Nike",
+    "category": "Zuecos Nike Mind",
+    "subcategory": "Retro",
+    "shortDescription": "Nike Mind Retro en negro.",
+    "longDescription": "Zueco Nike Mind Retro en negro. Silueta retro, cordones planos y suela con buen amortiguado. También disponible en crema y blanco.",
+    "price": 2300,
+    "oldPrice": null,
+    "discount": 0,
+    "currency": "UYU",
+    "stock": 8,
+    "status": "available",
+    "sizes": ["39", "40", "41", "42", "43", "44"],
+    "colors": [
+      { "name": "Negro", "hex": "#101010" }
+    ],
+    "images": [
+      "assets/placeholders/product-07-1.svg",
+      "assets/placeholders/product-07-2.svg"
+    ],
+    "video": null,
+    "featured": true,
+    "new": true,
+    "bestSeller": false,
+    "sold": 0,
+    "tags": ["zueco", "nike", "retro", "negro"],
+    "specifications": [
+      { "label": "Capellada", "value": "Cuero sintético" },
+      { "label": "Suela", "value": "Goma" }
+    ],
+    "complementaryProducts": [5, 6],
+    "recommendedProducts": [8, 9],
+    "reviews": []
+  },
+  {
+    "id": 8,
+    "slug": "nike-mind-retro-crema",
+    "sku": "IBZ-ZPT-008",
+    "name": "Nike Mind Retro Crema",
+    "brand": "Nike",
+    "category": "Zuecos Nike Mind",
+    "subcategory": "Retro",
+    "shortDescription": "Nike Mind Retro en crema.",
+    "longDescription": "Zueco Nike Mind Retro en crema. Silueta retro, cordones planos y suela con buen amortiguado. También disponible en negro y blanco.",
+    "price": 2300,
+    "oldPrice": null,
+    "discount": 0,
+    "currency": "UYU",
+    "stock": 8,
+    "status": "available",
+    "sizes": ["39", "40", "41", "42", "43", "44"],
+    "colors": [
+      { "name": "Crema", "hex": "#EDE0C8" }
+    ],
+    "images": [
+      "assets/placeholders/product-08-1.svg",
+      "assets/placeholders/product-08-2.svg"
+    ],
+    "video": null,
+    "featured": false,
+    "new": true,
+    "bestSeller": false,
+    "sold": 0,
+    "tags": ["zueco", "nike", "retro", "crema"],
+    "specifications": [
+      { "label": "Capellada", "value": "Cuero sintético" },
+      { "label": "Suela", "value": "Goma" }
+    ],
+    "complementaryProducts": [5, 6],
+    "recommendedProducts": [7, 9],
+    "reviews": []
+  },
+  {
+    "id": 9,
+    "slug": "nike-mind-retro-blanco",
+    "sku": "IBZ-ZPT-009",
+    "name": "Nike Mind Retro Blanco",
+    "brand": "Nike",
+    "category": "Zuecos Nike Mind",
+    "subcategory": "Retro",
+    "shortDescription": "Nike Mind Retro en blanco.",
+    "longDescription": "Zueco Nike Mind Retro en blanco. Silueta retro, cordones planos y suela con buen amortiguado. También disponible en negro y crema.",
+    "price": 2300,
+    "oldPrice": null,
+    "discount": 0,
+    "currency": "UYU",
+    "stock": 8,
+    "status": "available",
+    "sizes": ["39", "40", "41", "42", "43", "44"],
+    "colors": [
+      { "name": "Blanco", "hex": "#F5F3EE" }
+    ],
+    "images": [
+      "assets/placeholders/product-09-1.svg",
+      "assets/placeholders/product-09-2.svg"
+    ],
+    "video": null,
+    "featured": false,
+    "new": true,
+    "bestSeller": false,
+    "sold": 0,
+    "tags": ["zueco", "nike", "retro", "blanco"],
+    "specifications": [
+      { "label": "Capellada", "value": "Cuero sintético" },
+      { "label": "Suela", "value": "Goma" }
+    ],
+    "complementaryProducts": [5, 6],
+    "recommendedProducts": [7, 8],
+    "reviews": []
+  },
+  {
+    "id": 10,
+    "slug": "nike-mind-premium-negro",
+    "sku": "IBZ-ZPT-010",
+    "name": "Nike Mind Premium Negro",
+    "brand": "Nike",
+    "category": "Zuecos Nike Mind",
+    "subcategory": "Premium",
+    "shortDescription": "Nike Mind Premium en negro.",
+    "longDescription": "Zueco Nike Mind Premium en negro. Materiales de mayor calidad y terminaciones premium. También disponible en gris y rojo.",
+    "price": 2800,
+    "oldPrice": 3200,
+    "discount": 13,
+    "currency": "UYU",
+    "stock": 8,
+    "status": "available",
+    "sizes": ["39", "40", "41", "42", "43", "44"],
+    "colors": [
+      { "name": "Negro", "hex": "#101010" }
+    ],
+    "images": [
+      "assets/placeholders/product-10-1.svg",
+      "assets/placeholders/product-10-2.svg"
+    ],
+    "video": null,
+    "featured": true,
+    "new": true,
+    "bestSeller": false,
+    "sold": 0,
+    "tags": ["zueco", "nike", "premium", "negro"],
+    "specifications": [
+      { "label": "Capellada", "value": "Cuero premium" },
+      { "label": "Suela", "value": "Goma" }
+    ],
+    "complementaryProducts": [5, 6],
+    "recommendedProducts": [11, 12],
+    "reviews": []
+  },
+  {
+    "id": 11,
+    "slug": "nike-mind-premium-gris",
+    "sku": "IBZ-ZPT-011",
+    "name": "Nike Mind Premium Gris",
+    "brand": "Nike",
+    "category": "Zuecos Nike Mind",
+    "subcategory": "Premium",
+    "shortDescription": "Nike Mind Premium en gris.",
+    "longDescription": "Zueco Nike Mind Premium en gris. Materiales de mayor calidad y terminaciones premium. También disponible en negro y rojo.",
+    "price": 2800,
+    "oldPrice": 3200,
+    "discount": 13,
+    "currency": "UYU",
+    "stock": 8,
+    "status": "available",
+    "sizes": ["39", "40", "41", "42", "43", "44"],
+    "colors": [
+      { "name": "Gris", "hex": "#8A8A8A" }
+    ],
+    "images": [
+      "assets/placeholders/product-11-1.svg",
+      "assets/placeholders/product-11-2.svg"
+    ],
+    "video": null,
+    "featured": false,
+    "new": true,
+    "bestSeller": false,
+    "sold": 0,
+    "tags": ["zueco", "nike", "premium", "gris"],
+    "specifications": [
+      { "label": "Capellada", "value": "Cuero premium" },
+      { "label": "Suela", "value": "Goma" }
+    ],
+    "complementaryProducts": [5, 6],
+    "recommendedProducts": [10, 12],
+    "reviews": []
+  },
+  {
+    "id": 12,
+    "slug": "nike-mind-premium-rojo",
+    "sku": "IBZ-ZPT-012",
+    "name": "Nike Mind Premium Rojo",
+    "brand": "Nike",
+    "category": "Zuecos Nike Mind",
+    "subcategory": "Premium",
+    "shortDescription": "Nike Mind Premium en rojo.",
+    "longDescription": "Zueco Nike Mind Premium en rojo. Materiales de mayor calidad y terminaciones premium. También disponible en negro y gris.",
+    "price": 2800,
+    "oldPrice": 3200,
+    "discount": 13,
+    "currency": "UYU",
+    "stock": 8,
+    "status": "available",
+    "sizes": ["39", "40", "41", "42", "43", "44"],
+    "colors": [
+      { "name": "Rojo", "hex": "#B03A2E" }
+    ],
+    "images": [
+      "assets/placeholders/product-12-1.svg",
+      "assets/placeholders/product-12-2.svg"
+    ],
+    "video": null,
+    "featured": false,
+    "new": true,
+    "bestSeller": false,
+    "sold": 0,
+    "tags": ["zueco", "nike", "premium", "rojo"],
+    "specifications": [
+      { "label": "Capellada", "value": "Cuero premium" },
+      { "label": "Suela", "value": "Goma" }
+    ],
+    "complementaryProducts": [5, 6],
+    "recommendedProducts": [10, 11],
+    "reviews": []
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "author": "Martín G.",
+    "city": "Montevideo",
+    "rating": 5,
+    "comment": "Todo llegó impecable. La calidad se nota apenas abrís el paquete.",
+    "date": "2026-06-10"
+  },
+  {
+    "id": 2,
+    "author": "Federico L.",
+    "city": "Salto",
+    "rating": 5,
+    "comment": "El corte de las camisas es perfecto y el envío al interior llegó en dos días.",
+    "date": "2026-05-22"
+  },
+  {
+    "id": 3,
+    "author": "Sebastián R.",
+    "city": "Punta del Este",
+    "rating": 5,
+    "comment": "Muy buena atención. El reloj se ve mejor en persona que en las fotos.",
+    "date": "2026-05-01"
+  },
+  {
+    "id": 4,
+    "author": "Ana C.",
+    "city": "Montevideo",
+    "rating": 5,
+    "comment": "El sweater de lana es suave y abriga sin abultar. Perfecto para entretiempo.",
+    "date": "2026-04-18"
+  },
+  {
+    "id": 5,
+    "author": "Juan P.",
+    "city": "Canelones",
+    "rating": 5,
+    "comment": "Los zuecos Nike Mind son súper cómodos y quedan de 10 con todo.",
+    "date": "2026-06-01"
+  }
+]

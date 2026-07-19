@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es-UY">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1A1A1A">
+  <title>Productos · IBIZZI</title>
+  <meta name="description" content="Explorá todos los productos IBIZZI. Filtrá por categoría, marca, talle, color y precio.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/product-card.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/product-page.css">
+  <link rel="stylesheet" href="css/cart.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <link rel="icon" type="image/svg+xml" href="assets/placeholders/cat-relojes.svg">
+</head>
+<body>
+
+  <div id="shell-top"></div>
+
+  <main class="container-wide" role="main">
+
+    <div class="breadcrumbs">
+      <a href="index.html">Inicio</a>
+      <span>/</span>
+      <span>Productos</span>
+    </div>
+
+    <div class="products-header">
+      <div>
+        <h1 id="products-title" class="products-title">Todos los productos</h1>
+        <span id="products-count" class="products-count">0 productos</span>
+      </div>
+      <div class="products-toolbar">
+        <button id="filters-open" class="filters-toggle" type="button">
+          <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M6 12h12M10 18h4"/></svg>
+          Filtrar
+        </button>
+        <select id="sort-select" class="sort-select" aria-label="Ordenar">
+          <option value="featured">Destacados</option>
+          <option value="newest">Nuevos</option>
+          <option value="price-asc">Menor precio</option>
+          <option value="price-desc">Mayor precio</option>
+          <option value="bestseller">Más vendidos</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="products-layout">
+
+      <!-- Sidebar desktop -->
+      <aside class="filters-sidebar" aria-label="Filtros">
+        <div class="filter-group">
+          <h3 class="filter-group-title">Marca</h3>
+          <div id="filter-brands" class="filter-chips"></div>
+        </div>
+        <div class="filter-group">
+          <h3 class="filter-group-title">Talle</h3>
+          <div id="filter-sizes" class="filter-chips"></div>
+        </div>
+        <div class="filter-group">
+          <h3 class="filter-group-title">Color</h3>
+          <div id="filter-colors" class="filter-chips"></div>
+        </div>
+        <div class="filter-group">
+          <h3 class="filter-group-title">Precio (UYU)</h3>
+          <div class="filter-price">
+            <input type="number" id="filter-min" placeholder="Min" aria-label="Precio mínimo">
+            <span>—</span>
+            <input type="number" id="filter-max" placeholder="Max" aria-label="Precio máximo">
+          </div>
+        </div>
+        <div class="filter-group">
+          <h3 class="filter-group-title">Estado</h3>
+          <label class="filter-check"><input type="checkbox" id="filter-available"> Solo disponibles</label>
+          <label class="filter-check"><input type="checkbox" id="filter-new"> Nuevos ingresos</label>
+          <label class="filter-check"><input type="checkbox" id="filter-sale"> En oferta</label>
+        </div>
+        <button id="filter-clear" class="btn btn-secondary btn-sm btn-block" style="margin-top: 1rem;">Limpiar filtros</button>
+      </aside>
+
+      <!-- Grid -->
+      <div id="products-grid" class="products-grid" aria-live="polite"></div>
+    </div>
+
+  </main>
+
+  <!-- Drawer filtros (móvil) -->
+  <aside class="filters-drawer" id="filters-drawer" aria-hidden="true">
+    <div class="filters-drawer-header">
+      <span class="mobile-menu-title">Filtros</span>
+      <button id="filters-close" class="mobile-menu-close" type="button" aria-label="Cerrar filtros">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6l-12 12"/></svg>
+      </button>
+    </div>
+    <div class="filters-drawer-body">
+      <!-- Se clona con JS o usamos los mismos IDs — aquí usamos IDs duplicados minimizando -->
+      <div class="filter-group">
+        <h3 class="filter-group-title">Estado</h3>
+        <label class="filter-check"><input type="checkbox" data-mirror="filter-available"> Solo disponibles</label>
+        <label class="filter-check"><input type="checkbox" data-mirror="filter-new"> Nuevos ingresos</label>
+        <label class="filter-check"><input type="checkbox" data-mirror="filter-sale"> En oferta</label>
+      </div>
+      <p class="text-muted" style="font-size:11px; text-transform:uppercase; letter-spacing:.16em;">
+        Los filtros de marca, talle, color y precio están disponibles en escritorio.
+      </p>
+    </div>
+    <div class="filters-drawer-footer">
+      <button id="filters-apply" class="btn btn-primary btn-block">Ver resultados</button>
+    </div>
+  </aside>
+
+  <div id="shell-bottom"></div>
+
+  <script type="module">
+    import './js/app.js';
+    import { initProductsPage } from './js/filters.js';
+    document.addEventListener('DOMContentLoaded', () => {
+      initProductsPage();
+      // Sincronizar filtros del drawer móvil con el sidebar
+      document.querySelectorAll('[data-mirror]').forEach(el => {
+        el.addEventListener('change', () => {
+          const target = document.getElementById(el.dataset.mirror);
+          if (target) { target.checked = el.checked; target.dispatchEvent(new Event('change')); }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

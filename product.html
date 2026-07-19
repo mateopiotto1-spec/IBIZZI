@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es-UY">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1A1A1A">
+  <title>Producto · IBIZZI</title>
+  <meta name="description" content="Producto IBIZZI.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/product-card.css">
+  <link rel="stylesheet" href="css/product-page.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/cart.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <link rel="icon" type="image/svg+xml" href="assets/placeholders/cat-relojes.svg">
+</head>
+<body>
+
+  <div id="shell-top"></div>
+
+  <main class="container-wide" role="main">
+
+    <div id="pp-breadcrumbs" class="breadcrumbs"></div>
+
+    <div class="pp-layout">
+
+      <!-- Galería -->
+      <div class="pp-gallery">
+        <div class="pp-gallery-main" id="pp-gallery-main"></div>
+        <span id="pp-gallery-counter" class="pp-gallery-counter">1 / 1</span>
+        <button id="pp-prev" class="pp-gallery-nav prev" type="button" aria-label="Anterior">
+          <svg class="icon" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg>
+        </button>
+        <button id="pp-next" class="pp-gallery-nav next" type="button" aria-label="Siguiente">
+          <svg class="icon" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg>
+        </button>
+        <div id="pp-thumbs" class="pp-thumbs"></div>
+      </div>
+
+      <!-- Info -->
+      <div class="pp-info">
+        <span id="pp-brand" class="pp-brand"></span>
+        <h1 id="pp-name" class="pp-name"></h1>
+        <p id="pp-short" class="pp-short"></p>
+
+        <div class="pp-prices">
+          <span id="pp-price" class="pp-price"></span>
+          <span id="pp-old-price" class="pp-old-price" hidden></span>
+          <span id="pp-discount" class="pp-discount" hidden></span>
+        </div>
+
+        <!-- Colores -->
+        <div id="pp-colors-block" class="pp-variant-block">
+          <div class="pp-variant-label">
+            <span>Color: <strong id="pp-color-label">-</strong></span>
+          </div>
+          <div id="pp-colors" class="pp-colors"></div>
+        </div>
+
+        <!-- Talles -->
+        <div id="pp-sizes-block" class="pp-variant-block">
+          <div class="pp-variant-label">
+            <span>Talle</span>
+            <button type="button" class="pp-size-guide">Guía de talles</button>
+          </div>
+          <div id="pp-sizes" class="pp-sizes"></div>
+        </div>
+
+        <!-- Actions -->
+        <div class="pp-actions">
+          <div class="pp-actions-row" style="justify-content: flex-start;">
+            <div class="qty-picker" role="group" aria-label="Cantidad">
+              <button id="pp-qty-dec" class="qty-btn" type="button" aria-label="Disminuir">−</button>
+              <span id="pp-qty-value" class="qty-value" aria-live="polite">1</span>
+              <button id="pp-qty-inc" class="qty-btn" type="button" aria-label="Aumentar">+</button>
+            </div>
+          </div>
+          <div class="pp-actions-row">
+            <button id="pp-add-btn" class="btn btn-secondary" type="button">Agregar al carrito</button>
+            <button id="pp-fav-btn" class="pp-fav-btn" type="button" aria-label="Guardar en favoritos">
+              <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M12 20s-7-4.5-9.5-9A5 5 0 0 1 12 6a5 5 0 0 1 9.5 5c-2.5 4.5-9.5 9-9.5 9Z" fill="none"/></svg>
+            </button>
+          </div>
+          <button id="pp-buy-btn" class="btn btn-primary btn-block" type="button">Comprar ahora</button>
+        </div>
+
+        <!-- Bloque confianza -->
+        <div class="pp-trust">
+          <div class="pp-trust-item">
+            <svg viewBox="0 0 24 24"><path d="M2 8h13v10H2z"/><path d="M15 12h4l3 3v3h-7"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg>
+            Envíos a todo Uruguay
+          </div>
+          <div class="pp-trust-item">
+            <svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="1"/><path d="M3 10h18"/></svg>
+            Hasta 12 cuotas
+          </div>
+          <div class="pp-trust-item">
+            <svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="1"/><circle cx="8" cy="12" r="2"/></svg>
+            Todas las tarjetas
+          </div>
+          <div class="pp-trust-item">
+            <svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4-3.5 8-8 9-4.5-1-8-5-8-9V6z"/><path d="m9 12 2 2 4-4"/></svg>
+            Compra segura
+          </div>
+        </div>
+
+        <!-- Descripción -->
+        <section style="margin-top: var(--space-5);">
+          <h2 class="h4" style="margin-bottom: var(--space-3); color: var(--color-text-primary);">Descripción</h2>
+          <p id="pp-long" class="pp-long"></p>
+        </section>
+
+        <!-- Especificaciones -->
+        <section id="pp-specs-block" style="margin-top: var(--space-5);">
+          <h2 class="h4" style="margin-bottom: var(--space-3); color: var(--color-text-primary);">Especificaciones</h2>
+          <dl id="pp-specs" class="pp-specs"></dl>
+        </section>
+
+        <!-- Reseñas -->
+        <section id="pp-reviews-block" style="margin-top: var(--space-5);">
+          <h2 class="h4" style="margin-bottom: var(--space-3); color: var(--color-text-primary);">Reseñas</h2>
+          <div id="pp-reviews"></div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Completá tu look -->
+    <section class="section container-wide" style="padding-inline: 0;">
+      <span class="section-eyebrow" style="display:block;text-align:center;">Curaduría</span>
+      <h2 class="section-title">Completá tu look</h2>
+      <p class="section-subtitle">Sumá los detalles que hacen la diferencia</p>
+      <div class="carousel">
+        <button class="carousel-prev" type="button" aria-label="Anterior">
+          <svg class="icon" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg>
+        </button>
+        <div id="complementary-list" class="carousel-scroller"></div>
+        <button class="carousel-next" type="button" aria-label="Siguiente">
+          <svg class="icon" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- También te puede interesar -->
+    <section class="section container-wide" style="padding-inline: 0;">
+      <h2 class="section-title">También te puede interesar</h2>
+      <div class="carousel">
+        <button class="carousel-prev" type="button" aria-label="Anterior">
+          <svg class="icon" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg>
+        </button>
+        <div id="recommended-list" class="carousel-scroller"></div>
+        <button class="carousel-next" type="button" aria-label="Siguiente">
+          <svg class="icon" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg>
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Sticky bar móvil -->
+  <div id="pp-sticky-bar" class="pp-sticky-bar" role="region" aria-label="Agregar al carrito">
+    <div class="sticky-info">
+      <span class="sticky-label">Precio</span>
+      <span id="sticky-price" class="sticky-price"></span>
+    </div>
+    <button id="sticky-add-btn" class="btn btn-primary btn-sm" type="button" style="flex:1.5;">Agregar</button>
+  </div>
+
+  <div id="shell-bottom"></div>
+
+  <script type="module">
+    import './js/app.js';
+    import { initProductPage } from './js/product-page.js';
+    document.addEventListener('DOMContentLoaded', () => initProductPage());
+  </script>
+</body>
+</html>

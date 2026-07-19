@@ -1,0 +1,102 @@
+/* ============================================================
+   IBIZZI · responsive.css
+   Breakpoints:
+     · 768px  → tablet
+     · 1024px → desktop
+     · 1280px → wide
+   Mobile-first: los estilos base viven en cada archivo,
+   este archivo agrega ajustes hacia arriba.
+   ============================================================ */
+
+/* ==========================================================
+   TABLET · 768px+
+   ========================================================== */
+@media (min-width: 768px) {
+
+  :root {
+    --container-pad: 2rem;
+  }
+
+  /* Tipografía escala */
+  h1, .h1 { font-size: var(--fs-4xl); }
+  h2, .h2 { font-size: var(--fs-3xl); }
+
+  .section-title { font-size: var(--fs-3xl); }
+
+  /* Header */
+  .header-inner {
+    height: var(--header-height-lg);
+    grid-template-columns: 1fr auto 1fr;
+  }
+  .header-logo {
+    letter-spacing: 0.4em;
+    font-size: var(--fs-2xl);
+  }
+  .header-right { justify-self: end; }
+  .header-left  { justify-self: start; }
+
+  /* Nav aparece en desktop */
+  .header-nav { display: block; }
+
+  /* En tablet+ ocultamos la hamburguesa */
+  .hamburger { display: none; }
+
+  /* Footer grid */
+  .footer-grid {
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: var(--space-6);
+  }
+
+  .footer-newsletter-form {
+    flex-direction: row;
+  }
+
+  .footer-bottom {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+/* ==========================================================
+   DESKTOP · 1024px+
+   ========================================================== */
+@media (min-width: 1024px) {
+
+  :root {
+    --container-pad: var(--container-pad-lg);
+  }
+
+  h1, .h1 { font-size: 3.75rem; letter-spacing: -0.025em; }
+
+  .section { padding-block: var(--space-8); }
+
+  /* Announcement sin scroll */
+  .announcement-inner { overflow-x: visible; }
+
+  .header-nav-list { gap: var(--space-7); }
+}
+
+/* ==========================================================
+   WIDE · 1280px+
+   ========================================================== */
+@media (min-width: 1280px) {
+
+  .section-title { font-size: 2.75rem; }
+
+}
+
+/* ==========================================================
+   HOVER-CAPABLE devices
+   Evita estados hover pegados en touch
+   ========================================================== */
+@media (hover: none) {
+  .btn-primary:hover {
+    background-color: var(--color-accent);
+    color: var(--color-text-inverse);
+    border-color: transparent;
+  }
+  .btn-secondary:hover {
+    background-color: transparent;
+    color: var(--color-text-primary);
+  }
+}

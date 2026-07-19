@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1067" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1F1F1F"/>
+      <stop offset="55%" stop-color="#282828"/>
+      <stop offset="100%" stop-color="#333333"/>
+    </linearGradient>
+    <pattern id="p" width="60" height="60" patternUnits="userSpaceOnUse">
+      <rect width="60" height="60" fill="url(#g)"/>
+      <circle cx="30" cy="30" r="0.8" fill="#3a3a3a"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="1067" fill="url(#p)"/>
+  <g fill="none" stroke="#3a3a3a" stroke-width="1">
+    <line x1="0" y1="533" x2="800" y2="533"/>
+    <line x1="400" y1="0" x2="400" y2="1067"/>
+  </g>
+  <text x="50%" y="47%" text-anchor="middle" fill="#8A8A8A"
+        font-family="Georgia, serif" font-size="36" font-style="italic" letter-spacing="4">Indumentaria</text>
+  <text x="50%" y="55%" text-anchor="middle" fill="#5A5A5A"
+        font-family="Inter, sans-serif" font-size="16" letter-spacing="6">IBIZZI · COLECCIÓN</text>
+  <text x="50%" y="94%" text-anchor="middle" fill="#3F3F3F"
+        font-family="Georgia, serif" font-size="17" letter-spacing="10">IBIZZI</text>
+</svg>

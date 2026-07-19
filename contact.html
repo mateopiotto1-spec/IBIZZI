@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es-UY">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1A1A1A">
+  <title>Contacto · IBIZZI</title>
+  <meta name="description" content="Contactanos por WhatsApp, email o el formulario. IBIZZI Uruguay.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/cart.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <link rel="icon" type="image/svg+xml" href="assets/placeholders/cat-relojes.svg">
+</head>
+<body>
+
+  <div id="shell-top"></div>
+
+  <main class="container" role="main" style="max-width: 900px;">
+    <div class="breadcrumbs">
+      <a href="index.html">Inicio</a><span>/</span><span>Contacto</span>
+    </div>
+
+    <h1 class="cart-page-title">Hablemos</h1>
+    <p class="text-secondary" style="max-width: 560px; margin-bottom: 3rem;">
+      Estamos disponibles por WhatsApp, email o directamente por el formulario. Te respondemos en menos de 24 horas hábiles.
+    </p>
+
+    <div style="display: grid; grid-template-columns: 1fr; gap: 3rem;">
+
+      <section>
+        <div style="display: grid; grid-template-columns: 1fr; gap: 1.5rem;">
+          <div style="border: 1px solid var(--color-border-soft); padding: 1.5rem;">
+            <h3 class="footer-col-title" style="margin-bottom: 0.5rem;">WhatsApp</h3>
+            <p class="text-secondary"><a href="https://wa.me/59899999999" style="border-bottom: 1px solid currentColor;">+598 99 999 999</a></p>
+          </div>
+          <div style="border: 1px solid var(--color-border-soft); padding: 1.5rem;">
+            <h3 class="footer-col-title" style="margin-bottom: 0.5rem;">Email</h3>
+            <p class="text-secondary"><a href="mailto:hola@ibizzi.uy" style="border-bottom: 1px solid currentColor;">hola@ibizzi.uy</a></p>
+          </div>
+          <div style="border: 1px solid var(--color-border-soft); padding: 1.5rem;">
+            <h3 class="footer-col-title" style="margin-bottom: 0.5rem;">Horario</h3>
+            <p class="text-secondary">Lunes a viernes de 10 a 19 hs<br>Sábados de 10 a 14 hs</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="checkout-section">
+        <h2 class="checkout-section-title">Enviá tu mensaje</h2>
+        <form onsubmit="event.preventDefault(); alert('Gracias por escribirnos. Te contactamos en breve.'); this.reset();">
+          <div class="form-grid two">
+            <div class="form-field">
+              <label for="c-name">Nombre</label>
+              <input type="text" id="c-name" required>
+            </div>
+            <div class="form-field">
+              <label for="c-email">Email</label>
+              <input type="email" id="c-email" required>
+            </div>
+          </div>
+          <div class="form-field" style="margin-top: 1rem;">
+            <label for="c-subject">Asunto</label>
+            <input type="text" id="c-subject">
+          </div>
+          <div class="form-field" style="margin-top: 1rem;">
+            <label for="c-message">Mensaje</label>
+            <textarea id="c-message" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="margin-top: 1.5rem;">ENVIAR MENSAJE</button>
+        </form>
+      </section>
+
+    </div>
+  </main>
+
+  <div id="shell-bottom"></div>
+
+  <script type="module">import './js/app.js';</script>
+</body>
+</html>

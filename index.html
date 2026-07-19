@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es-UY">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1A1A1A">
+  <title>IBIZZI · Vestite como querés que te recuerden</title>
+  <meta name="description" content="Indumentaria y accesorios seleccionados para quienes cuidan cada detalle de su estilo. Envíos a todo Uruguay, hasta 12 cuotas.">
+  <link rel="canonical" href="/">
+
+  <meta property="og:site_name" content="IBIZZI">
+  <meta property="og:title" content="IBIZZI · Vestite como querés que te recuerden">
+  <meta property="og:description" content="Indumentaria y accesorios seleccionados para quienes cuidan cada detalle de su estilo.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/placeholders/hero-main.svg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Organization","name":"IBIZZI","url":"/","logo":"/assets/placeholders/cat-relojes.svg"}
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/product-card.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/cart.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <link rel="icon" type="image/svg+xml" href="assets/placeholders/cat-relojes.svg">
+</head>
+<body>
+
+  <div id="shell-top"></div>
+
+  <main id="main" role="main">
+
+    <!-- ============================================================
+         HERO
+         ============================================================ -->
+    <section class="hero" aria-label="Presentación">
+      <div class="hero-media">
+        <img src="assets/placeholders/hero-main.svg" alt="Colección editorial IBIZZI">
+      </div>
+      <div class="container hero-content">
+        <span class="hero-eyebrow">Colección 2026</span>
+        <h1 class="hero-title">
+          VESTITE COMO<br>
+          QUERÉS QUE<br>
+          TE RECUERDEN.
+        </h1>
+        <p class="hero-text">
+          Indumentaria y accesorios seleccionados para quienes cuidan cada detalle de su estilo.
+        </p>
+        <div class="hero-actions">
+          <a href="products.html" class="btn btn-primary">EXPLORAR COLECCIÓN</a>
+          <a href="products.html?filter=new" class="btn btn-secondary">NUEVOS INGRESOS</a>
+        </div>
+      </div>
+      <span class="hero-scroll">↓ Descubrir</span>
+    </section>
+
+    <!-- ============================================================
+         4 ICONOS DE CATEGORÍA (abajo del hero)
+         ============================================================ -->
+    <section class="quick-icons" aria-label="Categorías rápidas">
+      <div class="container-wide">
+        <div class="quick-icons-grid">
+
+          <a href="products.html?category=indumentaria" class="quick-icon">
+            <svg class="quick-icon-svg" viewBox="0 0 48 48" aria-hidden="true">
+              <path d="M18 8l6 4 6-4 10 6-3 6-4-2v20H15V18l-4 2-3-6z"/>
+              <path d="M22 10c0 2 2 3 2 3s2-1 2-3"/>
+            </svg>
+            <span class="quick-icon-name">Indumentaria</span>
+            <span class="quick-icon-sub">Camisas · Pantalones · Sweaters</span>
+          </a>
+
+          <a href="products.html?category=relojes" class="quick-icon">
+            <svg class="quick-icon-svg" viewBox="0 0 48 48" aria-hidden="true">
+              <circle cx="24" cy="24" r="11"/>
+              <path d="M24 18v6l4 3"/>
+              <path d="M18 13l2-6h8l2 6M18 35l2 6h8l2-6"/>
+            </svg>
+            <span class="quick-icon-name">Relojes</span>
+            <span class="quick-icon-sub">Clásicos · Contemporáneos</span>
+          </a>
+
+          <a href="products.html?category=accesorios" class="quick-icon">
+            <svg class="quick-icon-svg" viewBox="0 0 48 48" aria-hidden="true">
+              <circle cx="14" cy="28" r="8"/>
+              <circle cx="34" cy="28" r="8"/>
+              <path d="M22 28h4"/>
+              <path d="M6 22l4-4M42 22l-4-4"/>
+            </svg>
+            <span class="quick-icon-name">Accesorios</span>
+            <span class="quick-icon-sub">Lentes · Cinturones · Detalles</span>
+          </a>
+
+          <a href="products.html?category=zuecos%20nike%20mind" class="quick-icon">
+            <svg class="quick-icon-svg" viewBox="0 0 48 48" aria-hidden="true">
+              <path d="M4 30c0-3 3-4 6-4l4-6 6-2 4 4 12 4c4 1 8 3 8 6v2H4z"/>
+              <path d="M14 20l2 3M20 18l2 3M26 20l2 3"/>
+            </svg>
+            <span class="quick-icon-name">Zuecos Nike Mind</span>
+            <span class="quick-icon-sub">Retro · Premium</span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CATEGORÍAS EDITORIALES
+         ============================================================ -->
+    <section class="section container-wide">
+      <span class="section-eyebrow" style="display:block;text-align:center;">Colecciones</span>
+      <h2 class="section-title">Explorá por categoría</h2>
+      <div class="categories-grid">
+        <a href="products.html?category=indumentaria" class="category-tile">
+          <img src="assets/placeholders/cat-indumentaria.svg" alt="Indumentaria">
+          <div class="category-tile-overlay">
+            <span class="category-tile-name">Indumentaria</span>
+            <span class="category-tile-cta">Ver colección</span>
+          </div>
+        </a>
+        <a href="products.html?category=relojes" class="category-tile">
+          <img src="assets/placeholders/cat-relojes.svg" alt="Relojes">
+          <div class="category-tile-overlay">
+            <span class="category-tile-name">Relojes</span>
+            <span class="category-tile-cta">Ver colección</span>
+          </div>
+        </a>
+        <a href="products.html?category=accesorios" class="category-tile">
+          <img src="assets/placeholders/cat-accesorios.svg" alt="Accesorios">
+          <div class="category-tile-overlay">
+            <span class="category-tile-name">Accesorios</span>
+            <span class="category-tile-cta">Ver colección</span>
+          </div>
+        </a>
+        <a href="products.html?category=zuecos%20nike%20mind" class="category-tile">
+          <img src="assets/placeholders/cat-zapatillas.svg" alt="Zuecos Nike Mind">
+          <div class="category-tile-overlay">
+            <span class="category-tile-name">Zuecos Nike Mind</span>
+            <span class="category-tile-cta">Ver colección</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PRODUCTOS DESTACADOS
+         ============================================================ -->
+    <section class="section container-wide">
+      <span class="section-eyebrow" style="display:block;text-align:center;">Selección editorial</span>
+      <h2 class="section-title">Nueva selección</h2>
+      <p class="section-subtitle">Piezas elegidas para la temporada</p>
+      <div id="home-featured" class="products-grid"></div>
+    </section>
+
+    <!-- ============================================================
+         BANNER EDITORIAL
+         ============================================================ -->
+    <section class="editorial-banner">
+      <div class="editorial-banner-media">
+        <img src="assets/placeholders/banner-detail.svg" alt="Los detalles cambian todo">
+      </div>
+      <div class="container editorial-banner-content">
+        <h2 class="editorial-banner-title">Los detalles<br>cambian todo.</h2>
+        <p style="color: var(--color-text-secondary); margin-bottom: 1.5rem;">
+          Los accesorios que hacen la diferencia entre estar vestido y tener estilo.
+        </p>
+        <a href="products.html?category=accesorios" class="btn btn-primary">DESCUBRIR ACCESORIOS</a>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         RELOJES DESTACADOS
+         ============================================================ -->
+    <section class="section container-wide">
+      <span class="section-eyebrow" style="display:block;text-align:center;">Ibizzi Horology</span>
+      <h2 class="section-title">Relojes</h2>
+      <div id="home-watches" class="products-grid"></div>
+    </section>
+
+    <!-- ============================================================
+         ZUECOS NIKE MIND DESTACADOS
+         ============================================================ -->
+    <section class="section container-wide">
+      <span class="section-eyebrow" style="display:block;text-align:center;">Nike</span>
+      <h2 class="section-title">Zuecos Nike Mind</h2>
+      <div id="home-sneakers" class="products-grid"></div>
+    </section>
+
+    <!-- ============================================================
+         BENEFICIOS
+         ============================================================ -->
+    <section class="benefits">
+      <div class="container-wide benefits-grid">
+        <div class="benefit">
+          <svg class="benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 8h13v10H2z"/><path d="M15 12h4l3 3v3h-7"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg>
+          <div class="benefit-text"><strong>Envíos a todo Uruguay</strong><span>DAC · Retiro en local</span></div>
+        </div>
+        <div class="benefit">
+          <svg class="benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="6" width="18" height="12" rx="1"/><path d="M3 10h18"/></svg>
+          <div class="benefit-text"><strong>Hasta 12 cuotas</strong><span>Con todas las tarjetas</span></div>
+        </div>
+        <div class="benefit">
+          <svg class="benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="6" width="18" height="12" rx="1"/><circle cx="8" cy="12" r="2"/><path d="M14 12h4M14 15h3"/></svg>
+          <div class="benefit-text"><strong>Todas las tarjetas</strong><span>Visa · Mastercard · Amex · OCA</span></div>
+        </div>
+        <div class="benefit">
+          <svg class="benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3l8 3v6c0 4-3.5 8-8 9-4.5-1-8-5-8-9V6z"/><path d="m9 12 2 2 4-4"/></svg>
+          <div class="benefit-text"><strong>Compra segura</strong><span>Pagos protegidos</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         RESEÑAS
+         ============================================================ -->
+    <section class="section container">
+      <span class="section-eyebrow" style="display:block;text-align:center;">Testimonios</span>
+      <h2 class="section-title">Lo que dicen</h2>
+      <div class="reviews-grid">
+        <article class="review-card">
+          <div class="review-rating">★★★★★</div>
+          <p class="review-text">"Todo llegó impecable. La calidad se nota apenas abrís el paquete."</p>
+          <span class="review-author">Martín G. · Montevideo</span>
+        </article>
+        <article class="review-card">
+          <div class="review-rating">★★★★★</div>
+          <p class="review-text">"El corte de las camisas es perfecto y el envío al interior llegó en dos días."</p>
+          <span class="review-author">Federico L. · Salto</span>
+        </article>
+        <article class="review-card">
+          <div class="review-rating">★★★★★</div>
+          <p class="review-text">"Muy buena atención. El reloj se ve mejor en persona que en las fotos."</p>
+          <span class="review-author">Sebastián R. · Punta del Este</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         GALERÍA SOCIAL
+         ============================================================ -->
+    <section class="social-gallery container-wide">
+      <span class="section-eyebrow" style="display:block;text-align:center;">@ibizzi.uy</span>
+      <h2 class="section-title">Comunidad</h2>
+      <div class="social-grid">
+        <div class="social-tile"><img src="assets/placeholders/product-01-1.svg" alt=""></div>
+        <div class="social-tile"><img src="assets/placeholders/product-04-1.svg" alt=""></div>
+        <div class="social-tile"><img src="assets/placeholders/product-07-1.svg" alt=""></div>
+        <div class="social-tile"><img src="assets/placeholders/product-02-1.svg" alt=""></div>
+        <div class="social-tile"><img src="assets/placeholders/product-05-1.svg" alt=""></div>
+        <div class="social-tile"><img src="assets/placeholders/product-06-1.svg" alt=""></div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="shell-bottom"></div>
+
+  <script type="module">
+    import './js/app.js';
+    import { renderHomeSections } from './js/products.js';
+    document.addEventListener('DOMContentLoaded', () => renderHomeSections());
+  </script>
+</body>
+</html>

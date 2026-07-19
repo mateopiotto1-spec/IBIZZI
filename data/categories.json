@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "slug": "indumentaria",
+    "name": "Indumentaria",
+    "description": "Prendas seleccionadas para vestir con presencia.",
+    "image": "assets/placeholders/cat-indumentaria.svg",
+    "order": 1
+  },
+  {
+    "id": 2,
+    "slug": "relojes",
+    "name": "Relojes",
+    "description": "Piezas que marcan el tiempo y el estilo.",
+    "image": "assets/placeholders/cat-relojes.svg",
+    "order": 2
+  },
+  {
+    "id": 3,
+    "slug": "accesorios",
+    "name": "Accesorios",
+    "description": "Los detalles que completan el conjunto.",
+    "image": "assets/placeholders/cat-accesorios.svg",
+    "order": 3
+  },
+  {
+    "id": 4,
+    "slug": "zuecos-nike-mind",
+    "name": "Zuecos Nike Mind",
+    "description": "Silueta, confort y carácter en cada paso.",
+    "image": "assets/placeholders/cat-zapatillas.svg",
+    "order": 4
+  }
+]

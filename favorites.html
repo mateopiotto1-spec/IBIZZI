@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es-UY">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1A1A1A">
+  <title>Favoritos · IBIZZI</title>
+  <meta name="description" content="Tus productos favoritos guardados.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/product-card.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/cart.css">
+  <link rel="stylesheet" href="css/product-page.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <link rel="icon" type="image/svg+xml" href="assets/placeholders/cat-relojes.svg">
+</head>
+<body>
+
+  <div id="shell-top"></div>
+
+  <main class="container-wide" role="main">
+    <div class="breadcrumbs">
+      <a href="index.html">Inicio</a><span>/</span><span>Favoritos</span>
+    </div>
+
+    <div class="products-header">
+      <div>
+        <h1 class="products-title">Mis favoritos</h1>
+        <span id="favorites-count" class="products-count">0 productos</span>
+      </div>
+    </div>
+
+    <div id="favorites-grid" class="products-grid"></div>
+
+    <div id="favorites-empty" class="cart-empty" hidden style="padding-block: 4rem;">
+      <p class="text-secondary" style="margin-bottom: 1.5rem;">Todavía no guardaste favoritos.</p>
+      <a href="products.html" class="btn btn-primary">EXPLORAR PRODUCTOS</a>
+    </div>
+  </main>
+
+  <div id="shell-bottom"></div>
+
+  <script type="module">
+    import './js/app.js';
+    import { qs, bus } from './js/utils.js';
+    import { loadProducts, renderGrid } from './js/products.js';
+    import { getFavorites, filterFavorites } from './js/favorites.js';
+
+    async function renderFavorites() {
+      const products = await loadProducts();
+      const favProducts = filterFavorites(products);
+      const grid = qs('#favorites-grid');
+      const empty = qs('#favorites-empty');
+      const count = qs('#favorites-count');
+
+      count.textContent = `${favProducts.length} ${favProducts.length === 1 ? 'producto' : 'productos'}`;
+
+      if (favProducts.length === 0) {
+        grid.hidden = true;
+        empty.hidden = false;
+        return;
+      }
+      grid.hidden = false;
+      empty.hidden = true;
+      renderGrid(grid, favProducts);
+    }
+
+    document.addEventListener('DOMContentLoaded', renderFavorites);
+    bus.on('favorites:updated', renderFavorites);
+  </script>
+</body>
+</html>

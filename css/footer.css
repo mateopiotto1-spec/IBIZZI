@@ -1,0 +1,218 @@
+/* ============================================================
+   IBIZZI · footer.css
+   Footer editorial oscuro con columnas + newsletter + copyright
+   ============================================================ */
+
+.footer {
+  background-color: var(--color-bg-deep);
+  color: var(--color-text-secondary);
+  border-top: 1px solid var(--color-border-soft);
+  margin-top: var(--space-9);
+}
+
+.footer-newsletter {
+  padding: var(--space-8) 0;
+  border-bottom: 1px solid var(--color-border-soft);
+  text-align: center;
+}
+
+.footer-newsletter-title {
+  font-family: var(--font-serif);
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-regular);
+  color: var(--color-text-primary);
+  letter-spacing: var(--ls-tight);
+  margin-bottom: var(--space-3);
+}
+
+.footer-newsletter-text {
+  color: var(--color-text-secondary);
+  font-size: var(--fs-sm);
+  max-width: 480px;
+  margin: 0 auto var(--space-5);
+}
+
+.footer-newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.footer-newsletter-input {
+  flex: 1;
+  padding: 0 var(--space-4);
+  height: 52px;
+  border: 1px solid var(--color-border);
+  background-color: transparent;
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  font-size: var(--fs-sm);
+  letter-spacing: var(--ls-wide);
+}
+.footer-newsletter-input::placeholder {
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-wider);
+  font-size: 11px;
+}
+.footer-newsletter-input:focus {
+  outline: none;
+  border-color: var(--color-text-primary);
+}
+
+/* ---------- Columnas ---------- */
+
+.footer-main {
+  padding: var(--space-8) 0;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+.footer-brand-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.footer-logo {
+  font-family: var(--font-serif);
+  font-size: var(--fs-xl);
+  letter-spacing: 0.35em;
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+}
+
+.footer-tagline {
+  font-family: var(--font-serif);
+  font-size: var(--fs-md);
+  font-style: italic;
+  color: var(--color-text-secondary);
+  max-width: 280px;
+  line-height: var(--lh-snug);
+}
+
+.footer-socials {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+.footer-socials a {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--color-border);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  transition: var(--transition-color);
+}
+.footer-socials a:hover {
+  color: var(--color-text-primary);
+  border-color: var(--color-text-primary);
+}
+
+/* Columna de links */
+.footer-col-title {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-4);
+}
+
+.footer-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.footer-list a {
+  font-size: var(--fs-sm);
+  color: var(--color-text-secondary);
+  transition: var(--transition-color);
+}
+.footer-list a:hover {
+  color: var(--color-text-primary);
+}
+
+/* ---------- Medios de pago ---------- */
+
+.footer-payments {
+  padding: var(--space-5) 0;
+  border-top: 1px solid var(--color-border-soft);
+  border-bottom: 1px solid var(--color-border-soft);
+}
+
+.footer-payments-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  text-align: center;
+}
+
+.footer-payments-title {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-wider);
+  color: var(--color-text-muted);
+}
+
+.footer-payments-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  justify-content: center;
+}
+
+.payment-badge {
+  padding: 6px 12px;
+  border: 1px solid var(--color-border);
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-wide);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  background-color: var(--color-bg-secondary);
+}
+
+/* ---------- Copyright ---------- */
+
+.footer-bottom {
+  padding: var(--space-5) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  align-items: center;
+  text-align: center;
+}
+
+.footer-copyright {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  letter-spacing: var(--ls-wide);
+}
+
+.footer-meta {
+  display: flex;
+  gap: var(--space-4);
+  font-size: 11px;
+  color: var(--color-text-muted);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer-meta a {
+  color: var(--color-text-muted);
+}
+.footer-meta a:hover { color: var(--color-text-primary); }

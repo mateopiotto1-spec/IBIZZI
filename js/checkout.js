@@ -1,0 +1,314 @@
+/* ============================================================
+   IBIZZI · checkout.js
+   Validaciones + resumen + pago con Mercado Pago (Checkout Pro).
+   Transferencia/efectivo se confirman directo; "mp" crea una
+   preferencia vía netlify/functions/create-preference.js y
+   redirige al cliente a pagar en Mercado Pago.
+   ============================================================ */
+
+import { qs, qsa, formatPrice, storage, bus, getDiscount, clearDiscount, getQueryParam } from './utils.js';
+import { getCart, subtotal, clearCart } from './cart.js';
+
+const NOTE_KEY = 'ibizzi_cart_note';
+
+const SHIPPING_METHODS = [
+  { id: 'mvd',      name: 'Montevideo · 24-48 hs (Tres Cruces)',           price: 190 },
+  { id: 'interior', name: 'Interior · DAC 24-72 hs',                       price: 290 },
+  { id: 'pickup',   name: 'Retiro en local',                               price: 0   }
+];
+
+const PAYMENT_METHODS = [
+  { id: 'mp',       name: 'Mercado Pago',          desc: 'Todas las tarjetas · Hasta 12 cuotas' },
+  { id: 'transfer', name: 'Transferencia bancaria', desc: '10% de descuento en el total' },
+  { id: 'cash',     name: 'Efectivo al retirar',    desc: 'Solo retiro en local' }
+];
+
+const TRANSFER_DISCOUNT_PERCENT = 10;
+
+const state = {
+  shipping: SHIPPING_METHODS[0],
+  payment: PAYMENT_METHODS[0]
+};
+
+/* ---------- Totales ---------- */
+
+/**
+ * Aplica primero el código de descuento (si hay uno cargado desde el
+ * carrito) y luego, si corresponde, el 10% por transferencia bancaria
+ * (ver PAYMENT_METHODS / FAQ). Ambos se aplican sobre el subtotal, no
+ * sobre el envío.
+ */
+function computeTotals() {
+  const sub = subtotal();
+  const shipping = state.shipping.price;
+  const code = getDiscount();
+
+  let discounted = sub;
+  let discountAmount = 0;
+
+  if (code) {
+    const amount = Math.round(discounted * code.percent / 100);
+    discounted -= amount;
+    discountAmount += amount;
+  }
+  if (state.payment.id === 'transfer') {
+    const amount = Math.round(discounted * TRANSFER_DISCOUNT_PERCENT / 100);
+    discounted -= amount;
+    discountAmount += amount;
+  }
+
+  return { sub, shipping, discountAmount, total: discounted + shipping };
+}
+
+/* ---------- Render resumen ---------- */
+
+function renderSummary() {
+  const cart = getCart();
+  const linesEl = qs('#checkout-lines');
+  const { sub, shipping, discountAmount, total } = computeTotals();
+
+  linesEl.innerHTML = cart.map(item => `
+    <li class="order-summary-line">
+      <img src="${item.image}" alt="">
+      <div>
+        <span class="order-summary-line-name">${item.name}</span>
+        <span class="order-summary-line-meta">
+          ${item.size ? `T. ${item.size}` : ''} ${item.color ? `· ${item.color}` : ''} · x${item.qty}
+        </span>
+      </div>
+      <strong>${formatPrice(item.price * item.qty)}</strong>
+    </li>
+  `).join('');
+
+  qs('#checkout-subtotal').textContent = formatPrice(sub);
+  qs('#checkout-shipping').textContent = shipping === 0 ? 'Gratis' : formatPrice(shipping);
+
+  const discountRow = qs('#checkout-discount-row');
+  if (discountRow) {
+    if (discountAmount > 0) {
+      discountRow.hidden = false;
+      qs('#checkout-discount').textContent = `- ${formatPrice(discountAmount)}`;
+    } else {
+      discountRow.hidden = true;
+    }
+  }
+
+  qs('#checkout-total').textContent = formatPrice(total);
+}
+
+/* ---------- Render métodos ---------- */
+
+function renderShipping() {
+  qs('#checkout-shipping-list').innerHTML = SHIPPING_METHODS.map((s, i) => `
+    <label class="checkout-radio">
+      <input type="radio" name="shipping" value="${s.id}" ${i===0?'checked':''}>
+      <div class="checkout-radio-body">
+        <div>
+          <div class="checkout-radio-name">${s.name}</div>
+          <div class="checkout-radio-desc">Entrega estimada según zona</div>
+        </div>
+        <div class="checkout-radio-price">${s.price === 0 ? 'Gratis' : formatPrice(s.price)}</div>
+      </div>
+    </label>
+  `).join('');
+
+  qsa('input[name="shipping"]').forEach(input => {
+    input.addEventListener('change', () => {
+      state.shipping = SHIPPING_METHODS.find(s => s.id === input.value);
+      renderSummary();
+    });
+  });
+}
+
+function renderPayment() {
+  qs('#checkout-payment-list').innerHTML = PAYMENT_METHODS.map((p, i) => `
+    <label class="checkout-radio">
+      <input type="radio" name="payment" value="${p.id}" ${i===0?'checked':''}>
+      <div class="checkout-radio-body">
+        <div>
+          <div class="checkout-radio-name">${p.name}</div>
+          <div class="checkout-radio-desc">${p.desc}</div>
+        </div>
+      </div>
+    </label>
+  `).join('');
+
+  qsa('input[name="payment"]').forEach(input => {
+    input.addEventListener('change', () => {
+      state.payment = PAYMENT_METHODS.find(p => p.id === input.value);
+      renderSummary();
+    });
+  });
+}
+
+/* ---------- Validación ---------- */
+
+function validateForm() {
+  const form = qs('#checkout-form');
+  let valid = true;
+
+  qsa('.form-field', form).forEach(f => f.classList.remove('error'));
+
+  const requiredFields = ['email', 'name', 'phone', 'address', 'city', 'state'];
+  requiredFields.forEach(name => {
+    const input = form.querySelector(`[name="${name}"]`);
+    if (!input?.value?.trim()) {
+      input?.closest('.form-field')?.classList.add('error');
+      valid = false;
+    }
+  });
+
+  // Email básico
+  const emailInput = form.querySelector('[name="email"]');
+  if (emailInput?.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value)) {
+    emailInput.closest('.form-field')?.classList.add('error');
+    valid = false;
+  }
+
+  return valid;
+}
+
+/* ---------- Pago con Mercado Pago (Checkout Pro) ---------- */
+
+const PENDING_KEY = 'ibizzi_pending_order';
+
+/**
+ * Pide al backend (netlify/functions/create-preference.js) que cree la
+ * preferencia de pago en Mercado Pago y devuelva el link de Checkout Pro
+ * al que hay que redirigir al cliente. El access token vive solo en el
+ * backend — nunca se expone acá.
+ */
+async function requestMPPreference(orderData) {
+  const res = await fetch('/.netlify/functions/create-preference', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(orderData)
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok || !data.initPoint) {
+    throw new Error(data.error || 'No se pudo iniciar el pago con Mercado Pago.');
+  }
+  return data.initPoint;
+}
+
+/** Confirma el pedido: limpia carrito/descuento/nota y muestra la pantalla de éxito. */
+function confirmOrder(orderData) {
+  storage.set('ibizzi_last_order', orderData);
+  storage.remove(PENDING_KEY);
+  clearCart();
+  clearDiscount();
+  storage.remove(NOTE_KEY);
+  qs('#checkout-layout').hidden = true;
+  qs('#order-confirmed').hidden = false;
+  qs('#order-number').textContent = orderData.orderNumber;
+}
+
+/**
+ * Si la URL trae ?status=... es porque Mercado Pago acaba de redirigir de
+ * vuelta después del pago (back_urls / auto_return). Devuelve true si ya
+ * se hizo cargo de la pantalla, para que initCheckout no siga de largo.
+ */
+function handleMPReturn() {
+  const status = getQueryParam('status');
+  if (!status) return false;
+
+  qs('#checkout-layout').hidden = true;
+  qs('#checkout-empty').hidden = true;
+
+  const pending = storage.get(PENDING_KEY, null);
+
+  if (status === 'success' && pending) {
+    confirmOrder(pending);
+  } else if (status === 'pending') {
+    qs('#order-pending').hidden = false;
+    qs('#order-pending-number').textContent = pending?.orderNumber || getQueryParam('order') || '-';
+  } else {
+    qs('#order-failed').hidden = false;
+  }
+  return true;
+}
+
+/* ---------- Submit ---------- */
+
+async function handleSubmit(e) {
+  e.preventDefault();
+  if (!validateForm()) return;
+
+  const form = qs('#checkout-form');
+  const formData = new FormData(form);
+  const customer = Object.fromEntries(formData.entries());
+  const cart = getCart();
+  const { sub, discountAmount, total } = computeTotals();
+  const orderNumber = 'IB-' + Math.random().toString(36).substring(2, 8).toUpperCase();
+
+  const orderData = {
+    orderNumber,
+    customer,
+    items: cart,
+    shipping: state.shipping,
+    payment: state.payment,
+    discount: getDiscount(),
+    subtotal: sub,
+    discountAmount,
+    total,
+    createdAt: new Date().toISOString()
+  };
+
+  const btn = qs('#checkout-submit');
+  btn.disabled = true;
+  btn.textContent = 'PROCESANDO…';
+
+  try {
+    if (state.payment.id === 'mp') {
+      // El pedido queda "pendiente" hasta que Mercado Pago confirme el pago
+      // y redirija de vuelta a checkout.html (ver handleMPReturn).
+      storage.set(PENDING_KEY, orderData);
+      const initPoint = await requestMPPreference(orderData);
+      window.location.href = initPoint;
+      return;
+    }
+
+    // Transferencia bancaria / efectivo: se coordina fuera del sitio
+    // (WhatsApp), así que confirmamos el pedido de una.
+    confirmOrder(orderData);
+  } catch (err) {
+    console.error(err);
+    btn.disabled = false;
+    btn.textContent = 'PAGAR AHORA';
+    alert('Hubo un problema procesando el pago. Intentá nuevamente.');
+  }
+}
+
+/* ---------- Init ---------- */
+
+function showEmptyState() {
+  qs('#checkout-layout').hidden = true;
+  qs('#checkout-empty').hidden = false;
+}
+
+export function initCheckout() {
+  if (handleMPReturn()) return;
+
+  const cart = getCart();
+  if (cart.length === 0) {
+    showEmptyState();
+    return;
+  }
+
+  renderShipping();
+  renderPayment();
+  renderSummary();
+
+  const notesInput = qs('#checkout-form [name="notes"]');
+  const savedNote = localStorage.getItem(NOTE_KEY) || '';
+  if (notesInput && savedNote) notesInput.value = savedNote;
+
+  qs('#checkout-form')?.addEventListener('submit', handleSubmit);
+
+  // El resumen (y el estado de "carrito vacío") debe reflejar cambios
+  // hechos desde el drawer sin recargar la página del checkout.
+  bus.on('cart:updated', ({ cart }) => {
+    if (cart.length === 0) showEmptyState();
+    else renderSummary();
+  });
+}

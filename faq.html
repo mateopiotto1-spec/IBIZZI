@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es-UY">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1A1A1A">
+  <title>Preguntas frecuentes · IBIZZI</title>
+  <meta name="description" content="Respuestas a las preguntas más comunes sobre compras, envíos, pagos y devoluciones en IBIZZI.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/cart.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <link rel="icon" type="image/svg+xml" href="assets/placeholders/cat-relojes.svg">
+
+  <style>
+    .faq-item { border-bottom: 1px solid var(--color-border-soft); }
+    .faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      padding-block: 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-serif);
+      font-size: var(--fs-lg);
+      color: var(--color-text-primary);
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: '+';
+      font-family: var(--font-sans);
+      font-weight: 300;
+      font-size: 1.5rem;
+      color: var(--color-text-secondary);
+      transition: transform .3s;
+    }
+    .faq-item[open] summary::after { content: '−'; }
+    .faq-item p { padding: 0 0 1.5rem; color: var(--color-text-secondary); line-height: 1.7; }
+  </style>
+</head>
+<body>
+
+  <div id="shell-top"></div>
+
+  <main class="container-narrow" role="main">
+    <div class="breadcrumbs">
+      <a href="index.html">Inicio</a><span>/</span><span>Preguntas frecuentes</span>
+    </div>
+
+    <h1 class="cart-page-title">Preguntas frecuentes</h1>
+    <p class="text-secondary" style="margin-bottom: 3rem; max-width: 560px;">
+      Todo lo que necesitás saber para comprar tranquilo.
+    </p>
+
+    <div style="max-width: 720px;">
+      <details class="faq-item"><summary>¿Hacen envíos a todo Uruguay?</summary><p>Sí, enviamos a todo el país mediante DAC y otros couriers. Montevideo y Maldonado: 24 a 48 hs hábiles (retiro en agencia Tres Cruces). Interior a agencia DAC: 24 a 72 hs hábiles. Interior a domicilio: 2 a 3 días hábiles. Estos tiempos pueden variar levemente según el nivel de movimiento.</p></details>
+      <details class="faq-item"><summary>¿Cuánto sale el envío?</summary><p>El costo depende del destino: Montevideo desde $190, interior desde $290. El retiro en local es gratis.</p></details>
+      <details class="faq-item"><summary>¿Aceptan todas las tarjetas?</summary><p>Aceptamos Visa, Mastercard, Amex y OCA, con posibilidad de hasta 12 cuotas a través de Mercado Pago.</p></details>
+      <details class="faq-item"><summary>¿Puedo pagar por transferencia?</summary><p>Sí, y tenés un 10% de descuento adicional sobre el total del pedido pagando por transferencia bancaria.</p></details>
+      <details class="faq-item"><summary>¿Puedo cambiar el talle?</summary><p>Sí, tenés 3 días de garantía desde la recepción para solicitar un cambio. El costo de envío del cambio queda a cargo del cliente, y el nuevo producto debe tener stock disponible.</p></details>
+      <details class="faq-item"><summary>¿Hacen devoluciones de dinero?</summary><p>No realizamos devoluciones de dinero, salvo en casos puntuales de errores de stock, errores de pago o algún error de nuestra responsabilidad. Fuera de esas situaciones no se devuelve efectivo ni el importe de la tarjeta.</p></details>
+      <details class="faq-item"><summary>¿Cuándo despachan mi pedido?</summary><p>Los pedidos se despachan el mismo día o al día siguiente hábil de confirmado el pago, dependiendo del nivel de movimiento.</p></details>
+      <details class="faq-item"><summary>¿Los productos son originales?</summary><p>Trabajamos únicamente con productos de calidad de primera línea, con excelente terminación, materiales y diseño — pensados para durar y lucir.</p></details>
+    </div>
+  </main>
+
+  <div id="shell-bottom"></div>
+
+  <script type="module">import './js/app.js';</script>
+</body>
+</html>
