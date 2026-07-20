@@ -67,7 +67,13 @@ export async function onRequestPost(context) {
       return json({ error: 'Mercado Pago rechazó la preferencia', detail: data }, 502);
     }
 
-    return json({ initPoint: data.sandbox_init_point || data.init_point });
+    // Mercado Pago siempre devuelve init_point y sandbox_init_point, sin
+    // importar el tipo de credencial. init_point es el link correcto tanto
+    // para cobrar de verdad (credenciales de producción) como para probar
+    // con un usuario de prueba (credenciales de prueba) — usar
+    // sandbox_init_point acá mandaría a clientes reales a la pantalla de
+    // pago simulado.
+    return json({ initPoint: data.init_point });
   } catch (err) {
     return json({ error: err.message }, 500);
   }
