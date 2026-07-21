@@ -3,7 +3,7 @@
    Tarjeta de producto reutilizable + renderers de grillas.
    ============================================================ */
 
-import { qs, qsa, fetchJSON, formatPrice, calcDiscount } from './utils.js';
+import { qs, qsa, fetchJSON, formatPrice, calcDiscount, trackPixel } from './utils.js';
 import { addItem } from './cart.js';
 import { toggleFavorite, isFavorite } from './favorites.js';
 
@@ -106,6 +106,13 @@ export function wireCardActions(scope = document) {
         qty: 1,
         size: product.sizes?.[0] || null,
         color: product.colors?.[0]?.name || null
+      });
+      trackPixel('AddToCart', {
+        content_ids: [String(product.id)],
+        content_type: 'product',
+        content_name: product.name,
+        value: product.price,
+        currency: product.currency
       });
       // Feedback visual breve
       btn.textContent = 'Agregado';

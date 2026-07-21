@@ -151,6 +151,19 @@ export const bus = {
   }
 };
 
+/* ---------- Meta Pixel ---------- */
+
+/** Envía un evento al Meta Pixel si está cargado (no rompe si un bloqueador lo frenó). */
+export function trackPixel(event, params) {
+  try {
+    if (typeof window.fbq === 'function') {
+      window.fbq('track', event, params);
+    }
+  } catch {
+    /* noop */
+  }
+}
+
 /* ---------- DOM helpers ---------- */
 
 /** Bloquea el scroll del body (drawers, modales). */

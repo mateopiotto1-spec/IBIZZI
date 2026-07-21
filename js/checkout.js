@@ -6,7 +6,7 @@
    Pages Function) y redirige al cliente a pagar en Mercado Pago.
    ============================================================ */
 
-import { qs, qsa, formatPrice, storage, bus, getDiscount, clearDiscount, getQueryParam } from './utils.js';
+import { qs, qsa, formatPrice, storage, bus, getDiscount, clearDiscount, getQueryParam, trackPixel } from './utils.js';
 import { getCart, subtotal, clearCart } from './cart.js';
 
 const NOTE_KEY = 'ibizzi_cart_note';
@@ -191,16 +191,30 @@ async function requestMPPreference(orderData) {
   return data.initPoint;
 }
 
-/** Confirma el pedido: limpia carrito/descuento/nota y muestra la pantalla de éxito. */
+function showOrderConfirmed(orderNumber) {
+  qs('#checkout-layout').hidden = true;
+  qs('#order-confirmed').hidden = false;
+  qs('#order-number').textContent = orderNumber || '-';
+}
+
+/** Confirma el pedido: limpia carrito/descuento/nota, trackea la compra y muestra la pantalla de éxito. */
 function confirmOrder(orderData) {
   storage.set('ibizzi_last_order', orderData);
   storage.remove(PENDING_KEY);
   clearCart();
   clearDiscount();
   storage.remove(NOTE_KEY);
-  qs('#checkout-layout').hidden = true;
-  qs('#order-confirmed').hidden = false;
-  qs('#order-number').textContent = orderData.orderNumber;
+
+  trackPixel('Purchase', {
+    content_ids: (orderData.items || []).map(i => String(i.id)),
+    content_type: 'product',
+    contents: (orderData.items || []).map(i => ({ id: String(i.id), quantity: i.qty })),
+    num_items: (orderData.items || []).reduce((sum, i) => sum + (i.qty || 1), 0),
+    value: orderData.total,
+    currency: 'UYU'
+  });
+
+  showOrderConfirmed(orderData.orderNumber);
 }
 
 /**
@@ -219,6 +233,12 @@ function handleMPReturn() {
 
   if (status === 'success' && pending) {
     confirmOrder(pending);
+  } else if (status === 'success') {
+    // El pedido ya se confirmó antes (ej: el cliente refrescó la pantalla
+    // de éxito) — no hay nada pendiente, así que solo re-mostramos la
+    // confirmación sin volver a tocar el carrito ni trackear la compra de nuevo.
+    const last = storage.get('ibizzi_last_order', null);
+    showOrderConfirmed(last?.orderNumber || getQueryParam('order'));
   } else if (status === 'pending') {
     qs('#order-pending').hidden = false;
     qs('#order-pending-number').textContent = pending?.orderNumber || getQueryParam('order') || '-';
@@ -298,6 +318,15 @@ export function initCheckout() {
   renderShipping();
   renderPayment();
   renderSummary();
+
+  trackPixel('InitiateCheckout', {
+    content_ids: cart.map(i => String(i.id)),
+    content_type: 'product',
+    contents: cart.map(i => ({ id: String(i.id), quantity: i.qty })),
+    num_items: cart.reduce((sum, i) => sum + (i.qty || 1), 0),
+    value: subtotal(),
+    currency: 'UYU'
+  });
 
   const notesInput = qs('#checkout-form [name="notes"]');
   const savedNote = localStorage.getItem(NOTE_KEY) || '';

@@ -3,7 +3,7 @@
    Detalle de producto: galería + variantes + sticky bar móvil
    ============================================================ */
 
-import { qs, qsa, getQueryParam, formatPrice, calcDiscount } from './utils.js';
+import { qs, qsa, getQueryParam, formatPrice, calcDiscount, trackPixel } from './utils.js';
 import { loadProducts } from './products.js';
 import { addItem } from './cart.js';
 import { toggleFavorite, isFavorite } from './favorites.js';
@@ -188,6 +188,14 @@ function render(p) {
   wireAdd();
   wireStickyBar();
   updateSEO(p);
+
+  trackPixel('ViewContent', {
+    content_ids: [String(p.id)],
+    content_type: 'product',
+    content_name: p.name,
+    value: p.price,
+    currency: p.currency
+  });
 }
 
 /* ---------- Galería (swipe + thumbs + counter) ---------- */
@@ -263,6 +271,17 @@ function validate() {
   return true;
 }
 
+function trackAddToCart(qty) {
+  const p = currentProduct;
+  trackPixel('AddToCart', {
+    content_ids: [String(p.id)],
+    content_type: 'product',
+    content_name: p.name,
+    value: p.price * qty,
+    currency: p.currency
+  });
+}
+
 function wireAdd() {
   const qtyValue = qs('#pp-qty-value');
   qs('#pp-qty-dec')?.addEventListener('click', () => {
@@ -273,28 +292,22 @@ function wireAdd() {
   });
   qs('#pp-add-btn')?.addEventListener('click', () => {
     if (!validate()) return;
-    addItem(currentProduct, {
-      qty: parseInt(qtyValue.textContent, 10),
-      size: selectedSize,
-      color: selectedColor
-    });
+    const qty = parseInt(qtyValue.textContent, 10);
+    addItem(currentProduct, { qty, size: selectedSize, color: selectedColor });
+    trackAddToCart(qty);
   });
   qs('#pp-buy-btn')?.addEventListener('click', () => {
     if (!validate()) return;
-    addItem(currentProduct, {
-      qty: parseInt(qtyValue.textContent, 10),
-      size: selectedSize,
-      color: selectedColor
-    });
+    const qty = parseInt(qtyValue.textContent, 10);
+    addItem(currentProduct, { qty, size: selectedSize, color: selectedColor });
+    trackAddToCart(qty);
     setTimeout(() => window.location.href = 'checkout.html', 400);
   });
   qs('#sticky-add-btn')?.addEventListener('click', () => {
     if (!validate()) return;
-    addItem(currentProduct, {
-      qty: parseInt(qtyValue.textContent, 10),
-      size: selectedSize,
-      color: selectedColor
-    });
+    const qty = parseInt(qtyValue.textContent, 10);
+    addItem(currentProduct, { qty, size: selectedSize, color: selectedColor });
+    trackAddToCart(qty);
   });
 }
 
