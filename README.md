@@ -74,7 +74,7 @@ ibizzi-store/
 │   └── checkout.js     Validaciones + processPayment() stub
 │
 ├── data/               Datos en JSON
-│   ├── products.json   Catálogo (8 productos de arranque)
+│   ├── products.json   Catálogo (datos de arranque — todavía no son los reales del negocio)
 │   ├── categories.json Las 4 categorías principales
 │   └── reviews.json    Reseñas globales
 │
@@ -83,6 +83,11 @@ ibizzi-store/
 │   ├── icons/          SVGs de UI
 │   └── placeholders/   SVGs editoriales locales (fallback)
 │
+├── functions/
+│   └── api/
+│       └── create-preference.js   Cloudflare Pages Function: crea la preferencia de pago en Mercado Pago
+│
+├── .env / .dev.vars    Credenciales locales (gitignorados, NO se suben)
 └── README.md
 ```
 
@@ -154,21 +159,39 @@ Cambiar la paleta en un solo lugar.
 
 ---
 
-## Mercado Pago (integración futura)
+## Deploy — Cloudflare Pages + GitHub
 
-El botón "PAGAR AHORA" del checkout llama a `processPayment(orderData)` en `js/checkout.js`, que actualmente simula el pago exitoso y muestra confirmación.
+El sitio está en producción, conectado así:
 
-Para conectar Mercado Pago real necesitás un backend. **Nunca pongas el access token en el frontend.**
+- **Repo**: [github.com/Pierovoltolini/ibizzistore](https://github.com/Pierovoltolini/ibizzistore), rama `main`.
+- **Hosting**: proyecto de **Cloudflare Pages** "ibizzistore" (⚡, no confundir con el Worker `ibizzistore.volpie88.workers.dev` que quedó del setup automático de Cloudflare y no se usa para nada).
+- **Dominios**: `ibizzistore.uy` (real) y `ibizzistore.pages.dev` (siempre disponible, útil para debug).
+- **Deploy automático**: cada `git push` a `main` dispara un build nuevo solo. Si cambiaste una variable de entorno en el panel de Cloudflare, **hace falta un deploy nuevo para que la tome** — no aplica retroactivamente al deployment que ya está corriendo. Si no querés esperar al próximo push, se puede forzar con un commit vacío:
+  ```bash
+  git commit --allow-empty -m "Trigger redeploy" && git push origin main
+  ```
 
-Flujo recomendado:
+### Variable de entorno obligatoria
 
-1. **Frontend** envía `orderData` a `POST /api/orders` (tu backend)
-2. **Backend** crea la preferencia con el SDK oficial de MP usando el `ACCESS_TOKEN` privado
-3. **Backend** devuelve `init_point` (o `preference_id` si usás Bricks)
-4. **Frontend** redirige a `init_point` (Checkout Pro) o carga Bricks
-5. **Backend** recibe la notificación (webhook) y confirma el pedido
+`MP_ACCESS_TOKEN` — se configura en el panel de Cloudflare: proyecto Pages → **Settings → Variables and secrets** → tipo **Secret**, aplicada a Production (y Preview). **Sin esto, el pago con Mercado Pago no funciona** (la función devuelve error 500). Nunca vive en el código ni en git — local se usa `.env` / `.dev.vars` (gitignorados) solo para pruebas manuales con `curl`.
 
-El comentario en `js/checkout.js` marca exactamente dónde enganchar cada paso.
+---
+
+## Mercado Pago (integración real, ya conectada)
+
+El checkout usa **Checkout Pro** (redirección) con credenciales de **producción** — cobra plata real.
+
+Cómo funciona (`js/checkout.js` + `functions/api/create-preference.js`):
+
+1. Al pagar con Mercado Pago, el frontend arma `orderData` (cliente, carrito, envío, descuento, total) y lo guarda como "pendiente" en `localStorage` (`ibizzi_pending_order`).
+2. Llama a `POST /api/create-preference` — una **Cloudflare Pages Function** que crea la preferencia en la API de Mercado Pago usando `MP_ACCESS_TOKEN` (nunca se expone al navegador) y devuelve el `init_point` real.
+3. El navegador redirige al cliente a pagar en Mercado Pago.
+4. Mercado Pago redirige de vuelta a `checkout.html?status=success|failure|pending&order=...` (configurado vía `back_urls` + `auto_return: 'approved'`).
+5. `handleMPReturn()` en `checkout.js` confirma el pedido (limpia carrito, trackea `Purchase` en el Pixel) o muestra la pantalla de pendiente/rechazado según corresponda.
+
+Transferencia bancaria y efectivo **no pasan por Mercado Pago** — se confirman directo en el sitio porque se coordinan por fuera (WhatsApp).
+
+⚠️ **Pendiente importante**: hoy, si un pago se confirma, **nadie recibe un aviso** — el pedido solo queda en el `localStorage` del navegador del cliente. Falta conectar un webhook de Mercado Pago que avise por email/WhatsApp cuando entra un pedido real.
 
 ---
 
@@ -194,11 +217,29 @@ El comentario en `js/checkout.js` marca exactamente dónde enganchar cada paso.
 
 ---
 
-## Cosas a agregar cuando la marca lo pida
+## Meta Pixel (ya conectado)
 
+Pixel ID `1561978585573327`, cargado en el `<head>` de las 10 páginas. Eventos trackeados (vía `trackPixel()` en `js/utils.js`):
+
+| Evento | Dónde se dispara |
+|---|---|
+| `PageView` | Automático en cada página |
+| `ViewContent` | Al abrir la ficha de un producto |
+| `AddToCart` | Tarjeta rápida y página de producto (incl. sticky bar móvil) |
+| `InitiateCheckout` | Al entrar a `checkout.html` con carrito no vacío |
+| `Purchase` | Al confirmarse un pedido (transferencia, efectivo o vuelta de Mercado Pago) |
+
+---
+
+## Pendientes conocidos
+
+- **Aviso de pedidos**: no hay notificación automática (email/WhatsApp/webhook) cuando se confirma un pedido — ver sección de Mercado Pago arriba. Es lo más urgente.
+- **Catálogo real**: `data/products.json` todavía tiene productos/precios inventados durante el desarrollo, no el catálogo real del negocio (que incluye categorías como remeras y gorras que hoy no están). El precio del "Reloj Clásico Carbón" además quedó en un valor de prueba ($50) para testear el pago con Mercado Pago — revisar antes de promocionar la tienda.
+- **Fotos reales**: reemplazar los placeholders SVG por fotos de producto.
 - Cuentas de usuario (registro/login) → requiere backend
 - Multi-idioma (es/en) → i18n en JSON
 - Wishlist compartible por link
 - Blog editorial
 - Chat de WhatsApp flotante
-- Analytics (GA4 / Meta Pixel)
+- Formularios de contacto/newsletter no envían nada todavía (solo muestran un mensaje)
+- Links del footer sin destino real (Política de privacidad, Términos, Mis pedidos, Seguimiento de pedido, Guía de talles)
