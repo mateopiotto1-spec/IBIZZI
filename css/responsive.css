@@ -35,11 +35,8 @@
   .header-right { justify-self: end; }
   .header-left  { justify-self: start; }
 
-  /* Nav aparece en desktop */
-  .header-nav { display: block; }
-
-  /* En tablet+ ocultamos la hamburguesa */
-  .hamburger { display: none; }
+  /* El nav completo no aparece acá: 6 links no entran en el ancho de
+     tablet sin apretarse. Hasta 1024px se usa la hamburguesa. */
 
   /* Footer grid */
   .footer-grid {
@@ -73,7 +70,9 @@
   /* Announcement sin scroll */
   .announcement-inner { overflow-x: visible; }
 
-  .header-nav-list { gap: var(--space-7); }
+  /* Recién acá hay ancho para el nav completo */
+  .header-nav { display: block; }
+  .hamburger  { display: none; }
 }
 
 /* ==========================================================

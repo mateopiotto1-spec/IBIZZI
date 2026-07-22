@@ -32,7 +32,7 @@ const shellTopHTML = `
             <li><a href="products.html?category=indumentaria" class="header-nav-link">Indumentaria</a></li>
             <li><a href="products.html?category=relojes" class="header-nav-link">Relojes</a></li>
             <li><a href="products.html?category=accesorios" class="header-nav-link">Accesorios</a></li>
-            <li><a href="products.html?category=zuecos%20nike%20mind" class="header-nav-link">Zuecos Nike Mind</a></li>
+            <li><a href="products.html?category=zuecos%20nike%20mind" class="header-nav-link">Nike Mind</a></li>
             <li><a href="products.html?filter=new" class="header-nav-link">Nuevos</a></li>
           </ul>
         </nav>

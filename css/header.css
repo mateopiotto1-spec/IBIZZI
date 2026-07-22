@@ -87,19 +87,25 @@
 
 .header-nav-list {
   display: flex;
+  align-items: center;
   list-style: none;
-  gap: var(--space-6);
+  /* Fluido: se aprieta en pantallas chicas y respira en las grandes,
+     así los 6 links entran sin partirse en ningún ancho. */
+  gap: clamp(1rem, 1.6vw, 2rem);
 }
 
 .header-nav-link {
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: clamp(11px, 0.85vw, 12px);
   font-weight: var(--fw-medium);
-  letter-spacing: var(--ls-wider);
+  letter-spacing: clamp(0.08em, 0.35vw, 0.16em);
   text-transform: uppercase;
   color: var(--color-text-primary);
   padding-block: var(--space-2);
   position: relative;
+  /* Sin esto el grid del header comprime la columna del nav hasta el
+     ancho de la palabra más larga y parte los links en varias líneas. */
+  white-space: nowrap;
   transition: var(--transition-color);
 }
 .header-nav-link::after {
