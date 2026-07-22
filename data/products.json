@@ -7,8 +7,8 @@
     "brand": "BRZCO",
     "category": "Indumentaria",
     "subcategory": "Buzos",
-    "shortDescription": "Buzo oversize en gris, algodón peinado.",
-    "longDescription": "Buzo BRZCO de corte oversize confeccionado en algodón peinado afelpado. Cuello redondo, puños y cintura elastizados. También disponible en tono oscuro.",
+    "shortDescription": "Hoodie oversize gris con estrella BRZCO y llamas en mangas.",
+    "longDescription": "Hoodie BRZCO de corte oversize en gris lavado. Estrella central rodeada de estrellas y logo BRZCO en el pecho, llamas con estrella aplicadas sobre ambas mangas y bordado a tono en la espalda, todo en negro sobre gris. Capucha forrada, bolsillo canguro, puños y cintura elastizados. También disponible en tono oscuro.",
     "price": 2190,
     "oldPrice": null,
     "discount": 0,
@@ -20,23 +20,27 @@
       { "name": "Gris", "hex": "#8A8A8A" }
     ],
     "images": [
-      "assets/placeholders/product-01-1.svg",
-      "assets/placeholders/product-01-2.svg",
-      "assets/placeholders/product-01-3.svg"
+      "assets/products/buzo-brzco-gris-1.jpg",
+      "assets/products/buzo-brzco-gris-2.jpg",
+      "assets/products/buzo-brzco-gris-3.jpg",
+      "assets/products/buzo-brzco-gris-4.jpg",
+      "assets/products/buzo-brzco-gris-5.jpg",
+      "assets/products/buzo-brzco-gris-6.jpg",
+      "assets/products/buzo-brzco-gris-7.jpg"
     ],
     "video": null,
     "featured": true,
     "new": true,
     "bestSeller": false,
     "sold": 0,
-    "tags": ["buzo", "brzco", "gris", "oversize"],
+    "tags": ["buzo", "hoodie", "brzco", "gris", "oversize", "estrellas", "llamas"],
     "specifications": [
       { "label": "Material", "value": "100% algodón peinado" },
       { "label": "Corte", "value": "Oversize" },
       { "label": "Cuidados", "value": "Lavar a máquina, agua fría" }
     ],
     "complementaryProducts": [5, 6],
-    "recommendedProducts": [3, 2],
+    "recommendedProducts": [13, 3],
     "reviews": []
   },
   {
@@ -118,49 +122,6 @@
     "reviews": []
   },
   {
-    "id": 4,
-    "slug": "reloj-clasico-carbon",
-    "sku": "IBZ-RLJ-004",
-    "name": "Reloj Clásico Carbón",
-    "brand": "Ibizzi Horology",
-    "category": "Relojes",
-    "subcategory": "Clásicos",
-    "shortDescription": "Caja acero cepillado, esfera minimal, malla cuero.",
-    "longDescription": "Reloj de esfera de 40 mm con caja de acero cepillado color carbón. Movimiento de cuarzo japonés, agujas afiladas y marcadores mínimos. Malla en cuero italiano.",
-    "price": 50,
-    "oldPrice": null,
-    "discount": 0,
-    "currency": "UYU",
-    "stock": 4,
-    "status": "available",
-    "sizes": ["Único"],
-    "colors": [
-      { "name": "Carbón / Cuero negro", "hex": "#1A1A1A" },
-      { "name": "Plata / Cuero marrón", "hex": "#7A5030" }
-    ],
-    "images": [
-      "assets/placeholders/product-04-1.svg",
-      "assets/placeholders/product-04-2.svg"
-    ],
-    "video": null,
-    "featured": true,
-    "new": false,
-    "bestSeller": true,
-    "sold": 63,
-    "tags": ["reloj", "acero", "cuero", "minimal"],
-    "specifications": [
-      { "label": "Caja", "value": "40 mm acero cepillado" },
-      { "label": "Movimiento", "value": "Cuarzo japonés" },
-      { "label": "Resistencia", "value": "3 ATM" },
-      { "label": "Garantía", "value": "1 año" }
-    ],
-    "complementaryProducts": [1, 3, 6],
-    "recommendedProducts": [5, 6, 8],
-    "reviews": [
-      { "author": "Sebastián R.", "rating": 5, "comment": "Se ve mucho mejor que en las fotos.", "date": "2026-03-18" }
-    ]
-  },
-  {
     "id": 5,
     "slug": "cinturon-cuero-italiano",
     "sku": "IBZ-ACC-005",
@@ -196,8 +157,8 @@
       { "label": "Ancho", "value": "35 mm" },
       { "label": "Origen", "value": "Italia" }
     ],
-    "complementaryProducts": [1, 3, 4],
-    "recommendedProducts": [4, 6, 7],
+    "complementaryProducts": [1, 3, 13],
+    "recommendedProducts": [6, 7, 14],
     "reviews": []
   },
   {
@@ -235,8 +196,8 @@
       { "label": "Armazón", "value": "Metal ligero" },
       { "label": "Cristales", "value": "Polarizados UV400" }
     ],
-    "complementaryProducts": [1, 4, 5],
-    "recommendedProducts": [4, 5, 8],
+    "complementaryProducts": [1, 5, 13],
+    "recommendedProducts": [5, 14, 15],
     "reviews": []
   },
   {
@@ -361,8 +322,8 @@
     "brand": "Nike",
     "category": "Zuecos Nike Mind",
     "subcategory": "Premium",
-    "shortDescription": "Nike Mind Premium en negro.",
-    "longDescription": "Zueco Nike Mind Premium en negro. Materiales de mayor calidad y terminaciones premium. También disponible en gris y rojo.",
+    "shortDescription": "Nike Mind Premium en negro, monopieza con suela de tacos.",
+    "longDescription": "Zueco Nike Mind Premium en negro total. Construcción monopieza moldeada sin costuras, empeine perforado para ventilación y Swoosh al lateral. Suela de tacos con amortiguación naranja a la vista y plantilla acolchada. Talón abierto, entrás y salís sin desatar nada. Viene en su caja Nike Mind. También disponible en gris y rojo.",
     "price": 2800,
     "oldPrice": 3200,
     "discount": 13,
@@ -374,8 +335,9 @@
       { "name": "Negro", "hex": "#101010" }
     ],
     "images": [
-      "assets/placeholders/product-10-1.svg",
-      "assets/placeholders/product-10-2.svg"
+      "assets/products/nike-mind-premium-negro-1.jpg",
+      "assets/products/nike-mind-premium-negro-2.jpg",
+      "assets/products/nike-mind-premium-negro-3.jpg"
     ],
     "video": null,
     "featured": true,
@@ -384,8 +346,10 @@
     "sold": 0,
     "tags": ["zueco", "nike", "premium", "negro"],
     "specifications": [
-      { "label": "Capellada", "value": "Cuero premium" },
-      { "label": "Suela", "value": "Goma" }
+      { "label": "Construcción", "value": "Monopieza moldeada sin costuras" },
+      { "label": "Empeine", "value": "Perforado para ventilación" },
+      { "label": "Suela", "value": "Goma con tacos de amortiguación" },
+      { "label": "Calce", "value": "Talón abierto, sin cordones" }
     ],
     "complementaryProducts": [5, 6],
     "recommendedProducts": [11, 12],
@@ -399,8 +363,8 @@
     "brand": "Nike",
     "category": "Zuecos Nike Mind",
     "subcategory": "Premium",
-    "shortDescription": "Nike Mind Premium en gris.",
-    "longDescription": "Zueco Nike Mind Premium en gris. Materiales de mayor calidad y terminaciones premium. También disponible en negro y rojo.",
+    "shortDescription": "Nike Mind Premium en gris, monopieza con suela de tacos.",
+    "longDescription": "Zueco Nike Mind Premium en gris. Construcción monopieza moldeada sin costuras, empeine perforado para ventilación y Swoosh al lateral. Suela de tacos con amortiguación naranja a la vista y plantilla acolchada con el logo. Talón abierto, entrás y salís sin desatar nada. Viene en su caja Nike Mind. También disponible en negro y rojo.",
     "price": 2800,
     "oldPrice": 3200,
     "discount": 13,
@@ -412,8 +376,8 @@
       { "name": "Gris", "hex": "#8A8A8A" }
     ],
     "images": [
-      "assets/placeholders/product-11-1.svg",
-      "assets/placeholders/product-11-2.svg"
+      "assets/products/nike-mind-premium-gris-1.jpg",
+      "assets/products/nike-mind-premium-gris-2.jpg"
     ],
     "video": null,
     "featured": false,
@@ -422,8 +386,10 @@
     "sold": 0,
     "tags": ["zueco", "nike", "premium", "gris"],
     "specifications": [
-      { "label": "Capellada", "value": "Cuero premium" },
-      { "label": "Suela", "value": "Goma" }
+      { "label": "Construcción", "value": "Monopieza moldeada sin costuras" },
+      { "label": "Empeine", "value": "Perforado para ventilación" },
+      { "label": "Suela", "value": "Goma con tacos de amortiguación" },
+      { "label": "Calce", "value": "Talón abierto, sin cordones" }
     ],
     "complementaryProducts": [5, 6],
     "recommendedProducts": [10, 12],
@@ -437,8 +403,8 @@
     "brand": "Nike",
     "category": "Zuecos Nike Mind",
     "subcategory": "Premium",
-    "shortDescription": "Nike Mind Premium en rojo.",
-    "longDescription": "Zueco Nike Mind Premium en rojo. Materiales de mayor calidad y terminaciones premium. También disponible en negro y gris.",
+    "shortDescription": "Nike Mind Premium en rojo, monopieza con suela de tacos.",
+    "longDescription": "Zueco Nike Mind Premium en rojo intenso. Construcción monopieza moldeada sin costuras, empeine perforado para ventilación y Swoosh al lateral. Suela de tacos con amortiguación naranja a la vista y plantilla acolchada. Talón abierto, entrás y salís sin desatar nada. Viene en su caja Nike Mind. También disponible en negro y gris.",
     "price": 2800,
     "oldPrice": 3200,
     "discount": 13,
@@ -450,8 +416,9 @@
       { "name": "Rojo", "hex": "#B03A2E" }
     ],
     "images": [
-      "assets/placeholders/product-12-1.svg",
-      "assets/placeholders/product-12-2.svg"
+      "assets/products/nike-mind-premium-rojo-1.jpg",
+      "assets/products/nike-mind-premium-rojo-2.jpg",
+      "assets/products/nike-mind-premium-rojo-3.jpg"
     ],
     "video": null,
     "featured": false,
@@ -460,11 +427,175 @@
     "sold": 0,
     "tags": ["zueco", "nike", "premium", "rojo"],
     "specifications": [
-      { "label": "Capellada", "value": "Cuero premium" },
-      { "label": "Suela", "value": "Goma" }
+      { "label": "Construcción", "value": "Monopieza moldeada sin costuras" },
+      { "label": "Empeine", "value": "Perforado para ventilación" },
+      { "label": "Suela", "value": "Goma con tacos de amortiguación" },
+      { "label": "Calce", "value": "Talón abierto, sin cordones" }
     ],
     "complementaryProducts": [5, 6],
     "recommendedProducts": [10, 11],
+    "reviews": []
+  },
+  {
+    "id": 13,
+    "slug": "buzo-angels-of-hell",
+    "sku": "IBZ-BUZ-013",
+    "name": "Buzo Angels of Hell",
+    "brand": "BRZCO",
+    "category": "Indumentaria",
+    "subcategory": "Buzos",
+    "shortDescription": "Hoodie oversize marrón oscuro con estampa Angels of Hell.",
+    "longDescription": "Hoodie BRZCO Angels of Hell de corte oversize en marrón oscuro lavado. Al frente, logo BRZCO y estrella con llama sobre el pecho, más el lettering «ANGELS OF HELL» envuelto en llamas blancas. En la espalda, el óvalo Angels of Hell en blanco con textura gastada. Capucha forrada, bolsillo canguro, puños y cintura elastizados.",
+    "price": 2190,
+    "oldPrice": null,
+    "discount": 0,
+    "currency": "UYU",
+    "stock": 6,
+    "status": "available",
+    "sizes": ["S", "M", "L"],
+    "colors": [
+      { "name": "Marrón Oscuro", "hex": "#3A302C" }
+    ],
+    "images": [
+      "assets/products/buzo-angels-of-hell-1.jpg",
+      "assets/products/buzo-angels-of-hell-2.jpg",
+      "assets/products/buzo-angels-of-hell-3.jpg",
+      "assets/products/buzo-angels-of-hell-4.jpg",
+      "assets/products/buzo-angels-of-hell-5.jpg",
+      "assets/products/buzo-angels-of-hell-6.jpg"
+    ],
+    "video": null,
+    "featured": true,
+    "new": true,
+    "bestSeller": false,
+    "sold": 0,
+    "tags": ["buzo", "hoodie", "brzco", "angels of hell", "marron", "oversize", "llamas"],
+    "specifications": [
+      { "label": "Material", "value": "100% algodón peinado" },
+      { "label": "Corte", "value": "Oversize" },
+      { "label": "Cuidados", "value": "Lavar a máquina, agua fría" }
+    ],
+    "complementaryProducts": [5, 6],
+    "recommendedProducts": [1, 3],
+    "reviews": []
+  },
+  {
+    "id": 14,
+    "slug": "reloj-armani-cronografo-blanco",
+    "sku": "IBZ-RLJ-014",
+    "name": "Emporio Armani Cronógrafo Blanco",
+    "brand": "Emporio Armani",
+    "category": "Relojes",
+    "subcategory": "Cronógrafos",
+    "shortDescription": "Cronógrafo de esfera blanca con malla de cuero negro.",
+    "longDescription": "Emporio Armani cronógrafo de esfera blanca con tres subesferas, fecha y agujas plateadas afiladas. Caja de acero pulido con pulsadores laterales, logo del águila aplicado sobre el dial y malla de cuero negro con costura al tono. Un reloj de vestir que funciona igual de bien con traje que con jean.",
+    "price": null,
+    "oldPrice": null,
+    "discount": 0,
+    "currency": "UYU",
+    "stock": 0,
+    "status": "out_of_stock",
+    "sizes": ["Único"],
+    "colors": [
+      { "name": "Acero / Cuero negro", "hex": "#1A1A1A" }
+    ],
+    "images": [
+      "assets/products/reloj-armani-cronografo-blanco-1.jpg",
+      "assets/products/reloj-armani-cronografo-blanco-2.jpg"
+    ],
+    "video": null,
+    "featured": true,
+    "new": true,
+    "bestSeller": false,
+    "sold": 0,
+    "tags": ["reloj", "armani", "cronografo", "cuero", "blanco"],
+    "specifications": [
+      { "label": "Función", "value": "Cronógrafo con fecha" },
+      { "label": "Caja", "value": "Acero pulido" },
+      { "label": "Esfera", "value": "Blanca con tres subesferas" },
+      { "label": "Malla", "value": "Cuero negro" }
+    ],
+    "complementaryProducts": [5, 6],
+    "recommendedProducts": [15, 16],
+    "reviews": []
+  },
+  {
+    "id": 15,
+    "slug": "reloj-armani-diver-acero",
+    "sku": "IBZ-RLJ-015",
+    "name": "Emporio Armani Diver Acero",
+    "brand": "Emporio Armani",
+    "category": "Relojes",
+    "subcategory": "Diver",
+    "shortDescription": "Cronógrafo diver de acero, esfera negra, 100 metros.",
+    "longDescription": "Emporio Armani diver con esfera negra, bisel giratorio graduado y brazalete de acero macizo. Cronógrafo de tres subesferas con fecha, índices y agujas luminiscentes, y resistencia al agua de 100 metros marcada en el dial. El más deportivo de la selección, con presencia pero sin exagerar.",
+    "price": null,
+    "oldPrice": null,
+    "discount": 0,
+    "currency": "UYU",
+    "stock": 0,
+    "status": "out_of_stock",
+    "sizes": ["Único"],
+    "colors": [
+      { "name": "Acero / Esfera negra", "hex": "#2B2E33" }
+    ],
+    "images": [
+      "assets/products/reloj-armani-diver-acero-1.jpg"
+    ],
+    "video": null,
+    "featured": true,
+    "new": true,
+    "bestSeller": false,
+    "sold": 0,
+    "tags": ["reloj", "armani", "diver", "cronografo", "acero", "negro"],
+    "specifications": [
+      { "label": "Función", "value": "Cronógrafo con fecha" },
+      { "label": "Caja", "value": "Acero con bisel giratorio" },
+      { "label": "Esfera", "value": "Negra con tres subesferas" },
+      { "label": "Brazalete", "value": "Acero macizo" },
+      { "label": "Resistencia", "value": "100 metros" }
+    ],
+    "complementaryProducts": [5, 6],
+    "recommendedProducts": [14, 16],
+    "reviews": []
+  },
+  {
+    "id": 16,
+    "slug": "reloj-tommy-hilfiger-azul",
+    "sku": "IBZ-RLJ-016",
+    "name": "Tommy Hilfiger Azul",
+    "brand": "Tommy Hilfiger",
+    "category": "Relojes",
+    "subcategory": "Clásicos",
+    "shortDescription": "Esfera azul marino, caja de acero y malla de cuero azul.",
+    "longDescription": "Tommy Hilfiger de esfera azul marino con acabado soleado, índices de puntos, segundero pequeño con la bandera de la marca y ventana de fecha. Caja de acero pulido de perfil fino y malla de cuero azul. Limpio y sobrio: el más discreto de los tres.",
+    "price": null,
+    "oldPrice": null,
+    "discount": 0,
+    "currency": "UYU",
+    "stock": 0,
+    "status": "out_of_stock",
+    "sizes": ["Único"],
+    "colors": [
+      { "name": "Acero / Cuero azul", "hex": "#1B2A4A" }
+    ],
+    "images": [
+      "assets/products/reloj-tommy-hilfiger-azul-1.jpg"
+    ],
+    "video": null,
+    "featured": false,
+    "new": true,
+    "bestSeller": false,
+    "sold": 0,
+    "tags": ["reloj", "tommy hilfiger", "azul", "cuero", "clasico"],
+    "specifications": [
+      { "label": "Función", "value": "Segundero pequeño con fecha" },
+      { "label": "Caja", "value": "Acero pulido" },
+      { "label": "Esfera", "value": "Azul marino" },
+      { "label": "Malla", "value": "Cuero azul" }
+    ],
+    "complementaryProducts": [5, 6],
+    "recommendedProducts": [14, 15],
     "reviews": []
   }
 ]

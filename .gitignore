@@ -3,3 +3,6 @@
 node_modules/
 .netlify/
 .wrangler/
+
+# Fotos originales sin procesar (las versiones publicadas viven en assets/products/)
+fotos/
