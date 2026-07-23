@@ -597,5 +597,165 @@
     "complementaryProducts": [5, 6],
     "recommendedProducts": [14, 15],
     "reviews": []
+  },
+  {
+    "id": 17,
+    "slug": "reloj-tissot-prx-negro",
+    "sku": "IBZ-RLJ-017",
+    "name": "Tissot PRX Negro",
+    "brand": "Tissot",
+    "category": "Relojes",
+    "subcategory": "PRX",
+    "shortDescription": "PRX de esfera negra y brazalete de acero integrado. En preventa.",
+    "longDescription": "Tissot PRX de esfera negra con textura vertical, caja tonneau de acero e índices aplicados. Brazalete integrado de acero con eslabones satinados y pulidos, cierre desplegable y la estética deportiva-elegante que hizo del PRX un ícono. Modelo en preventa: reservá el tuyo por WhatsApp y lo asegurás al mejor precio de lanzamiento.",
+    "price": null,
+    "oldPrice": null,
+    "discount": 0,
+    "currency": "UYU",
+    "stock": 0,
+    "status": "preorder",
+    "sizes": ["Único"],
+    "colors": [
+      { "name": "Negro / Acero", "hex": "#1A1A1A" }
+    ],
+    "images": [
+      "assets/products/reloj-tissot-prx-negro-1.jpg",
+      "assets/products/reloj-tissot-prx-negro-2.jpg"
+    ],
+    "video": null,
+    "featured": false,
+    "new": true,
+    "bestSeller": false,
+    "sold": 0,
+    "tags": ["reloj", "tissot", "prx", "acero", "negro", "preventa"],
+    "specifications": [
+      { "label": "Modelo", "value": "PRX" },
+      { "label": "Caja", "value": "Acero, forma tonneau" },
+      { "label": "Esfera", "value": "Negra con textura vertical" },
+      { "label": "Brazalete", "value": "Acero integrado" }
+    ],
+    "complementaryProducts": [5, 6],
+    "recommendedProducts": [14, 16],
+    "reviews": []
+  },
+  {
+    "id": 18,
+    "slug": "reloj-patek-nautilus-acero",
+    "sku": "IBZ-RLJ-018",
+    "name": "Patek Philippe Nautilus",
+    "brand": "Patek Philippe",
+    "category": "Relojes",
+    "subcategory": "Nautilus",
+    "shortDescription": "Nautilus de esfera oscura texturada y brazalete de acero integrado. En preventa.",
+    "longDescription": "Patek Philippe Nautilus con la icónica caja octogonal de acero y bisel de líneas suaves. Esfera oscura con textura de estrías horizontales, índices aplicados, agujas de bastón y ventana de fecha a las 3. Brazalete integrado de acero con eslabones satinados y pulidos. Modelo en preventa: reservá el tuyo por WhatsApp y lo asegurás al mejor precio de lanzamiento.",
+    "price": null,
+    "oldPrice": null,
+    "discount": 0,
+    "currency": "UYU",
+    "stock": 0,
+    "status": "preorder",
+    "sizes": ["Único"],
+    "colors": [
+      { "name": "Acero / Esfera negra", "hex": "#1A1A1A" }
+    ],
+    "images": [
+      "assets/products/reloj-patek-nautilus-acero-1.jpg",
+      "assets/products/reloj-patek-nautilus-acero-2.jpg"
+    ],
+    "video": null,
+    "featured": false,
+    "new": true,
+    "bestSeller": false,
+    "sold": 0,
+    "tags": ["reloj", "patek philippe", "nautilus", "acero", "negro", "preventa"],
+    "specifications": [
+      { "label": "Modelo", "value": "Nautilus" },
+      { "label": "Caja", "value": "Acero, forma octogonal" },
+      { "label": "Esfera", "value": "Oscura con textura horizontal" },
+      { "label": "Brazalete", "value": "Acero integrado" }
+    ],
+    "complementaryProducts": [5, 6],
+    "recommendedProducts": [17, 19],
+    "reviews": []
+  },
+  {
+    "id": 19,
+    "slug": "reloj-casio-cuadrado-plateado",
+    "sku": "IBZ-RLJ-019",
+    "name": "Casio Cuadrado Plateado",
+    "brand": "Casio",
+    "category": "Relojes",
+    "subcategory": "Vintage",
+    "shortDescription": "Casio cuadrado en acero plateado con esfera negra y brazalete de acero. En preventa.",
+    "longDescription": "Casio de caja cuadrada estilo vintage en acero plateado pulido. Esfera negra con índices finos, ventana de fecha y movimiento de cuarzo. Brazalete de acero con eslabones tipo bloque. Silueta retro y sobria, fácil de combinar. Modelo en preventa: reservá el tuyo por WhatsApp y lo asegurás al mejor precio de lanzamiento.",
+    "price": null,
+    "oldPrice": null,
+    "discount": 0,
+    "currency": "UYU",
+    "stock": 0,
+    "status": "preorder",
+    "sizes": ["Único"],
+    "colors": [
+      { "name": "Plateado / Acero", "hex": "#C7C7C7" }
+    ],
+    "images": [
+      "assets/products/reloj-casio-cuadrado-plateado-1.jpg",
+      "assets/products/reloj-casio-cuadrado-plateado-2.jpg"
+    ],
+    "video": null,
+    "featured": false,
+    "new": true,
+    "bestSeller": false,
+    "sold": 0,
+    "tags": ["reloj", "casio", "cuadrado", "vintage", "plateado", "acero", "preventa"],
+    "specifications": [
+      { "label": "Movimiento", "value": "Cuarzo" },
+      { "label": "Caja", "value": "Cuadrada, acero plateado" },
+      { "label": "Esfera", "value": "Negra con fecha" },
+      { "label": "Brazalete", "value": "Acero" }
+    ],
+    "complementaryProducts": [5, 6],
+    "recommendedProducts": [20, 17],
+    "reviews": []
+  },
+  {
+    "id": 20,
+    "slug": "reloj-casio-cuadrado-dorado",
+    "sku": "IBZ-RLJ-020",
+    "name": "Casio Cuadrado Dorado",
+    "brand": "Casio",
+    "category": "Relojes",
+    "subcategory": "Vintage",
+    "shortDescription": "Casio cuadrado en dorado con esfera negra y brazalete de acero dorado. En preventa.",
+    "longDescription": "Casio de caja cuadrada estilo vintage en tono dorado. Esfera negra con índices y agujas al tono oro, ventana de fecha y movimiento de cuarzo. Brazalete de acero dorado con eslabones tipo bloque. El mismo modelo que el plateado, en una versión más cálida y llamativa. Modelo en preventa: reservá el tuyo por WhatsApp y lo asegurás al mejor precio de lanzamiento.",
+    "price": null,
+    "oldPrice": null,
+    "discount": 0,
+    "currency": "UYU",
+    "stock": 0,
+    "status": "preorder",
+    "sizes": ["Único"],
+    "colors": [
+      { "name": "Dorado", "hex": "#C9A24B" }
+    ],
+    "images": [
+      "assets/products/reloj-casio-cuadrado-dorado-1.jpg",
+      "assets/products/reloj-casio-cuadrado-dorado-2.jpg"
+    ],
+    "video": null,
+    "featured": false,
+    "new": true,
+    "bestSeller": false,
+    "sold": 0,
+    "tags": ["reloj", "casio", "cuadrado", "vintage", "dorado", "oro", "preventa"],
+    "specifications": [
+      { "label": "Movimiento", "value": "Cuarzo" },
+      { "label": "Caja", "value": "Cuadrada, dorada" },
+      { "label": "Esfera", "value": "Negra con fecha" },
+      { "label": "Brazalete", "value": "Acero dorado" }
+    ],
+    "complementaryProducts": [5, 6],
+    "recommendedProducts": [19, 17],
+    "reviews": []
   }
 ]

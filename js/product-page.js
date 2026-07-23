@@ -3,8 +3,8 @@
    Detalle de producto: galería + variantes + sticky bar móvil
    ============================================================ */
 
-import { qs, qsa, getQueryParam, formatPrice, calcDiscount, trackPixel } from './utils.js';
-import { loadProducts } from './products.js';
+import { qs, qsa, getQueryParam, formatPrice, calcDiscount, trackPixel, whatsappLink } from './utils.js';
+import { loadProducts, preorderMessage } from './products.js';
 import { addItem } from './cart.js';
 import { toggleFavorite, isFavorite } from './favorites.js';
 import { renderRecommendations, initCarousel } from './recommendations.js';
@@ -38,7 +38,9 @@ function updateSEO(p) {
       "@type": "Offer",
       "priceCurrency": p.currency,
       "price": p.price,
-      "availability": p.stock > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock"
+      "availability": p.status === 'preorder'
+        ? "https://schema.org/PreOrder"
+        : (p.stock > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock")
     }
   };
   let script = qs('#product-jsonld');
@@ -59,7 +61,8 @@ function render(p) {
   selectedColor = p.colors?.length === 1 ? p.colors[0].name : null;
 
   const discount = p.discount || calcDiscount(p.price, p.oldPrice);
-  const outOfStock = p.stock <= 0 || p.status === 'out_of_stock';
+  const isPreorder = p.status === 'preorder';
+  const outOfStock = !isPreorder && (p.stock <= 0 || p.status === 'out_of_stock');
 
   // Breadcrumbs
   qs('#pp-breadcrumbs').innerHTML = `
@@ -88,17 +91,26 @@ function render(p) {
   qs('#pp-name').textContent = p.name;
   qs('#pp-short').textContent = p.shortDescription;
 
-  qs('#pp-price').textContent = formatPrice(p.price, p.currency);
+  const priceEl = qs('#pp-price');
   const oldEl = qs('#pp-old-price');
   const discEl = qs('#pp-discount');
-  if (p.oldPrice && p.oldPrice > p.price) {
-    oldEl.textContent = formatPrice(p.oldPrice, p.currency);
-    oldEl.hidden = false;
-    discEl.textContent = `-${discount}%`;
-    discEl.hidden = false;
-  } else {
+  if (isPreorder && p.price == null) {
+    // Preventa sin precio confirmado: mostramos el gancho en vez del número.
+    priceEl.textContent = 'Reservá al mejor precio';
+    priceEl.classList.add('pp-price-preorder');
     oldEl.hidden = true;
     discEl.hidden = true;
+  } else {
+    priceEl.textContent = formatPrice(p.price, p.currency);
+    if (p.oldPrice && p.oldPrice > p.price) {
+      oldEl.textContent = formatPrice(p.oldPrice, p.currency);
+      oldEl.hidden = false;
+      discEl.textContent = isPreorder ? 'Preventa' : `-${discount}%`;
+      discEl.hidden = false;
+    } else {
+      oldEl.hidden = true;
+      discEl.hidden = true;
+    }
   }
 
   // Colores
@@ -125,19 +137,39 @@ function render(p) {
   }
 
   // Estado y sticky
-  const addBtn = qs('#pp-add-btn');
-  const buyBtn = qs('#pp-buy-btn');
   const stickyPrice = qs('#sticky-price');
   const stickyBtn = qs('#sticky-add-btn');
 
-  if (outOfStock) {
-    addBtn.textContent = 'Agotado';
-    addBtn.disabled = true;
-    buyBtn.disabled = true;
-    stickyBtn.textContent = 'Agotado';
-    stickyBtn.disabled = true;
+  if (isPreorder) {
+    // Preventa: sin carrito ni compra directa. Ocultamos los controles de
+    // compra (cantidad, agregar, comprar) y ponemos un botón que abre
+    // WhatsApp. Dejamos intacto el botón de favoritos y su cableado.
+    const waHref = whatsappLink(preorderMessage(p));
+    const actions = qs('.pp-actions');
+    actions.querySelector('.qty-picker')?.closest('.pp-actions-row')?.setAttribute('hidden', '');
+    qs('#pp-add-btn')?.setAttribute('hidden', '');
+    qs('#pp-buy-btn')?.setAttribute('hidden', '');
+    const favRow = qs('#pp-fav-btn')?.closest('.pp-actions-row') || actions;
+    favRow.insertAdjacentHTML('afterbegin',
+      `<a href="${waHref}" class="btn btn-primary pp-reserve-btn" id="pp-reserve-btn" target="_blank" rel="noopener" style="flex:1;">Reservá el tuyo por WhatsApp</a>`);
+    const hint = document.createElement('p');
+    hint.className = 'pp-preorder-hint';
+    hint.textContent = 'Modelo en preventa. Coordinás seña y entrega por WhatsApp y te lo aseguramos al mejor precio de lanzamiento.';
+    actions.appendChild(hint);
+    stickyPrice.textContent = p.price != null ? formatPrice(p.price, p.currency) : 'Preventa';
+    stickyBtn.textContent = 'Reservá el tuyo';
+  } else {
+    const addBtn = qs('#pp-add-btn');
+    const buyBtn = qs('#pp-buy-btn');
+    if (outOfStock) {
+      addBtn.textContent = 'Agotado';
+      addBtn.disabled = true;
+      buyBtn.disabled = true;
+      stickyBtn.textContent = 'Agotado';
+      stickyBtn.disabled = true;
+    }
+    stickyPrice.textContent = formatPrice(p.price, p.currency);
   }
-  stickyPrice.textContent = formatPrice(p.price, p.currency);
 
   // Descripción larga y specs
   qs('#pp-long').textContent = p.longDescription || p.shortDescription;
@@ -283,6 +315,23 @@ function trackAddToCart(qty) {
 }
 
 function wireAdd() {
+  // Preventa: no hay carrito. Tanto el botón principal como el sticky
+  // abren WhatsApp; solo registramos el interés en el pixel.
+  if (currentProduct?.status === 'preorder') {
+    const waHref = whatsappLink(preorderMessage(currentProduct));
+    const lead = () => trackPixel('Lead', {
+      content_ids: [String(currentProduct.id)],
+      content_type: 'product',
+      content_category: 'preorder'
+    });
+    qs('#pp-reserve-btn')?.addEventListener('click', lead);
+    qs('#sticky-add-btn')?.addEventListener('click', () => {
+      lead();
+      window.open(waHref, '_blank', 'noopener');
+    });
+    return;
+  }
+
   const qtyValue = qs('#pp-qty-value');
   qs('#pp-qty-dec')?.addEventListener('click', () => {
     qtyValue.textContent = Math.max(1, parseInt(qtyValue.textContent, 10) - 1);

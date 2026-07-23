@@ -3,9 +3,14 @@
    Tarjeta de producto reutilizable + renderers de grillas.
    ============================================================ */
 
-import { qs, qsa, fetchJSON, formatPrice, calcDiscount, trackPixel } from './utils.js';
+import { qs, qsa, fetchJSON, formatPrice, calcDiscount, trackPixel, whatsappLink } from './utils.js';
 import { addItem } from './cart.js';
 import { toggleFavorite, isFavorite } from './favorites.js';
+
+/** Mensaje de WhatsApp pre-cargado para reservar un producto en preventa. */
+export function preorderMessage(product) {
+  return `¡Hola IBIZZI! Quiero reservar el ${product.name} en preventa. ¿Cómo sigo?`;
+}
 
 const DATA_URL = 'data/products.json';
 
@@ -22,19 +27,23 @@ export async function loadProducts() {
 
 export function productCardHTML(product) {
   const discount = product.discount || calcDiscount(product.price, product.oldPrice);
-  const outOfStock = product.stock <= 0 || product.status === 'out_of_stock';
+  const isPreorder = product.status === 'preorder';
+  // Preventa no es "agotado": stock 0 es esperable, no debe verse gris ni bloqueado.
+  const outOfStock = !isPreorder && (product.stock <= 0 || product.status === 'out_of_stock');
   const hasVariants = (product.sizes?.length > 1) || (product.colors?.length > 1);
   const second = product.images[1] || product.images[0];
   const fav = isFavorite(product.id);
+  const hasPrice = product.price != null;
 
   return `
-    <article class="product-card ${outOfStock ? 'is-sold' : ''}" data-product-id="${product.id}">
+    <article class="product-card ${outOfStock ? 'is-sold' : ''} ${isPreorder ? 'is-preorder' : ''}" data-product-id="${product.id}">
       <a href="product.html?slug=${product.slug}" class="product-card-media" aria-label="${product.name}">
         <img class="product-card-img product-card-img-1" src="${product.images[0]}" alt="${product.name}" loading="lazy">
         <img class="product-card-img product-card-img-2" src="${second}" alt="" loading="lazy" aria-hidden="true">
 
         <div class="product-card-badges">
-          ${product.new ? '<span class="label label-new">Nuevo</span>' : ''}
+          ${isPreorder ? '<span class="label label-preorder">Preventa</span>' : ''}
+          ${!isPreorder && product.new ? '<span class="label label-new">Nuevo</span>' : ''}
           ${discount > 0 ? `<span class="label label-sale">-${discount}%</span>` : ''}
           ${outOfStock ? '<span class="label label-sold">Agotado</span>' : ''}
         </div>
@@ -50,15 +59,24 @@ export function productCardHTML(product) {
       <div class="product-card-body">
         <span class="product-card-brand">${product.brand}</span>
         <a href="product.html?slug=${product.slug}" class="product-card-name">${product.name}</a>
-        <div class="product-card-prices">
-          ${product.oldPrice ? `<span class="product-card-old">${formatPrice(product.oldPrice, product.currency)}</span>` : ''}
-          <span class="product-card-price">${formatPrice(product.price, product.currency)}</span>
-        </div>
+        ${isPreorder
+          ? `<div class="product-card-prices">
+               ${product.oldPrice ? `<span class="product-card-old">${formatPrice(product.oldPrice, product.currency)}</span>` : ''}
+               ${hasPrice
+                 ? `<span class="product-card-price">${formatPrice(product.price, product.currency)}</span><span class="product-card-preorder-tag">preventa</span>`
+                 : `<span class="product-card-preorder-note">Reservá al mejor precio</span>`}
+             </div>`
+          : `<div class="product-card-prices">
+               ${product.oldPrice ? `<span class="product-card-old">${formatPrice(product.oldPrice, product.currency)}</span>` : ''}
+               <span class="product-card-price">${formatPrice(product.price, product.currency)}</span>
+             </div>`}
         <div class="product-card-actions">
           <a href="product.html?slug=${product.slug}" class="btn btn-secondary btn-sm btn-block">Ver producto</a>
-          ${!hasVariants && !outOfStock
-            ? `<button class="btn btn-primary btn-sm btn-block product-card-add" data-add="${product.id}">Agregar</button>`
-            : ''}
+          ${isPreorder
+            ? `<a href="${whatsappLink(preorderMessage(product))}" class="btn btn-primary btn-sm btn-block product-card-reserve" target="_blank" rel="noopener" data-reserve="${product.id}">Reservá el tuyo</a>`
+            : (!hasVariants && !outOfStock
+              ? `<button class="btn btn-primary btn-sm btn-block product-card-add" data-add="${product.id}">Agregar</button>`
+              : '')}
         </div>
       </div>
     </article>
@@ -89,6 +107,21 @@ export function wireCardActions(scope = document) {
       btn.classList.toggle('is-active', active);
       const svgPath = btn.querySelector('svg path');
       if (svgPath) svgPath.setAttribute('fill', active ? 'currentColor' : 'none');
+    });
+  });
+
+  qsa('[data-reserve]', scope).forEach(link => {
+    if (link.dataset.wired) return;
+    link.dataset.wired = '1';
+    // No prevenimos el default: el enlace abre WhatsApp normalmente.
+    // Solo registramos el interés en el pixel como Lead.
+    link.addEventListener('click', () => {
+      const id = Number(link.dataset.reserve);
+      trackPixel('Lead', {
+        content_ids: [String(id)],
+        content_type: 'product',
+        content_category: 'preorder'
+      });
     });
   });
 
@@ -134,6 +167,9 @@ export function filterByCategory(products, category) {
 export function filterNew(products) {
   return products.filter(p => p.new);
 }
+export function filterPreorder(products) {
+  return products.filter(p => p.status === 'preorder');
+}
 export function filterSale(products) {
   return products.filter(p => (p.discount && p.discount > 0) || (p.oldPrice && p.oldPrice > p.price));
 }
@@ -147,8 +183,15 @@ export async function renderHomeSections() {
     // Destacados
     renderGrid(qs('#home-featured'), filterFeatured(products).slice(0, 8));
 
-    // Relojes
-    renderGrid(qs('#home-watches'), filterByCategory(products, 'Relojes'));
+    // Relojes (los de preventa van a su propia sección de abajo, no acá)
+    renderGrid(qs('#home-watches'),
+      filterByCategory(products, 'Relojes').filter(p => p.status !== 'preorder'));
+
+    // Próximamente / Preventa — la sección se oculta sola si no hay ninguno
+    const preorder = filterPreorder(products);
+    const preorderSection = qs('#home-preorder-section');
+    if (preorderSection) preorderSection.hidden = preorder.length === 0;
+    renderGrid(qs('#home-preorder'), preorder);
 
     // Zuecos Nike Mind
     renderGrid(qs('#home-sneakers'), filterByCategory(products, 'Zuecos Nike Mind'));

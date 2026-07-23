@@ -136,6 +136,40 @@
   .product-card-actions .btn-sm { font-size: 10px; }
 }
 
+/* ---------- Preventa ---------- */
+
+/* El badge de preventa es sólido: tiene que ganarle al fondo oscuro
+   que comparten los demás badges de la card. */
+.product-card-badges .label-preorder {
+  background-color: var(--color-warning);
+  color: var(--color-text-inverse);
+  backdrop-filter: none;
+}
+
+.product-card.is-preorder .product-card-media {
+  outline: 1px solid color-mix(in srgb, var(--color-warning) 55%, transparent);
+  outline-offset: -1px;
+}
+
+.product-card-preorder-note {
+  font-family: var(--font-sans);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--color-warning);
+  letter-spacing: 0.01em;
+}
+
+.product-card-preorder-tag {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-wider);
+  color: var(--color-warning);
+  border: 1px solid color-mix(in srgb, var(--color-warning) 60%, transparent);
+  padding: 2px 6px;
+  align-self: center;
+}
+
 /* ---------- Carrusel (Completá tu look / Recomendados) ---------- */
 
 .carousel {

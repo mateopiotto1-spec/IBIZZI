@@ -366,3 +366,18 @@
   transition: transform var(--dur-slow) var(--ease-out);
 }
 .social-tile:hover img { transform: scale(1.05); }
+
+/* ---------- Próximamente · Preventa ---------- */
+
+.preorder-section {
+  position: relative;
+  border-top: 1px solid color-mix(in srgb, var(--color-warning) 30%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-warning) 30%, transparent);
+  background:
+    radial-gradient(120% 80% at 50% 0%,
+      color-mix(in srgb, var(--color-warning) 8%, transparent) 0%,
+      transparent 60%);
+}
+.preorder-eyebrow {
+  color: var(--color-warning);
+}

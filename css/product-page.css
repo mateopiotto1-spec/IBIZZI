@@ -189,6 +189,25 @@
   letter-spacing: var(--ls-wider);
 }
 
+/* Preventa */
+.pp-price-preorder {
+  color: var(--color-warning);
+  font-size: var(--fs-xl);
+}
+.pp-reserve-btn {
+  /* Reusa .btn .btn-primary; solo garantizamos que ocupe el ancho. */
+  width: 100%;
+}
+.pp-preorder-hint {
+  margin-top: var(--space-3);
+  font-family: var(--font-sans);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-normal);
+  color: var(--color-text-secondary);
+  border-left: 2px solid var(--color-warning);
+  padding-left: var(--space-3);
+}
+
 /* Variantes: colores y talles */
 .pp-variant-block {
   margin-bottom: var(--space-5);

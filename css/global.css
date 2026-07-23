@@ -260,6 +260,13 @@ a:hover { color: var(--color-text-primary); }
 .label-new     { border-color: var(--color-text-primary); color: var(--color-text-primary); }
 .label-sale    { border-color: var(--color-warning); color: var(--color-warning); }
 .label-sold    { border-color: var(--color-border); color: var(--color-text-muted); }
+/* Preventa: badge sólido dorado, el más prominente de todos. */
+.label-preorder {
+  background-color: var(--color-warning);
+  border-color: var(--color-warning);
+  color: var(--color-text-inverse);
+  font-weight: var(--fw-semibold);
+}
 
 /* ---------- Utilidades ---------- */
 
