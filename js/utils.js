@@ -156,11 +156,8 @@ export const bus = {
 /**
  * Número de WhatsApp de la tienda, en formato internacional sin "+",
  * espacios ni guiones (ej: 59899123456 para un +598 99 123 456).
- *
- * ⚠️ HOY ES UN PLACEHOLDER (099 999 999). Cambiá este único valor por
- * el número real y los botones de "Reservá el tuyo" quedan funcionando.
  */
-export const STORE_WHATSAPP = '59899999999';
+export const STORE_WHATSAPP = '59894990760';
 
 /** Arma un link de WhatsApp (wa.me) con un mensaje pre-cargado. */
 export function whatsappLink(message = '') {
