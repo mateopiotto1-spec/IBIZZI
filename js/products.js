@@ -9,7 +9,7 @@ import { toggleFavorite, isFavorite } from './favorites.js';
 
 /** Mensaje de WhatsApp pre-cargado para reservar un producto en preventa. */
 export function preorderMessage(product) {
-  return `¡Hola IBIZZI! Quiero reservar el ${product.name} en preventa. ¿Cómo sigo?`;
+  return `¡Hola IBIZZI! Vengo de la tienda online y me interesó el ${product.name} que está en preventa. Quiero reservar el mío, ¿cómo sigo?`;
 }
 
 const DATA_URL = 'data/products.json';
