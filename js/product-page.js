@@ -105,7 +105,7 @@ function render(p) {
     if (p.oldPrice && p.oldPrice > p.price) {
       oldEl.textContent = formatPrice(p.oldPrice, p.currency);
       oldEl.hidden = false;
-      discEl.textContent = isPreorder ? 'Preventa' : `-${discount}%`;
+      discEl.textContent = isPreorder ? 'Próximamente' : `-${discount}%`;
       discEl.hidden = false;
     } else {
       oldEl.hidden = true;
@@ -156,7 +156,7 @@ function render(p) {
     hint.className = 'pp-preorder-hint';
     hint.textContent = 'Modelo en preventa. Coordinás seña y entrega por WhatsApp y te lo aseguramos al mejor precio de lanzamiento.';
     actions.appendChild(hint);
-    stickyPrice.textContent = p.price != null ? formatPrice(p.price, p.currency) : 'Preventa';
+    stickyPrice.textContent = p.price != null ? formatPrice(p.price, p.currency) : 'Próximamente';
     stickyBtn.textContent = 'Reservá el tuyo';
   } else {
     const addBtn = qs('#pp-add-btn');

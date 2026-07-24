@@ -42,11 +42,13 @@ export function productCardHTML(product) {
         <img class="product-card-img product-card-img-2" src="${second}" alt="" loading="lazy" aria-hidden="true">
 
         <div class="product-card-badges">
-          ${isPreorder ? '<span class="label label-preorder">Preventa</span>' : ''}
+          ${isPreorder ? '<span class="label label-preorder">Próximamente</span>' : ''}
           ${!isPreorder && product.new ? '<span class="label label-new">Nuevo</span>' : ''}
           ${discount > 0 ? `<span class="label label-sale">-${discount}%</span>` : ''}
           ${outOfStock ? '<span class="label label-sold">Agotado</span>' : ''}
         </div>
+
+        ${isPreorder ? '<div class="product-card-preorder-banner"><span>Reservá el tuyo a mejor precio</span></div>' : ''}
 
         <button class="product-card-fav ${fav ? 'is-active' : ''}" type="button" aria-label="Guardar en favoritos" data-fav="${product.id}">
           <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true">
@@ -63,7 +65,7 @@ export function productCardHTML(product) {
           ? `<div class="product-card-prices">
                ${product.oldPrice ? `<span class="product-card-old">${formatPrice(product.oldPrice, product.currency)}</span>` : ''}
                ${hasPrice
-                 ? `<span class="product-card-price">${formatPrice(product.price, product.currency)}</span><span class="product-card-preorder-tag">preventa</span>`
+                 ? `<span class="product-card-price">${formatPrice(product.price, product.currency)}</span><span class="product-card-preorder-tag">próximamente</span>`
                  : `<span class="product-card-preorder-note">Reservá al mejor precio</span>`}
              </div>`
           : `<div class="product-card-prices">

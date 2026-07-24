@@ -494,7 +494,7 @@
     "discount": 0,
     "currency": "UYU",
     "stock": 0,
-    "status": "out_of_stock",
+    "status": "preorder",
     "sizes": ["Único"],
     "colors": [
       { "name": "Acero / Cuero negro", "hex": "#1A1A1A" }
@@ -534,7 +534,7 @@
     "discount": 0,
     "currency": "UYU",
     "stock": 0,
-    "status": "out_of_stock",
+    "status": "preorder",
     "sizes": ["Único"],
     "colors": [
       { "name": "Acero / Esfera negra", "hex": "#2B2E33" }
@@ -574,7 +574,7 @@
     "discount": 0,
     "currency": "UYU",
     "stock": 0,
-    "status": "out_of_stock",
+    "status": "preorder",
     "sizes": ["Único"],
     "colors": [
       { "name": "Acero / Cuero azul", "hex": "#1B2A4A" }

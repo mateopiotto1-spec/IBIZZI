@@ -159,6 +159,43 @@
   outline-offset: -1px;
 }
 
+/* Cartel que aparece sobre la foto al pasar el mouse (solo en preventa). */
+.product-card-preorder-banner {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-3);
+  background-color: rgba(20,20,20,0.72);
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease-out);
+  pointer-events: none;
+}
+.product-card-preorder-banner span {
+  font-family: var(--font-sans);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.02em;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-warning);
+  padding: var(--space-2) var(--space-3);
+}
+@media (hover: hover) {
+  .product-card-media:hover .product-card-preorder-banner {
+    opacity: 1;
+  }
+}
+/* Sin hover (táctil): siempre visible, un poco más discreto. */
+@media (hover: none) {
+  .product-card-preorder-banner {
+    opacity: 1;
+    background-color: rgba(20,20,20,0.5);
+  }
+}
+
 .product-card-preorder-note {
   font-family: var(--font-sans);
   font-size: var(--fs-sm);
