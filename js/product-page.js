@@ -118,7 +118,7 @@ function render(p) {
   if (p.colors?.length) {
     colorsEl.innerHTML = p.colors.map((c, i) => `
       <button type="button" class="pp-color-swatch ${i===0 && selectedColor===c.name?'is-active':''}"
-              data-color="${c.name}" aria-label="${c.name}" title="${c.name}"
+              data-color="${c.name}"${c.image != null ? ` data-image="${c.image}"` : ''} aria-label="${c.name}" title="${c.name}"
               style="background-color:${c.hex};"></button>
     `).join('');
     qs('#pp-color-label').textContent = selectedColor || 'Elegí un color';
@@ -278,6 +278,11 @@ function wireVariants() {
       qsa('.pp-color-swatch').forEach(b => b.classList.remove('is-active'));
       btn.classList.add('is-active');
       qs('#pp-color-label').textContent = selectedColor;
+      // Si el color tiene una foto asociada, llevamos la galería a esa imagen
+      // (reutiliza el click del thumbnail, que ya hace el scroll suave).
+      if (btn.dataset.image != null) {
+        qsa('.pp-thumb')[Number(btn.dataset.image)]?.click();
+      }
     });
   });
   qsa('.pp-size-btn').forEach(btn => {
