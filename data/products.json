@@ -438,7 +438,8 @@
       { "name": "Acero / Esfera negra", "hex": "#2B2E33" }
     ],
     "images": [
-      "assets/products/reloj-armani-diver-acero-1.jpg"
+      "assets/products/reloj-armani-diver-acero-1.jpg",
+      "assets/products/reloj-armani-diver-acero-2.jpg"
     ],
     "video": null,
     "featured": true,
