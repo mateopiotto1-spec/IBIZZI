@@ -7,3 +7,6 @@ node_modules/
 # Fotos originales sin procesar (las versiones publicadas viven en assets/products/)
 fotos/
 Fotos relojes contenido/
+
+# Export del design canvas (archivo de trabajo, no del sitio)
+*.zip
