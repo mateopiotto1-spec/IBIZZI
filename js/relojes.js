@@ -508,6 +508,48 @@ function conectar() {
 }
 
 /* ============================================================
+   Datos estructurados para Google
+   ============================================================ */
+
+/** Publica el catalogo como JSON-LD para que Google pueda mostrar
+ *  precio y disponibilidad de cada reloj en los resultados. */
+function publicarDatosEstructurados() {
+  if (!RELOJES.length) return;
+
+  const datos = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Relojes IBIZZI",
+    numberOfItems: RELOJES.length,
+    itemListElement: RELOJES.map((p, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: {
+        "@type": "Product",
+        name: p.name,
+        brand: { "@type": "Brand", name: p.brand },
+        description: p.shortDescription || p.name,
+        image: new URL(p.images[0], location.href).href,
+        offers: {
+          "@type": "Offer",
+          price: p.price,
+          priceCurrency: p.currency || "UYU",
+          availability: esEncargue(p)
+            ? "https://schema.org/PreOrder"
+            : "https://schema.org/InStock",
+          url: location.origin + "/"
+        }
+      }
+    }))
+  };
+
+  const tag = document.createElement("script");
+  tag.type = "application/ld+json";
+  tag.textContent = JSON.stringify(datos);
+  document.head.appendChild(tag);
+}
+
+/* ============================================================
    Arranque
    ============================================================ */
 
@@ -526,6 +568,7 @@ async function init() {
     pintarHero();
     pintarChips();
     pintarGrillas();
+    publicarDatosEstructurados();
   } catch (err) {
     console.error('[relojes] no se pudo cargar el catálogo:', err);
     qs('#grid-stock').innerHTML =
