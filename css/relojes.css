@@ -1,0 +1,754 @@
+/* ============================================================
+   IBIZZI · relojes.css
+   Landing de relojes. Grid oscuro: las fotos vienen sobre fondo
+   negro, así que la card usa el mismo negro y la foto se funde
+   con ella en vez de quedar como un rectángulo pegado encima.
+   Archivo autónomo: no depende del resto del CSS de la tienda.
+   ============================================================ */
+
+/* ---------- Tokens ---------- */
+
+:root {
+  --bg:          #0B0B0D;   /* fondo de página, casi el mismo negro de las fotos */
+  --bg-raise:    #141417;   /* card, header al scrollear */
+  --bg-raise-2:  #1C1C21;   /* hover de card, inputs */
+  --line:        rgba(255,255,255,0.08);
+  --line-strong: rgba(255,255,255,0.16);
+
+  --ink:         #F2F1EE;   /* texto principal, blanco cálido (no #fff puro) */
+  --ink-soft:    rgba(242,241,238,0.62);
+  --ink-faint:   rgba(242,241,238,0.38);
+
+  --gold:        #C6A86B;   /* acento champán: precios destacados, foco */
+  --gold-soft:   rgba(198,168,107,0.14);
+  --green:       #6FBF8B;   /* hay stock */
+  --amber:       #D9A441;   /* por encargue */
+
+  --shell:   1240px;
+  --gutter:  24px;
+  --radius:  14px;
+
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* ---------- Reset acotado ---------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
+
+/* Respeta a quien pidió menos movimiento en el sistema. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.shell {
+  max-width: var(--shell);
+  margin: 0 auto;
+  padding-inline: var(--gutter);
+}
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* ============================================================
+   Header
+   ============================================================ */
+
+.hd {
+  position: sticky; top: 0; z-index: 60;
+  background: rgba(11,11,13,0.72);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s var(--ease), background 0.3s var(--ease);
+}
+.hd[data-scrolled='true'] {
+  border-bottom-color: var(--line);
+  background: rgba(11,11,13,0.9);
+}
+
+.hd__inner {
+  display: flex; align-items: center; gap: 28px;
+  height: 66px;
+}
+
+.hd__logo {
+  font-weight: 600; font-size: 16px;
+  letter-spacing: 0.26em; text-indent: 0.26em;
+  margin-right: auto;
+}
+
+.hd__nav { display: flex; gap: 26px; font-size: 13.5px; color: var(--ink-soft); }
+.hd__nav a { position: relative; padding-block: 4px; transition: color 0.2s var(--ease); }
+.hd__nav a:hover { color: var(--ink); }
+.hd__nav a::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: 0;
+  height: 1px; background: var(--gold);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.28s var(--ease);
+}
+.hd__nav a:hover::after { transform: scaleX(1); }
+
+.hd__ig {
+  display: inline-grid; place-items: center;
+  width: 34px; height: 34px; border-radius: 50%;
+  color: var(--ink-soft);
+  transition: color 0.2s var(--ease), background 0.2s var(--ease);
+}
+.hd__ig svg { width: 17px; height: 17px; stroke: currentColor; fill: none; stroke-width: 1.6; }
+.hd__ig:hover { color: var(--ink); background: var(--bg-raise-2); }
+
+.hd__cart {
+  display: inline-flex; align-items: center; gap: 9px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px; padding: 8px 14px 8px 15px;
+  font-size: 13.5px; font-weight: 500;
+  transition: border-color 0.2s var(--ease), background 0.2s var(--ease);
+}
+.hd__cart:hover { border-color: var(--gold); background: var(--gold-soft); }
+.hd__cart svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.6; }
+
+.hd__count {
+  min-width: 19px; height: 19px; padding: 0 5px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 999px; background: var(--gold); color: #14110A;
+  font-size: 11px; font-weight: 600; font-variant-numeric: tabular-nums;
+}
+.hd__count[data-empty='true'] { background: var(--bg-raise-2); color: var(--ink-faint); }
+
+/* ============================================================
+   Hero
+   ============================================================ */
+
+.hero { position: relative; padding: 56px 0 8px; }
+
+.hero__panel {
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 54px 32px 34px;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 90% at 50% -10%, rgba(198,168,107,0.10), transparent 62%),
+    linear-gradient(180deg, #121216, #0C0C0F);
+}
+
+/* Es un link al Instagram: va centrado con display flex, no text-align. */
+.hero__eyebrow {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.28em; text-indent: 0.28em;
+  color: var(--ink-faint);
+  margin: 0 0 14px;
+  transition: color 0.2s var(--ease);
+}
+.hero__eyebrow svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 1.6; flex: none; text-indent: 0; }
+.hero__eyebrow:hover { color: var(--gold); }
+
+/* Palabra gigante de fondo, como el título de marca de la referencia.
+   Se recorta contra el borde del panel a propósito. */
+.hero__word {
+  margin: 0;
+  font-family: 'Anton', Impact, 'Arial Narrow', sans-serif;
+  font-weight: 400;
+  font-size: clamp(58px, 12.5vw, 168px);
+  line-height: 0.86;
+  text-align: center;
+  letter-spacing: 0.01em;
+  background: linear-gradient(180deg, #FFFFFF 6%, #8E8E96 58%, #3A3A42 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  user-select: none;
+}
+
+/* Fila de relojes que se superpone a la palabra. Las fotos ya vienen
+   sobre negro: la máscara radial difumina el borde para que no se vea
+   el recuadro de la imagen contra el panel. */
+.hero__row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-top: -6%;
+}
+
+/* Es un <button>: abre el detalle sin salir de la página. */
+.hero__item {
+  display: block; width: 100%; padding: 0;
+  text-align: center; font: inherit;
+}
+
+.hero__item figure {
+  margin: 0;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+}
+
+.hero__item img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center 46%;
+  -webkit-mask-image: radial-gradient(ellipse 66% 62% at 50% 48%, #000 52%, transparent 84%);
+          mask-image: radial-gradient(ellipse 66% 62% at 50% 48%, #000 52%, transparent 84%);
+  transition: transform 0.6s var(--ease);
+}
+.hero__item:hover img { transform: scale(1.05); }
+
+.hero__label {
+  display: block;
+  font-size: 12.5px; color: var(--ink-soft);
+  margin-top: -6px;
+  transition: color 0.2s var(--ease);
+}
+.hero__item:hover .hero__label { color: var(--ink); }
+
+.hero__meta {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 10px 26px;
+  margin-top: 26px; padding-top: 22px;
+  border-top: 1px solid var(--line);
+  font-size: 13px; color: var(--ink-soft);
+}
+.hero__meta span { display: inline-flex; align-items: center; gap: 8px; }
+.hero__meta svg { width: 15px; height: 15px; stroke: var(--gold); fill: none; stroke-width: 1.5; }
+
+/* ============================================================
+   Barra de filtros
+   ============================================================ */
+
+.bar {
+  position: sticky; top: 66px; z-index: 50;
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 0;
+  margin-top: 44px;
+  background: rgba(11,11,13,0.9);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+
+.bar__chips { display: flex; gap: 8px; flex-wrap: wrap; margin-right: auto; }
+
+.chip {
+  border: 1px solid var(--line-strong);
+  border-radius: 999px; padding: 7px 15px;
+  font-size: 13px; color: var(--ink-soft);
+  white-space: nowrap;
+  transition: all 0.2s var(--ease);
+}
+.chip:hover { color: var(--ink); border-color: var(--ink-faint); }
+.chip[aria-pressed='true'] {
+  background: var(--ink); color: #0B0B0D;
+  border-color: var(--ink); font-weight: 500;
+}
+
+.bar__sort { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ink-faint); }
+.bar__sort select {
+  appearance: none; -webkit-appearance: none;
+  background: transparent; color: var(--ink);
+  border: 0; padding: 6px 22px 6px 4px;
+  font: inherit; font-size: 13px; cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F2F1EE' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 2px center; background-size: 13px;
+}
+.bar__sort select option { background: #141417; color: var(--ink); }
+
+/* ============================================================
+   Secciones de producto
+   ============================================================ */
+
+.sec { padding: 52px 0 8px; scroll-margin-top: 130px; }
+
+.sec__head {
+  display: flex; align-items: baseline; gap: 14px;
+  flex-wrap: wrap; margin-bottom: 26px;
+}
+
+.sec__title {
+  margin: 0; font-size: 13px; font-weight: 600;
+  letter-spacing: 0.2em; text-indent: 0.2em;
+  text-transform: uppercase;
+}
+
+.sec__note { font-size: 13.5px; color: var(--ink-soft); margin: 0; }
+
+.sec__tag {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+  padding: 4px 10px; border-radius: 999px;
+  background: var(--gold); color: #14110A;
+}
+
+.sec__count { margin-left: auto; font-size: 13px; color: var(--ink-faint); font-variant-numeric: tabular-nums; }
+
+/* ---------- Grid ---------- */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(232px, 1fr));
+  gap: 18px;
+  list-style: none; margin: 0; padding: 0;
+}
+
+/* ---------- Card ---------- */
+
+.card {
+  position: relative;
+  display: flex; flex-direction: column;
+  background: var(--bg-raise);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 0.28s var(--ease), transform 0.28s var(--ease), background 0.28s var(--ease);
+}
+.card:hover {
+  border-color: var(--line-strong);
+  background: var(--bg-raise-2);
+  transform: translateY(-3px);
+}
+
+.card__media {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: #0E0E11;
+}
+
+.card__media img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center 46%;
+  transition: transform 0.7s var(--ease), opacity 0.4s var(--ease);
+}
+
+/* Segunda foto: aparece al pasar el mouse. */
+.card__media img + img { position: absolute; inset: 0; opacity: 0; }
+.card:hover .card__media img + img { opacity: 1; }
+.card:hover .card__media img { transform: scale(1.045); }
+
+/* Degradado al pie de la foto para que muera dentro de la card
+   en vez de cortarse con una línea dura. */
+.card__media::after {
+  content: ''; position: absolute; inset: auto 0 0 0; height: 42%;
+  background: linear-gradient(180deg, transparent, var(--bg-raise) 92%);
+  pointer-events: none;
+  transition: background 0.28s var(--ease);
+}
+.card:hover .card__media::after { background: linear-gradient(180deg, transparent, var(--bg-raise-2) 92%); }
+
+.card__off {
+  position: absolute; top: 11px; left: 11px; z-index: 2;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.04em;
+  padding: 4px 9px; border-radius: 6px;
+  background: var(--gold); color: #14110A;
+}
+
+.card__body { padding: 4px 16px 17px; display: flex; flex-direction: column; gap: 3px; }
+
+.card__brand {
+  font-size: 10.5px; letter-spacing: 0.16em; text-indent: 0.16em;
+  text-transform: uppercase; color: var(--ink-faint);
+}
+
+.card__name { margin: 0; font-size: 14.5px; font-weight: 500; line-height: 1.35; }
+
+.card__prices { display: flex; align-items: baseline; gap: 9px; margin-top: 5px; }
+.card__price { font-size: 17px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.card__old { font-size: 13px; color: var(--ink-faint); text-decoration: line-through; }
+
+.card__stock {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 12px; color: var(--ink-soft); margin-top: 7px;
+}
+.card__dot { width: 6px; height: 6px; border-radius: 50%; flex: none; }
+.card__stock[data-kind='stock']    .card__dot { background: var(--green); box-shadow: 0 0 0 3px rgba(111,191,139,0.16); }
+.card__stock[data-kind='encargue'] .card__dot { background: var(--amber); box-shadow: 0 0 0 3px rgba(217,164,65,0.16); }
+
+/* Toda la card abre el detalle; el botón de agregar queda por encima. */
+.card__link { position: absolute; inset: 0; z-index: 1; width: 100%; padding: 0; }
+
+.card__add {
+  position: relative; z-index: 2;
+  margin-top: 13px;
+  border: 1px solid var(--line-strong); border-radius: 9px;
+  padding: 10px; width: 100%;
+  font-size: 13.5px; font-weight: 500;
+  transition: all 0.2s var(--ease);
+}
+.card__add:hover { background: var(--ink); color: #0B0B0D; border-color: var(--ink); }
+.card__add[data-added='true'] { background: var(--green); color: #08150E; border-color: var(--green); }
+
+/* ---------- Estado vacío ---------- */
+
+.empty {
+  grid-column: 1 / -1;
+  padding: 46px 20px; text-align: center;
+  color: var(--ink-faint); font-size: 14px;
+  border: 1px dashed var(--line-strong); border-radius: var(--radius);
+}
+
+/* ============================================================
+   Franja de servicio
+   ============================================================ */
+
+.svc { margin-top: 64px; padding: 40px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.svc__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 28px; }
+.svc__item h3 { margin: 0 0 5px; font-size: 14px; font-weight: 600; }
+.svc__item p { margin: 0; font-size: 13.5px; color: var(--ink-soft); }
+.svc__item svg { width: 20px; height: 20px; stroke: var(--gold); fill: none; stroke-width: 1.5; margin-bottom: 11px; }
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+
+.faq { padding: 62px 0; scroll-margin-top: 130px; }
+.faq__title { text-align: center; }
+.faq__list { max-width: 760px; margin: 26px auto 0; }
+
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary {
+  display: flex; align-items: center; gap: 14px;
+  padding: 18px 2px; cursor: pointer; list-style: none;
+  font-size: 15px; font-weight: 500;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+  content: '+'; margin-left: auto;
+  font-size: 19px; color: var(--ink-faint); font-weight: 300;
+  transition: transform 0.25s var(--ease), color 0.2s var(--ease);
+}
+.faq details[open] summary::after { transform: rotate(45deg); color: var(--gold); }
+.faq details p { margin: 0; padding: 0 2px 20px; color: var(--ink-soft); font-size: 14px; max-width: 62ch; }
+
+/* ============================================================
+   Footer
+   ============================================================ */
+
+.ft { padding: 62px 0 0; border-top: 1px solid var(--line); }
+.ft__cols { display: grid; grid-template-columns: 1.4fr repeat(2, 1fr); gap: 38px; }
+.ft h4 { margin: 0 0 13px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); font-weight: 600; }
+.ft ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; font-size: 13.5px; color: var(--ink-soft); }
+.ft ul a:hover { color: var(--ink); }
+.ft__blurb { font-size: 13.5px; color: var(--ink-soft); max-width: 42ch; margin: 0; }
+
+/* "Mi carrito" es un botón, pero tiene que leerse como el resto de la lista. */
+.ft__btn { padding: 0; font-size: 13.5px; color: inherit; }
+.ft__btn:hover { color: var(--ink); }
+
+.ft__social { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 16px; }
+
+.ft__wa,
+.ft__ig {
+  display: inline-flex; align-items: center; gap: 9px;
+  border: 1px solid var(--line-strong); border-radius: 999px;
+  padding: 9px 16px; font-size: 13.5px; font-weight: 500;
+  transition: all 0.2s var(--ease);
+}
+.ft__wa:hover { border-color: var(--green); color: var(--green); }
+.ft__ig:hover { border-color: var(--gold);  color: var(--gold); }
+
+/* Wordmark gigante recortado abajo, como el "everyday" de la referencia. */
+.ft__mark {
+  margin: 54px 0 0;
+  font-family: 'Anton', Impact, sans-serif; font-weight: 400;
+  font-size: clamp(72px, 20vw, 280px); line-height: 0.78;
+  text-align: center; letter-spacing: 0.02em;
+  color: transparent;
+  background: linear-gradient(180deg, #26262C 0%, #131317 72%, transparent 100%);
+  -webkit-background-clip: text; background-clip: text;
+  user-select: none; overflow: hidden;
+  max-height: 0.62em;
+}
+
+/* El padding de abajo deja libre la franja donde flotan los botones,
+   para que no tapen el copyright al llegar al final de la página. */
+.ft__legal {
+  display: flex; flex-wrap: wrap; gap: 8px 20px;
+  padding: 20px 0 92px; border-top: 1px solid var(--line);
+  font-size: 12px; color: var(--ink-faint);
+}
+.ft__legal p { margin: 0; margin-right: auto; }
+.ft__legal a:hover { color: var(--gold); }
+
+/* ============================================================
+   Botones flotantes (WhatsApp abajo a la derecha, Instagram
+   abajo a la izquierda). Van por debajo del overlay para que
+   se atenúen cuando se abre el carrito o la ficha del reloj.
+   ============================================================ */
+
+.fab {
+  position: fixed; bottom: 22px; z-index: 70;
+  display: inline-flex; align-items: center; gap: 0;
+  height: 52px; padding: 0 16px;
+  border-radius: 999px;
+  color: #FFFFFF;
+  box-shadow: 0 8px 26px rgba(0,0,0,0.45);
+  transition: transform 0.26s var(--ease), box-shadow 0.26s var(--ease), gap 0.26s var(--ease), padding 0.26s var(--ease);
+}
+.fab:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.55); }
+
+.fab svg { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 1.8; flex: none; }
+
+/* El texto sale de adentro del botón al pasar el mouse. */
+.fab__tip {
+  font-size: 13.5px; font-weight: 500; white-space: nowrap;
+  max-width: 0; overflow: hidden; opacity: 0;
+  transition: max-width 0.3s var(--ease), opacity 0.22s var(--ease);
+}
+.fab:hover .fab__tip,
+.fab:focus-visible .fab__tip { max-width: 160px; opacity: 1; }
+.fab:hover { gap: 9px; }
+
+.fab--wa { right: 22px; background: #25D366; color: #06331A; }
+.fab--ig {
+  left: 22px;
+  /* Degradado de Instagram, de abajo-izquierda a arriba-derecha. */
+  background: linear-gradient(45deg, #F9CE34 4%, #EE2A7B 52%, #6228D7 96%);
+}
+
+@media (max-width: 720px) {
+  .fab { bottom: 16px; height: 46px; padding: 0 13px; }
+  .fab svg { width: 21px; height: 21px; }
+  .fab--wa { right: 16px; }
+  .fab--ig { left: 16px; }
+  /* En touch no hay hover: el texto no aporta y ocuparía media pantalla. */
+  .fab__tip { display: none; }
+}
+
+/* ============================================================
+   Detalle del reloj (modal, en la misma página)
+   ============================================================ */
+
+.md {
+  position: fixed; inset: 0; z-index: 100;
+  display: grid; place-items: center;
+  padding: 24px;
+  opacity: 0; visibility: hidden;
+  transition: opacity 0.28s var(--ease), visibility 0.28s var(--ease);
+}
+.md[data-open='true'] { opacity: 1; visibility: visible; }
+
+.md__box {
+  position: relative;
+  width: min(940px, 100%);
+  max-height: min(88vh, 720px);
+  overflow-y: auto;
+  background: #101013;
+  border: 1px solid var(--line-strong);
+  border-radius: 18px;
+  transform: translateY(14px) scale(0.985);
+  transition: transform 0.32s var(--ease);
+}
+.md[data-open='true'] .md__box { transform: none; }
+
+.md__close {
+  position: absolute; top: 12px; right: 14px; z-index: 3;
+  width: 34px; height: 34px; border-radius: 50%;
+  display: grid; place-items: center;
+  font-size: 22px; line-height: 1;
+  background: rgba(11,11,13,0.7); color: var(--ink-soft);
+  backdrop-filter: blur(6px);
+}
+.md__close:hover { color: var(--ink); background: var(--bg-raise-2); }
+
+.md__grid { display: grid; grid-template-columns: 0.92fr 1.08fr; }
+
+.md__media {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  background: #0E0E11;
+  overflow: hidden;
+  border-radius: 18px 0 0 18px;
+}
+.md__media img { width: 100%; height: 100%; object-fit: cover; object-position: center 46%; }
+
+.md__info { padding: 34px 32px 30px; display: flex; flex-direction: column; gap: 4px; }
+
+.md__name { margin: 2px 0 4px; font-size: 25px; font-weight: 600; line-height: 1.2; }
+.md__price { font-size: 27px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.md__mp { margin: 3px 0 12px; font-size: 13px; color: var(--gold); }
+
+.md__desc {
+  margin: 16px 0 0; font-size: 14px; color: var(--ink-soft);
+  line-height: 1.62; max-width: 56ch;
+}
+
+.md__specs {
+  margin: 18px 0 0; padding: 16px 0 0;
+  border-top: 1px solid var(--line);
+  display: grid; gap: 9px;
+}
+.md__specs > div { display: flex; gap: 14px; font-size: 13px; }
+.md__specs dt { color: var(--ink-faint); min-width: 108px; flex: none; }
+.md__specs dd { margin: 0; color: var(--ink-soft); }
+
+.md__entrega {
+  margin: 18px 0 0; padding: 12px 14px;
+  background: var(--bg-raise); border-radius: 10px;
+  font-size: 13px; color: var(--ink-soft);
+}
+
+.md__thumbs { display: flex; gap: 9px; margin-top: 18px; }
+.md__thumb {
+  width: 58px; height: 70px; padding: 0;
+  border: 1px solid var(--line); border-radius: 9px;
+  overflow: hidden; background: #0E0E11;
+  transition: border-color 0.2s var(--ease);
+}
+.md__thumb img { width: 100%; height: 100%; object-fit: cover; }
+.md__thumb:hover { border-color: var(--ink-faint); }
+.md__thumb[aria-pressed='true'] { border-color: var(--gold); }
+
+.md__actions { display: flex; gap: 10px; margin-top: auto; padding-top: 24px; }
+
+.md__add {
+  flex: 1;
+  background: var(--ink); color: #0B0B0D;
+  border-radius: 10px; padding: 13px;
+  font-size: 14px; font-weight: 600;
+  transition: opacity 0.2s var(--ease);
+}
+.md__add:hover { opacity: 0.86; }
+.md__add[data-added='true'] { background: var(--green); color: #08150E; }
+
+.md__wa {
+  display: inline-flex; align-items: center;
+  border: 1px solid var(--line-strong); border-radius: 10px;
+  padding: 13px 20px; font-size: 14px; font-weight: 500;
+  transition: all 0.2s var(--ease);
+}
+.md__wa:hover { border-color: var(--green); color: var(--green); }
+
+/* ============================================================
+   Carrito (drawer)
+   ============================================================ */
+
+.ov {
+  position: fixed; inset: 0; z-index: 90;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(3px);
+  opacity: 0; visibility: hidden;
+  transition: opacity 0.3s var(--ease), visibility 0.3s var(--ease);
+}
+.ov[data-open='true'] { opacity: 1; visibility: visible; }
+
+.dw {
+  position: fixed; top: 0; right: 0; bottom: 0; z-index: 100;
+  width: min(410px, 100%);
+  display: flex; flex-direction: column;
+  background: #101013;
+  border-left: 1px solid var(--line);
+  transform: translateX(100%);
+  transition: transform 0.36s var(--ease);
+}
+.dw[data-open='true'] { transform: none; }
+
+.dw__top {
+  display: flex; align-items: center; gap: 12px;
+  padding: 20px 22px; border-bottom: 1px solid var(--line);
+}
+.dw__top h2 { margin: 0; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600; }
+.dw__close { margin-left: auto; font-size: 22px; line-height: 1; color: var(--ink-soft); padding: 4px 6px; }
+.dw__close:hover { color: var(--ink); }
+
+.dw__body { flex: 1; overflow-y: auto; padding: 8px 22px; }
+.dw__empty { padding: 60px 0; text-align: center; color: var(--ink-faint); font-size: 14px; }
+
+.li { display: grid; grid-template-columns: 62px 1fr auto; gap: 13px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.li img { width: 62px; height: 76px; object-fit: cover; border-radius: 8px; background: #0E0E11; }
+.li__name { font-size: 13.5px; font-weight: 500; margin: 0 0 2px; }
+.li__brand { font-size: 11px; color: var(--ink-faint); letter-spacing: 0.1em; text-transform: uppercase; }
+.li__price { font-size: 13.5px; margin-top: 5px; font-variant-numeric: tabular-nums; }
+
+/* Para que se vea de un vistazo qué llega mañana y qué en 10 días. */
+.li__tag { display: inline-block; font-size: 10.5px; padding: 2px 7px; border-radius: 999px; }
+.li__tag[data-kind='stock']    { background: rgba(111,191,139,0.14); color: var(--green); }
+.li__tag[data-kind='encargue'] { background: rgba(217,164,65,0.14);  color: var(--amber); }
+
+.li__qty { display: inline-flex; align-items: center; gap: 2px; margin-top: 7px; border: 1px solid var(--line-strong); border-radius: 7px; }
+.li__qty button { width: 25px; height: 25px; font-size: 14px; color: var(--ink-soft); }
+.li__qty button:hover { color: var(--ink); }
+.li__qty span { min-width: 20px; text-align: center; font-size: 12.5px; font-variant-numeric: tabular-nums; }
+
+.li__del { align-self: start; font-size: 11.5px; color: var(--ink-faint); text-decoration: underline; text-underline-offset: 3px; }
+.li__del:hover { color: #E28080; }
+
+.dw__foot { padding: 18px 22px 24px; border-top: 1px solid var(--line); }
+.dw__row { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 7px; }
+.dw__row strong { font-size: 17px; font-variant-numeric: tabular-nums; }
+.dw__hint { font-size: 12px; color: var(--ink-faint); margin: 0 0 14px; }
+.dw__hint b { color: var(--gold); font-weight: 600; }
+
+.dw__go {
+  display: block; width: 100%; text-align: center;
+  background: var(--ink); color: #0B0B0D;
+  border-radius: 10px; padding: 13px;
+  font-size: 14px; font-weight: 600;
+  transition: opacity 0.2s var(--ease);
+}
+.dw__go:hover { opacity: 0.86; }
+
+body[data-locked='true'] { overflow: hidden; }
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+
+@media (max-width: 900px) {
+  .hd__nav { display: none; }
+  .ft__cols { grid-template-columns: 1fr 1fr; }
+  .ft__cols > :first-child { grid-column: 1 / -1; }
+
+  /* La foto pasa arriba y la ficha debajo, en una sola columna. */
+  .md__grid { grid-template-columns: 1fr; }
+  .md__media { aspect-ratio: 3 / 2; border-radius: 18px 18px 0 0; }
+  .md__info { padding: 24px 22px 26px; }
+  .md__name { font-size: 21px; }
+  .md__price { font-size: 23px; }
+}
+
+@media (max-width: 720px) {
+  :root { --gutter: 16px; }
+  .hero { padding-top: 30px; }
+  .hero__panel { padding: 34px 16px 24px; border-radius: 16px; }
+  /* Con 4 fotos en fila se ven diminutas: pasamos a 2x2. */
+  .hero__row { grid-template-columns: repeat(2, 1fr); gap: 4px; margin-top: 4px; }
+  .bar { gap: 10px; }
+  .bar__chips { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; }
+  .bar__chips::-webkit-scrollbar { display: none; }
+  .grid { grid-template-columns: repeat(2, 1fr); gap: 11px; }
+  .card__body { padding: 4px 12px 14px; }
+  .card__name { font-size: 13.5px; }
+  .card__price { font-size: 15.5px; }
+  .sec { padding-top: 38px; }
+  .md { padding: 0; }
+  .md__box { max-height: 100vh; height: 100%; border: 0; border-radius: 0; width: 100%; }
+  .md__media { border-radius: 0; }
+  .md__actions { flex-direction: column; }
+}
+
+@media (max-width: 400px) {
+  .grid { grid-template-columns: 1fr; }
+}
